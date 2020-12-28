@@ -1,0 +1,34 @@
+name: Cripper
+options:
+  bundleIdPrefix: com.rosberry
+targets:
+  Cripper:
+    type: framework
+    platform: iOS
+    sources: [Sources/Cripper]
+    info:
+      path: Cripper.xcodeproj/Cripper.plist
+  CripperTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "12.0"
+    sources: [Tests/CripperTests]
+    info:
+      path: Cripper.xcodeproj/CripperTests.plist
+  Example:
+    type: application
+    platform: iOS
+    deploymentTarget: "12.0"
+    sources: [Sources/Example]
+    info:
+      path: Cripper.xcodeproj/Example.plist
+      properties:
+        UILaunchStoryboardName: LaunchScreen
+        UIMainStoryboardFile: Main
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneConfigurationName: Default Configuration
+                UISceneStoryboardFile: Main
+                UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
