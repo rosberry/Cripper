@@ -7,27 +7,95 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01430C9925999CCF0083921F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430C9125999CCF0083921F /* AppDelegate.swift */; };
+		01430C9A25999CCF0083921F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430C9325999CCF0083921F /* ViewController.swift */; };
+		01430C9E2599A0DF0083921F /* Routes+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430C9D2599A0DF0083921F /* Routes+Alert.swift */; };
+		01430CA02599A1120083921F /* BaseRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430C9F2599A1120083921F /* BaseRoute.swift */; };
+		01430CA22599A1A60083921F /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430CA12599A1A60083921F /* AppRouter.swift */; };
 		42C63D849DBB689C1DD9D3D9 /* Cripper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2507E2DD1D5357A33B90A9B6 /* Cripper.swift */; };
 		97CA28C78840EEE26B487627 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF429C5B3AD3753A5DFA2097 /* XCTestManifests.swift */; };
 		FB22C7BFB9D904175D8ADFF2 /* CripperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389C1271E79E84015E58041F /* CripperTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01430C9125999CCF0083921F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		01430C9325999CCF0083921F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		01430C9525999CCF0083921F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		01430C9725999CCF0083921F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		01430C9825999CCF0083921F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01430C9D2599A0DF0083921F /* Routes+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routes+Alert.swift"; sourceTree = "<group>"; };
+		01430C9F2599A1120083921F /* BaseRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoute.swift; sourceTree = "<group>"; };
+		01430CA12599A1A60083921F /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		2507E2DD1D5357A33B90A9B6 /* Cripper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cripper.swift; sourceTree = "<group>"; };
 		389C1271E79E84015E58041F /* CripperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CripperTests.swift; sourceTree = "<group>"; };
 		49870814BD599C5EFAF0F741 /* Cripper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cripper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F1730667C99E4E705AEBAA /* CripperTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CripperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B836402E7EE18236948A9B40 /* Example.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B836402E7EE18236948A9B40 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF429C5B3AD3753A5DFA2097 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		01430C8E25999CCF0083921F /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				01430C8F25999CCF0083921F /* Classes */,
+				01430C9425999CCF0083921F /* Resources */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		01430C8F25999CCF0083921F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				01430C9025999CCF0083921F /* Presentation */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		01430C9025999CCF0083921F /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				01430C9125999CCF0083921F /* AppDelegate.swift */,
+				01430C9C2599A0CA0083921F /* Routes */,
+				01430C9225999CCF0083921F /* Modules */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		01430C9225999CCF0083921F /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				01430C9325999CCF0083921F /* ViewController.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		01430C9425999CCF0083921F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				01430C9525999CCF0083921F /* Assets.xcassets */,
+				01430C9625999CCF0083921F /* LaunchScreen.storyboard */,
+				01430C9825999CCF0083921F /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		01430C9C2599A0CA0083921F /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				01430C9D2599A0DF0083921F /* Routes+Alert.swift */,
+				01430C9F2599A1120083921F /* BaseRoute.swift */,
+				01430CA12599A1A60083921F /* AppRouter.swift */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
 		5F698A2C95AC078B0C67BDF8 = {
 			isa = PBXGroup;
 			children = (
 				FCF137B70F42FD5E25E9EAB2 /* Cripper */,
+				01430C8E25999CCF0083921F /* Example */,
 				87C17C954A55B1CFAD2F58E0 /* CripperTests */,
-				F49D2C8024C456E23BCACCD9 /* Example */,
 				9164D1FD206B13534BBD4B38 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,14 +118,6 @@
 				B836402E7EE18236948A9B40 /* Example.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		F49D2C8024C456E23BCACCD9 /* Example */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Example;
-			path = Sources/Example;
 			sourceTree = "<group>";
 		};
 		FCF137B70F42FD5E25E9EAB2 /* Cripper */ = {
@@ -123,9 +183,8 @@
 		C295CF4BBFBEECCC1CFF178E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1200;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 773E915624F46CF0175E1B8E /* Build configuration list for PBXProject "Cripper" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -151,6 +210,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01430CA02599A1120083921F /* BaseRoute.swift in Sources */,
+				01430C9A25999CCF0083921F /* ViewController.swift in Sources */,
+				01430CA22599A1A60083921F /* AppRouter.swift in Sources */,
+				01430C9925999CCF0083921F /* AppDelegate.swift in Sources */,
+				01430C9E2599A0DF0083921F /* Routes+Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +236,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		01430C9625999CCF0083921F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01430C9725999CCF0083921F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		05587BB09052D9CBD2064F86 /* Release */ = {
@@ -236,7 +311,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = Cripper.xcodeproj/Example.plist;
+				DEVELOPMENT_TEAM = GPVA8JVMU3;
+				INFOPLIST_FILE = Example/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -253,7 +329,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = Cripper.xcodeproj/Example.plist;
+				DEVELOPMENT_TEAM = GPVA8JVMU3;
+				INFOPLIST_FILE = Example/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
