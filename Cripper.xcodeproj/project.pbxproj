@@ -12,10 +12,38 @@
 		01430C9E2599A0DF0083921F /* Routes+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430C9D2599A0DF0083921F /* Routes+Alert.swift */; };
 		01430CA02599A1120083921F /* BaseRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430C9F2599A1120083921F /* BaseRoute.swift */; };
 		01430CA22599A1A60083921F /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430CA12599A1A60083921F /* AppRouter.swift */; };
-		42C63D849DBB689C1DD9D3D9 /* Cripper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2507E2DD1D5357A33B90A9B6 /* Cripper.swift */; };
+		01430CA62599A8F20083921F /* CropperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430CA52599A8F20083921F /* CropperViewController.swift */; };
+		01430CA82599B0A30083921F /* Cripper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49870814BD599C5EFAF0F741 /* Cripper.framework */; };
+		01430CA92599B0A30083921F /* Cripper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49870814BD599C5EFAF0F741 /* Cripper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01430CAF2599BA390083921F /* Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430CAE2599BA390083921F /* Crop.swift */; };
+		01430CB12599C38B0083921F /* CropOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430CB02599C38B0083921F /* CropOverlayView.swift */; };
 		97CA28C78840EEE26B487627 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF429C5B3AD3753A5DFA2097 /* XCTestManifests.swift */; };
 		FB22C7BFB9D904175D8ADFF2 /* CripperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389C1271E79E84015E58041F /* CripperTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		01430CAA2599B0A30083921F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C295CF4BBFBEECCC1CFF178E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4D1802C896FB32E670F86AC;
+			remoteInfo = Cripper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		01430CAD2599B0A30083921F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				01430CA92599B0A30083921F /* Cripper.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		01430C9125999CCF0083921F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -26,13 +54,26 @@
 		01430C9D2599A0DF0083921F /* Routes+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routes+Alert.swift"; sourceTree = "<group>"; };
 		01430C9F2599A1120083921F /* BaseRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoute.swift; sourceTree = "<group>"; };
 		01430CA12599A1A60083921F /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
-		2507E2DD1D5357A33B90A9B6 /* Cripper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cripper.swift; sourceTree = "<group>"; };
+		01430CA52599A8F20083921F /* CropperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropperViewController.swift; sourceTree = "<group>"; };
+		01430CAE2599BA390083921F /* Crop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crop.swift; sourceTree = "<group>"; };
+		01430CB02599C38B0083921F /* CropOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropOverlayView.swift; sourceTree = "<group>"; };
 		389C1271E79E84015E58041F /* CripperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CripperTests.swift; sourceTree = "<group>"; };
 		49870814BD599C5EFAF0F741 /* Cripper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cripper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F1730667C99E4E705AEBAA /* CripperTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CripperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B836402E7EE18236948A9B40 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF429C5B3AD3753A5DFA2097 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		01430CAC2599B0A30083921F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01430CA82599B0A30083921F /* Cripper.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		01430C8E25999CCF0083921F /* Example */ = {
@@ -90,6 +131,13 @@
 			path = Routes;
 			sourceTree = "<group>";
 		};
+		01430CA72599B0A30083921F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5F698A2C95AC078B0C67BDF8 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +145,7 @@
 				01430C8E25999CCF0083921F /* Example */,
 				87C17C954A55B1CFAD2F58E0 /* CripperTests */,
 				9164D1FD206B13534BBD4B38 /* Products */,
+				01430CA72599B0A30083921F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,7 +172,9 @@
 		FCF137B70F42FD5E25E9EAB2 /* Cripper */ = {
 			isa = PBXGroup;
 			children = (
-				2507E2DD1D5357A33B90A9B6 /* Cripper.swift */,
+				01430CA52599A8F20083921F /* CropperViewController.swift */,
+				01430CAE2599BA390083921F /* Crop.swift */,
+				01430CB02599C38B0083921F /* CropOverlayView.swift */,
 			);
 			name = Cripper;
 			path = Sources/Cripper;
@@ -137,10 +188,13 @@
 			buildConfigurationList = 9E7BB1B96294B4F1D5AECEB3 /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
 				84F3C0117354B11B3EF71576 /* Sources */,
+				01430CAC2599B0A30083921F /* Frameworks */,
+				01430CAD2599B0A30083921F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				01430CAB2599B0A30083921F /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -222,7 +276,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42C63D849DBB689C1DD9D3D9 /* Cripper.swift in Sources */,
+				01430CA62599A8F20083921F /* CropperViewController.swift in Sources */,
+				01430CAF2599BA390083921F /* Crop.swift in Sources */,
+				01430CB12599C38B0083921F /* CropOverlayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +292,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		01430CAB2599B0A30083921F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C4D1802C896FB32E670F86AC /* Cripper */;
+			targetProxy = 01430CAA2599B0A30083921F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		01430C9625999CCF0083921F /* LaunchScreen.storyboard */ = {
@@ -294,6 +358,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Cripper.xcodeproj/Cripper.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -470,6 +535,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Cripper.xcodeproj/Cripper.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

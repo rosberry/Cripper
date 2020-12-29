@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Cripper
 
 final class ViewController: UIViewController {
 
@@ -35,9 +36,14 @@ final class ViewController: UIViewController {
     @objc private func takePhotoButtonPressed() {
         let vc = UIImagePickerController()
         vc.sourceType = .camera
-        vc.allowsEditing = true
         vc.delegate = self
         present(vc, animated: true)
+    }
+
+    @objc private func panGestureRecognized() {
+    }
+
+    @objc private func pinchGestureRecognized() {
     }
 }
 
@@ -53,7 +59,7 @@ extension ViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
 
-        guard let image = info[.editedImage] as? UIImage else {
+        guard let image = info[.originalImage] as? UIImage else {
             print("No image found")
            return AppRouter(viewController: self).showAlert(title: "No image found",
                                                             message: nil,
@@ -63,5 +69,8 @@ extension ViewController: UIImagePickerControllerDelegate {
                                                                             handler: nil)])
 
         }
+        let viewController = CropperViewController(image: image)
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: false, completion: nil)
     }
 }

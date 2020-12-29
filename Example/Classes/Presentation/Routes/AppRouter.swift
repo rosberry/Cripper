@@ -6,7 +6,7 @@ import UIKit
 
 final class AppRouter: BaseRouter<UIViewController>, AlertRoute {
 
-    init(viewController: ViewController) {
+    init(viewController: UIViewController) {
         super.init()
         self.viewController = viewController
     }
