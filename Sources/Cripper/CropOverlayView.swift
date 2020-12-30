@@ -54,21 +54,24 @@ public final class CropOverlayView: UIView {
             context.saveGState()
 
             context.setFillColor(overlayColor.cgColor)
-            let scaleX = (rect.width - 2 * clipBorderInset) / rect.width
-            let scaleY = (rect.height - 2 * clipBorderInset) / rect.height
+            let insetScaleX = (rect.width - 2 * clipBorderInset) / rect.width
+            let insetScaleY = (rect.height - 2 * clipBorderInset) / rect.height
             let externalRect = CGRect (x: rect.minX - clipBorderInset,
                                        y: rect.minY - clipBorderInset,
-                                       width: rect.width / scaleX,
-                                       height: rect.height / scaleY)
+                                       width: rect.width / insetScaleX,
+                                       height: rect.height / insetScaleY)
             let inverted = UIBezierPath(rect: externalRect)
-            inverted.append(UIBezierPath(cgPath: crop.path).reversing())
+            let shapePath = UIBezierPath(cgPath: crop.path)
+            shapePath.apply(.init(scaleX: crop.rect.width, y: crop.rect.height))
+            shapePath.apply(.init(translationX: crop.rect.minX, y: crop.rect.minY))
+            inverted.append(shapePath.reversing())
             let clipPath = inverted.cgPath
-            context.scaleBy(x: scaleX, y: scaleY)
+            context.scaleBy(x: insetScaleX, y: insetScaleY)
             context.translateBy(x: clipBorderInset, y: clipBorderInset)
             context.addPath(clipPath)
             context.clip()
             context.fill(externalRect)
-            context.addPath(crop.path)
+            context.addPath(shapePath.cgPath)
             context.setStrokeColor(clipBorderColor.cgColor)
             // half of line width will be clipped
             context.setLineWidth(clipBorderWidth * 2)

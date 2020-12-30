@@ -25,7 +25,7 @@ public final class CropperViewController: UIViewController {
         return .init(width: size.width / scale, height: size.height / scale)
     }
 
-    public override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+    public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
     }
 

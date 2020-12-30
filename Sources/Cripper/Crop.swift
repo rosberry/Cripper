@@ -14,6 +14,11 @@ public protocol CropBuilder {
 }
 
 extension CropBuilder {
+
+    func makeIdentityRect() -> CGRect {
+        .init(x: 0, y: 0, width: 1, height: 1)
+    }
+
     func makeRect(with aspect: CGFloat, in bounds: CGRect) -> CGRect {
         let minSide = min(bounds.height, bounds.width)
         if aspect < 1 {
@@ -42,7 +47,7 @@ public final class AspectCropBuilder: CropBuilder {
 
     public func makeCrop(in bounds: CGRect) -> Crop {
         let rect = makeRect(with: aspect, in: bounds)
-        let path = UIBezierPath(rect: rect)
+        let path = UIBezierPath(rect: makeIdentityRect())
         return .init(rect: rect, path: path.cgPath)
     }
 }
