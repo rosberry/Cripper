@@ -32,7 +32,6 @@ public final class CropperViewController: UIViewController {
 
     // MARK: - GestureRecognizers
 
-
     // MARK: - Subviews
 
     private lazy var scrollView: UIScrollView = {
@@ -64,7 +63,7 @@ public final class CropperViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Use Photo", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+        button.titleLabel?.font = .systemFont(ofSize: 16)
         button.addTarget(self, action: #selector(acceptButtonPressed), for: .touchUpInside)
         return button
     }()
@@ -73,7 +72,7 @@ public final class CropperViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Retake", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+        button.titleLabel?.font = .systemFont(ofSize: 16)
         button.addTarget(self, action: #selector(declineButtonPressed), for: .touchUpInside)
         return button
     }()
@@ -100,10 +99,6 @@ public final class CropperViewController: UIViewController {
         view.backgroundColor = .black
     }
 
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         overlayView.frame = view.bounds
@@ -112,8 +107,8 @@ public final class CropperViewController: UIViewController {
         scrollView.maximumZoomScale = maximumScale
         scrollView.minimumZoomScale = scale
         scrollView.contentInset = .zero
-        scrollView.setZoomScale(scrollView.minimumZoomScale * 1.001, animated: false)
-        updateScrollViewContent(withContentOffset: true)
+        scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
+        updateScrollViewContent(withContentOffset: false)
         update()
         let acceptBarHeight = 100 + view.safeAreaInsets.bottom
         acceptBarView.frame = .init(x: 0, y: view.bounds.height - acceptBarHeight,
@@ -124,6 +119,10 @@ public final class CropperViewController: UIViewController {
         declineButton.frame = .init(origin: .zero, size: .init(width: declineButtonFitSize.width + 32,
                                                                height: 56))
         acceptButton.frame = .init(x: view.bounds.width - acceptButtonWidth, y: 0, width: acceptButtonWidth, height: 56)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.scrollView.setZoomScale(self.scrollView.minimumZoomScale, animated: true)
+            self.updateScrollViewContent(withContentOffset: true)
+        }
     }
 
     // MARK: - Actions
@@ -135,11 +134,6 @@ public final class CropperViewController: UIViewController {
             return
         }
         var crop = cropBuilder.makeCrop(in: view.bounds)
-        let imageSize = pointImageSize
-        let imageWidth = imageSize.width * scale
-        let imageHeight = imageSize.height * scale
-        let imageX = (view.bounds.width - imageWidth) / 2
-        let imageY = (view.bounds.height - imageHeight) / 2
         crop.translation = .init(x: scrollView.contentOffset.x,
                                  y: scrollView.contentOffset.y)
         crop.scale = UIScreen.main.scale / scrollView.zoomScale
@@ -161,12 +155,13 @@ public final class CropperViewController: UIViewController {
         guard abs(scrollView.zoomScale - scrollView.minimumZoomScale) < 1e-2 else {
             return
         }
-        scrollView.setZoomScale(scrollView.minimumZoomScale * 1.001, animated: false)
+        scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
         updateScrollViewContent(withContentOffset: true)
     }
 }
 
 extension CropperViewController: UIScrollViewDelegate {
+
     public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         imageWrapperView
     }
@@ -176,7 +171,9 @@ extension CropperViewController: UIScrollViewDelegate {
     }
 
     public func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-        restoreScrolling()
+        UIView.animate(withDuration: 0.1, animations: {
+            self.restoreScrolling()
+        })
     }
 
     func updateScrollViewContent(withContentOffset: Bool = false) {
@@ -198,16 +195,6 @@ extension CropperViewController: UIScrollViewDelegate {
         let additionalHeight = requiredHeight - imageSize.height - (topOffset + bottomOffset) / scale
         let additionalWidth = requiredWidth - imageSize.width - (leftOffset + rightOffset) / scale
 
-        guard scrollView.zoomScale >= scrollView.minimumZoomScale else {
-            imageWrapperView.bounds = .init(x: 0, y: 0,
-                                            width: imageSize.width,
-                                            height: imageSize.height)
-            imageView.frame = .init(origin: .init(x: 0, y: 0), size: imageSize)
-            imageWrapperView.center = .init(x: scrollView.contentSize.width * 0.5 + offsetX,
-                                            y: scrollView.contentSize.height * 0.5 + offsetY)
-            return
-        }
-
         imageWrapperView.bounds = .init(x: 0, y: 0,
                                         width: requiredWidth,
                                         height: requiredHeight)
@@ -216,10 +203,23 @@ extension CropperViewController: UIScrollViewDelegate {
                                 size: imageSize)
         imageWrapperView.center = .init(x: scrollView.contentSize.width * 0.5 + offsetX,
                                         y: scrollView.contentSize.height * 0.5 + offsetY)
+
         if withContentOffset {
             scrollView.setContentOffset(.init(x: leftOffset,
                                               y: topOffset),
                                         animated: false)
         }
+    }
+
+    func alignImageByCenter() {
+        let offsetX = max((scrollView.bounds.width - scrollView.contentSize.width) * 0.5, 0.0)
+        let offsetY = max((scrollView.bounds.height - scrollView.contentSize.height) * 0.5, 0.0)
+        let imageSize = pointImageSize
+        imageWrapperView.bounds = .init(x: 0, y: 0,
+                                        width: imageSize.width,
+                                        height: imageSize.height)
+        imageView.frame = .init(origin: .init(x: 0, y: 0), size: imageSize)
+        imageWrapperView.center = .init(x: scrollView.contentSize.width * 0.5 + offsetX,
+                                        y: scrollView.contentSize.height * 0.5 + offsetY)
     }
 }
