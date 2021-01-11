@@ -12,17 +12,18 @@ public final class CropperViewController: UIViewController {
         }
     }
 
-    var transform: CGAffineTransform = .identity
-    var currentTransform: CGAffineTransform = .identity
-    var maximumScale: CGFloat = 5
+    public var maximumScale: CGFloat = 5
+    public var completionHandler: ((UIImage?) -> Void)?
+
     var scale: CGFloat = 1
 
+    var cripper: Cripper = .init()
+
     var pointImageSize: CGSize {
-        guard let size = imageView.image?.size else {
+        guard let image = imageView.image else {
             return .zero
         }
-        let scale = UIScreen.main.scale
-        return .init(width: size.width / scale, height: size.height / scale)
+        return cripper.pointSize(of: image)
     }
 
     public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -62,6 +63,8 @@ public final class CropperViewController: UIViewController {
     public private(set) lazy var acceptButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Use Photo", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
         button.addTarget(self, action: #selector(acceptButtonPressed), for: .touchUpInside)
         return button
     }()
@@ -69,14 +72,17 @@ public final class CropperViewController: UIViewController {
     public private(set) lazy var declineButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Retake", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
         button.addTarget(self, action: #selector(declineButtonPressed), for: .touchUpInside)
         return button
     }()
 
     // MARK: - Lifecycle
 
-    public convenience init(image: UIImage) {
+    public convenience init(image: UIImage, completionHandler: @escaping ((UIImage?) -> Void)) {
         self.init(nibName: nil, bundle: nil)
+        self.completionHandler = completionHandler
         imageView.image = image
     }
 
@@ -102,14 +108,11 @@ public final class CropperViewController: UIViewController {
         super.viewDidLayoutSubviews()
         overlayView.frame = view.bounds
         scrollView.frame = view.bounds
-        let imageSize = pointImageSize
-        let widthScale = view.bounds.width / imageSize.width
-        let heightScale = view.bounds.height / imageSize.height
-        scale = min(widthScale, heightScale)
+        scale = cripper.scale(for: pointImageSize, in: view.bounds)
         scrollView.maximumZoomScale = maximumScale
         scrollView.minimumZoomScale = scale
         scrollView.contentInset = .zero
-        scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
+        scrollView.setZoomScale(scrollView.minimumZoomScale * 1.001, animated: false)
         updateScrollViewContent(withContentOffset: true)
         update()
         let acceptBarHeight = 100 + view.safeAreaInsets.bottom
@@ -117,19 +120,34 @@ public final class CropperViewController: UIViewController {
                                     width: view.bounds.width, height: acceptBarHeight)
         let acceptButtonFitSize = acceptButton.sizeThatFits(acceptBarView.bounds.size)
         let declineButtonFitSize = declineButton.sizeThatFits(declineButton.bounds.size)
-        let declineButtonWidth = declineButtonFitSize.width + 32
-        acceptButton.frame = .init(origin: .zero, size: .init(width: acceptButtonFitSize.width + 32, height: 56))
-        declineButton.frame = .init(x: view.bounds.width - declineButtonWidth, y: 0, width: declineButtonWidth, height: 56)
+        let acceptButtonWidth = acceptButtonFitSize.width + 32
+        declineButton.frame = .init(origin: .zero, size: .init(width: declineButtonFitSize.width + 32,
+                                                               height: 56))
+        acceptButton.frame = .init(x: view.bounds.width - acceptButtonWidth, y: 0, width: acceptButtonWidth, height: 56)
     }
 
     // MARK: - Actions
 
     @objc private func acceptButtonPressed() {
-
+        dismiss(animated: false, completion: nil)
+        guard let image = imageView.image else {
+            completionHandler?(nil)
+            return
+        }
+        var crop = cropBuilder.makeCrop(in: view.bounds)
+        let imageSize = pointImageSize
+        let imageWidth = imageSize.width * scale
+        let imageHeight = imageSize.height * scale
+        let imageX = (view.bounds.width - imageWidth) / 2
+        let imageY = (view.bounds.height - imageHeight) / 2
+        crop.translation = .init(x: scrollView.contentOffset.x,
+                                 y: scrollView.contentOffset.y)
+        crop.scale = UIScreen.main.scale / scrollView.zoomScale
+        completionHandler?(cripper.crop(image: image, with: crop, in: view.bounds))
     }
 
     @objc private func declineButtonPressed() {
-
+        dismiss(animated: false, completion: nil)
     }
 
     // MARK: - Private
@@ -137,6 +155,14 @@ public final class CropperViewController: UIViewController {
     private func update() {
         overlayView.cropBuilder = cropBuilder
         view.setNeedsDisplay()
+    }
+
+    private func restoreScrolling() {
+        guard abs(scrollView.zoomScale - scrollView.minimumZoomScale) < 1e-2 else {
+            return
+        }
+        scrollView.setZoomScale(scrollView.minimumZoomScale * 1.001, animated: false)
+        updateScrollViewContent(withContentOffset: true)
     }
 }
 
@@ -149,6 +175,10 @@ extension CropperViewController: UIScrollViewDelegate {
         updateScrollViewContent(withContentOffset: false)
     }
 
+    public func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+        restoreScrolling()
+    }
+
     func updateScrollViewContent(withContentOffset: Bool = false) {
         let offsetX = max((scrollView.bounds.width - scrollView.contentSize.width) * 0.5, 0.0)
         let offsetY = max((scrollView.bounds.height - scrollView.contentSize.height) * 0.5, 0.0)
@@ -159,19 +189,28 @@ extension CropperViewController: UIScrollViewDelegate {
         let imageHeight = imageSize.height * scale
         let imageX = (view.bounds.width - imageWidth) / 2
         let imageY = (view.bounds.height - imageHeight) / 2
-        let topOffset = crop.rect.minY - imageY
-        let bottomOffset = (imageY + imageHeight) - crop.rect.maxY
-        let leftOffset = crop.rect.minX - imageX
-        let rightOffset = (imageX + imageWidth) - crop.rect.maxX
+        let topOffset = crop.rect.minY - max(imageY, 0)
+        let bottomOffset = (imageY > 0 ? imageY + imageHeight : view.bounds.height) - crop.rect.maxY
+        let leftOffset = crop.rect.minX - max(imageX, 0)
+        let rightOffset = (imageX > 0 ? imageX + imageWidth : view.bounds.width) - crop.rect.maxX
         let requiredHeight = (max(imageHeight, view.bounds.height) + (topOffset + bottomOffset)) / scale
         let requiredWidth = (max(imageWidth, view.bounds.width) + (leftOffset + rightOffset)) / scale
         let additionalHeight = requiredHeight - imageSize.height - (topOffset + bottomOffset) / scale
         let additionalWidth = requiredWidth - imageSize.width - (leftOffset + rightOffset) / scale
+
+        guard scrollView.zoomScale >= scrollView.minimumZoomScale else {
+            imageWrapperView.bounds = .init(x: 0, y: 0,
+                                            width: imageSize.width,
+                                            height: imageSize.height)
+            imageView.frame = .init(origin: .init(x: 0, y: 0), size: imageSize)
+            imageWrapperView.center = .init(x: scrollView.contentSize.width * 0.5 + offsetX,
+                                            y: scrollView.contentSize.height * 0.5 + offsetY)
+            return
+        }
+
         imageWrapperView.bounds = .init(x: 0, y: 0,
                                         width: requiredWidth,
                                         height: requiredHeight)
-        scrollView.contentSize = .init(width: requiredWidth * scale,
-                                       height: requiredHeight * scale)
         imageView.frame = .init(origin: .init(x: leftOffset / scale + additionalWidth / 2,
                                               y: topOffset / scale + additionalHeight / 2),
                                 size: imageSize)

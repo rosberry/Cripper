@@ -16,19 +16,26 @@ final class ViewController: UIViewController {
         return button
     }()
 
+    private lazy var imageView: UIImageView = .init()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(teakePhotoButton)
+        view.addSubview(imageView)
         navigationItem.title = "Crop a photo"
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .gray
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        teakePhotoButton.frame = .init(origin: .zero, size: .init(width: 200, height: 56))
+        teakePhotoButton.bounds = .init(origin: .zero, size: .init(width: 200, height: 56))
         teakePhotoButton.center = .init(x: view.center.x, y: 100 + view.safeAreaInsets.top)
+        imageView.frame = .init(x: 16, y: teakePhotoButton.frame.maxY + 50,
+                                width: view.bounds.width - 32, height: view.bounds.height - 300)
     }
 
     // MARK: - Actions
@@ -69,7 +76,9 @@ extension ViewController: UIImagePickerControllerDelegate {
                                                                             handler: nil)])
 
         }
-        let viewController = CropperViewController(image: image)
+        let viewController = CropperViewController(image: image) { croppedImage in
+            self.imageView.image = croppedImage
+        }
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: false, completion: nil)
     }

@@ -7,6 +7,8 @@ import UIKit
 public struct Crop {
     var rect: CGRect
     var path: CGPath
+    var translation: CGPoint = .zero
+    var scale: CGFloat = 1
 }
 
 public protocol CropBuilder {
