@@ -56,10 +56,10 @@ public final class CropOverlayView: UIView {
             context.setFillColor(overlayColor.cgColor)
             let insetScaleX = (rect.width - 2 * clipBorderInset) / rect.width
             let insetScaleY = (rect.height - 2 * clipBorderInset) / rect.height
-            let externalRect = CGRect (x: rect.minX - clipBorderInset,
-                                       y: rect.minY - clipBorderInset,
-                                       width: rect.width / insetScaleX,
-                                       height: rect.height / insetScaleY)
+            let externalRect = CGRect(x: rect.minX - clipBorderInset,
+                                      y: rect.minY - clipBorderInset,
+                                      width: rect.width / insetScaleX,
+                                      height: rect.height / insetScaleY)
             let inverted = UIBezierPath(rect: externalRect)
             let shapePath = UIBezierPath(cgPath: pattern.path)
             shapePath.apply(.init(scaleX: pattern.rect.width, y: pattern.rect.height))

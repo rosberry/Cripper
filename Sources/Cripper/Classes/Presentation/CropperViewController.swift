@@ -149,7 +149,7 @@ public final class CropperViewController: UIViewController {
         let declineButtonFitSize = declineButton.sizeThatFits(declineButton.bounds.size)
         let acceptButtonWidth = acceptButtonFitSize.width + 32
         declineButton.frame = .init(x: 0, y: view.safeAreaInsets.top,
-                                    width: declineButtonFitSize.width + 32, height: 56) 
+                                    width: declineButtonFitSize.width + 32, height: 56)
         acceptButton.frame = .init(x: view.bounds.width - acceptButtonWidth, y: view.safeAreaInsets.top, width: acceptButtonWidth, height: 56)
 
         let shapeBarViewHeight: CGFloat = 100
