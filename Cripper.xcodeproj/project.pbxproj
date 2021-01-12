@@ -16,8 +16,12 @@
 		01430CA62599A8F20083921F /* CropperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430CA52599A8F20083921F /* CropperViewController.swift */; };
 		01430CA82599B0A30083921F /* Cripper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49870814BD599C5EFAF0F741 /* Cripper.framework */; };
 		01430CA92599B0A30083921F /* Cripper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49870814BD599C5EFAF0F741 /* Cripper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		01430CAF2599BA390083921F /* CropPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430CAE2599BA390083921F /* CropPattern.swift */; };
 		01430CB12599C38B0083921F /* CropOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430CB02599C38B0083921F /* CropOverlayView.swift */; };
+		019BB0AC25AD6FBF005B659F /* CropPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0AB25AD6FBF005B659F /* CropPattern.swift */; };
+		019BB0AE25AD6FDD005B659F /* CropPatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0AD25AD6FDD005B659F /* CropPatternBuilder.swift */; };
+		019BB0B025AD7012005B659F /* AspectRatioCropPatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0AF25AD7012005B659F /* AspectRatioCropPatternBuilder.swift */; };
+		019BB0B225AD7032005B659F /* EllipsePatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0B125AD7032005B659F /* EllipsePatternBuilder.swift */; };
+		019BB0B525AD7067005B659F /* CropPatterBuilders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0B425AD7067005B659F /* CropPatterBuilders.swift */; };
 		01B70C72259C3A3E0057E601 /* Cripper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B70C71259C3A3E0057E601 /* Cripper.swift */; };
 		01B70FE025AC64DB0057E601 /* CropCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B70FDF25AC64DB0057E601 /* CropCell.swift */; };
 		97CA28C78840EEE26B487627 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF429C5B3AD3753A5DFA2097 /* XCTestManifests.swift */; };
@@ -59,8 +63,12 @@
 		01430C9F2599A1120083921F /* BaseRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoute.swift; sourceTree = "<group>"; };
 		01430CA12599A1A60083921F /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		01430CA52599A8F20083921F /* CropperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropperViewController.swift; sourceTree = "<group>"; };
-		01430CAE2599BA390083921F /* CropPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropPattern.swift; sourceTree = "<group>"; };
 		01430CB02599C38B0083921F /* CropOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropOverlayView.swift; sourceTree = "<group>"; };
+		019BB0AB25AD6FBF005B659F /* CropPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropPattern.swift; sourceTree = "<group>"; };
+		019BB0AD25AD6FDD005B659F /* CropPatternBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropPatternBuilder.swift; sourceTree = "<group>"; };
+		019BB0AF25AD7012005B659F /* AspectRatioCropPatternBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioCropPatternBuilder.swift; sourceTree = "<group>"; };
+		019BB0B125AD7032005B659F /* EllipsePatternBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsePatternBuilder.swift; sourceTree = "<group>"; };
+		019BB0B425AD7067005B659F /* CropPatterBuilders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropPatterBuilders.swift; sourceTree = "<group>"; };
 		01B70C71259C3A3E0057E601 /* Cripper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cripper.swift; sourceTree = "<group>"; };
 		01B70FDF25AC64DB0057E601 /* CropCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropCell.swift; sourceTree = "<group>"; };
 		389C1271E79E84015E58041F /* CripperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CripperTests.swift; sourceTree = "<group>"; };
@@ -85,12 +93,8 @@
 		0112475325AC7141002D91FA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				01430CA52599A8F20083921F /* CropperViewController.swift */,
-				01430CAE2599BA390083921F /* CropPattern.swift */,
-				01430CB02599C38B0083921F /* CropOverlayView.swift */,
-				01B70C71259C3A3E0057E601 /* Cripper.swift */,
-				01B70FDF25AC64DB0057E601 /* CropCell.swift */,
-				0112475125AC6EE1002D91FA /* CropViewOption.swift */,
+				019BB0B625AD708D005B659F /* Presentation */,
+				019BB0B325AD704C005B659F /* Core */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -162,6 +166,46 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		019BB0AA25AD6FAD005B659F /* CropPattern */ = {
+			isa = PBXGroup;
+			children = (
+				019BB0AB25AD6FBF005B659F /* CropPattern.swift */,
+				019BB0AD25AD6FDD005B659F /* CropPatternBuilder.swift */,
+				019BB0AF25AD7012005B659F /* AspectRatioCropPatternBuilder.swift */,
+				019BB0B125AD7032005B659F /* EllipsePatternBuilder.swift */,
+				019BB0B425AD7067005B659F /* CropPatterBuilders.swift */,
+			);
+			path = CropPattern;
+			sourceTree = "<group>";
+		};
+		019BB0B325AD704C005B659F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				01B70C71259C3A3E0057E601 /* Cripper.swift */,
+				019BB0AA25AD6FAD005B659F /* CropPattern */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		019BB0B625AD708D005B659F /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				019BB0B725AD70A2005B659F /* Views */,
+				0112475125AC6EE1002D91FA /* CropViewOption.swift */,
+				01430CA52599A8F20083921F /* CropperViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		019BB0B725AD70A2005B659F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				01430CB02599C38B0083921F /* CropOverlayView.swift */,
+				01B70FDF25AC64DB0057E601 /* CropCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		5F698A2C95AC078B0C67BDF8 = {
@@ -301,12 +345,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				019BB0B525AD7067005B659F /* CropPatterBuilders.swift in Sources */,
+				019BB0B025AD7012005B659F /* AspectRatioCropPatternBuilder.swift in Sources */,
 				01B70FE025AC64DB0057E601 /* CropCell.swift in Sources */,
 				01430CA62599A8F20083921F /* CropperViewController.swift in Sources */,
 				01B70C72259C3A3E0057E601 /* Cripper.swift in Sources */,
 				0112475225AC6EE1002D91FA /* CropViewOption.swift in Sources */,
-				01430CAF2599BA390083921F /* CropPattern.swift in Sources */,
+				019BB0AE25AD6FDD005B659F /* CropPatternBuilder.swift in Sources */,
+				019BB0B225AD7032005B659F /* EllipsePatternBuilder.swift in Sources */,
 				01430CB12599C38B0083921F /* CropOverlayView.swift in Sources */,
+				019BB0AC25AD6FBF005B659F /* CropPattern.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -76,12 +76,16 @@ extension ViewController: UIImagePickerControllerDelegate {
                                                                             handler: nil)])
 
         }
-        let viewController = CropperViewController(image: image,
-                                                   cropOptions: [.square(title: "☐"),
-                                                                 .rect(title: "☐ 3:4", width: 3, height: 4),
-                                                                 .circle(title: "○"),
-                                                                 .ellipse(title: "○ 16:9", width: 16, height: 9)]) { croppedImage in
-            self.imageView.image = croppedImage
+        let viewController = CropperViewController()
+        viewController.image = image
+        viewController.cropOptions = [
+            .square(title: "☐"),
+            .rect(title: "☐ 3:4", width: 3, height: 4),
+            .circle(title: "○"),
+            .ellipse(title: "○ 16:9", width: 16, height: 9)
+        ]
+        viewController.completionHandler = { image in
+            self.imageView.image = image
         }
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: false, completion: nil)

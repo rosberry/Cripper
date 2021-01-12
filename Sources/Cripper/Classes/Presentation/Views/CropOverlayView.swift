@@ -30,7 +30,7 @@ public final class CropOverlayView: UIView {
         }
     }
 
-    var cropBuilder: CropPatternBuilder? {
+    var cropPatternBuilder: CropPatternBuilder? {
         didSet {
             setNeedsDisplay()
         }
@@ -49,7 +49,7 @@ public final class CropOverlayView: UIView {
     }
 
     public override func draw(_ rect: CGRect) {
-        if let crop = cropBuilder?.makeCropPattern(in: rect),
+        if let pattern = cropPatternBuilder?.makeCropPattern(in: rect),
             let context = UIGraphicsGetCurrentContext() {
             context.saveGState()
 
@@ -61,9 +61,9 @@ public final class CropOverlayView: UIView {
                                        width: rect.width / insetScaleX,
                                        height: rect.height / insetScaleY)
             let inverted = UIBezierPath(rect: externalRect)
-            let shapePath = UIBezierPath(cgPath: crop.path)
-            shapePath.apply(.init(scaleX: crop.rect.width, y: crop.rect.height))
-            shapePath.apply(.init(translationX: crop.rect.minX, y: crop.rect.minY))
+            let shapePath = UIBezierPath(cgPath: pattern.path)
+            shapePath.apply(.init(scaleX: pattern.rect.width, y: pattern.rect.height))
+            shapePath.apply(.init(translationX: pattern.rect.minX, y: pattern.rect.minY))
             inverted.append(shapePath.reversing())
             let clipPath = inverted.cgPath
             context.scaleBy(x: insetScaleX, y: insetScaleY)

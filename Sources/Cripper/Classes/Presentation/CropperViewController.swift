@@ -6,43 +6,44 @@ import UIKit
 
 public final class CropperViewController: UIViewController {
 
-    var cropPatternBuilder: CropPatternBuilder = CropPatterBuilders.square.cropPatternBuilder {
-        didSet {
-            updateCropOverlay()
-        }
-    }
-
     public var cropOptions: [CropViewOption] = [] {
         didSet {
             cropPatternBuilder = cropOptions.first?.cropPatternBuilder ?? CropPatterBuilders.square.cropPatternBuilder
-            updateCropOverlay()
         }
     }
-
-    typealias Cell = CropCell
-
-    let cellType = Cell.self
-    let reuseId = String(describing: Cell.self)
 
     public var maximumScale: CGFloat = 5
     public var completionHandler: ((UIImage?) -> Void)?
 
-    var scale: CGFloat = 1
-
-    var cripper: Cripper = .init()
-
-    var pointImageSize: CGSize {
-        guard let image = imageView.image else {
-            return .zero
+    public var image: UIImage? {
+        didSet {
+            imageView.image = image
         }
-        return cripper.pointSize(of: image)
     }
 
     public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
     }
 
-    // MARK: - GestureRecognizers
+    typealias Cell = CropCell
+
+    private let cellType = Cell.self
+    private let reuseId = String(describing: Cell.self)
+
+    private var cripper: Cripper = .init()
+    private var cropPatternBuilder: CropPatternBuilder = CropPatterBuilders.square.cropPatternBuilder {
+        didSet {
+            updateCropOverlay()
+            updateScaling()
+        }
+    }
+
+    private var pointImageSize: CGSize {
+        guard let image = imageView.image else {
+            return .zero
+        }
+        return cripper.pointSize(of: image)
+    }
 
     // MARK: - Subviews
 
@@ -109,13 +110,6 @@ public final class CropperViewController: UIViewController {
 
     // MARK: - Lifecycle
 
-    public convenience init(image: UIImage, cropOptions: [CropViewOption] = [.square()], completionHandler: @escaping ((UIImage?) -> Void)) {
-        self.init(nibName: nil, bundle: nil)
-        self.completionHandler = completionHandler
-        self.cropOptions = cropOptions
-        imageView.image = image
-    }
-
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)
@@ -140,7 +134,8 @@ public final class CropperViewController: UIViewController {
         super.viewDidLayoutSubviews()
         overlayView.frame = view.bounds
         scrollView.frame = view.bounds
-        scale = cripper.scale(for: pointImageSize, in: view.bounds)
+        let pattern = makeCropPattern()
+        let scale = cripper.scale(for: pointImageSize, in: pattern.rect)
         scrollView.maximumZoomScale = maximumScale
         scrollView.minimumZoomScale = scale
         scrollView.contentInset = .zero
@@ -177,13 +172,11 @@ public final class CropperViewController: UIViewController {
             completionHandler?(nil)
             return
         }
-        var rect = view.bounds
-        rect.origin.x -= view.safeAreaInsets.top
-        var crop = cropPatternBuilder.makeCropPattern(in: rect)
-        crop.translation = .init(x: scrollView.contentOffset.x,
+        var pattern = makeCropPattern()
+        pattern.translation = .init(x: scrollView.contentOffset.x,
                                  y: scrollView.contentOffset.y)
-        crop.scale = UIScreen.main.scale / scrollView.zoomScale
-        completionHandler?(cripper.crop(image: image, with: crop, in: view.bounds))
+        pattern.scale = UIScreen.main.scale / scrollView.zoomScale
+        completionHandler?(cripper.crop(image: image, with: pattern, in: view.bounds))
     }
 
     @objc private func declineButtonPressed() {
@@ -192,8 +185,14 @@ public final class CropperViewController: UIViewController {
 
     // MARK: - Private
 
+    private func makeCropPattern() -> CropPattern {
+        var rect = view.bounds
+        rect.origin.x -= view.safeAreaInsets.top
+        return cropPatternBuilder.makeCropPattern(in: rect)
+    }
+
     private func updateCropOverlay() {
-        overlayView.cropBuilder = cropPatternBuilder
+        overlayView.cropPatternBuilder = cropPatternBuilder
         if cropOptions.count > 1 {
             shapeBarView.isHidden = false
             collectionView.reloadData()
@@ -204,20 +203,37 @@ public final class CropperViewController: UIViewController {
         view.setNeedsDisplay()
     }
 
-    func updateScrollViewContent(withContentOffset: Bool = false) {
+    private func updateScaling() {
+        let pattern = makeCropPattern()
+        let scale = cripper.scale(for: pointImageSize, in: pattern.rect)
+        scrollView.maximumZoomScale = maximumScale
+        scrollView.minimumZoomScale = scale
+        if scrollView.zoomScale < scrollView.minimumZoomScale {
+            scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
+        }
+        else if scrollView.zoomScale > scrollView.maximumZoomScale {
+            scrollView.setZoomScale(scrollView.maximumZoomScale, animated: true)
+        }
+        else {
+            // To fix invalid scroll position after min scale changing
+            scrollView.setZoomScale(scrollView.zoomScale * 1.001, animated: true)
+        }
+    }
+
+    private func updateScrollViewContent(withContentOffset: Bool = false) {
        let offsetX = max((scrollView.bounds.width - scrollView.contentSize.width) * 0.5, 0.0)
        let offsetY = max((scrollView.bounds.height - scrollView.contentSize.height) * 0.5, 0.0)
         let scale = scrollView.zoomScale > scrollView.minimumZoomScale ? scrollView.zoomScale : scrollView.minimumZoomScale
        let imageSize = pointImageSize
-       let crop = cropPatternBuilder.makeCropPattern(in: view.bounds)
+       let pattern = makeCropPattern()
        let imageWidth = imageSize.width * scale
        let imageHeight = imageSize.height * scale
        let imageX = (view.bounds.width - imageWidth) / 2
        let imageY = (view.bounds.height - imageHeight) / 2
-       let topOffset = crop.rect.minY - max(imageY, 0)
-       let bottomOffset = (imageY > 0 ? imageY + imageHeight : view.bounds.height) - crop.rect.maxY
-       let leftOffset = crop.rect.minX - max(imageX, 0)
-       let rightOffset = (imageX > 0 ? imageX + imageWidth : view.bounds.width) - crop.rect.maxX
+       let topOffset = pattern.rect.minY - max(imageY, 0)
+       let bottomOffset = (imageY > 0 ? imageY + imageHeight : view.bounds.height) - pattern.rect.maxY
+       let leftOffset = pattern.rect.minX - max(imageX, 0)
+       let rightOffset = (imageX > 0 ? imageX + imageWidth : view.bounds.width) - pattern.rect.maxX
        let requiredHeight = (max(imageHeight, view.bounds.height) + (topOffset + bottomOffset)) / scale
        let requiredWidth = (max(imageWidth, view.bounds.width) + (leftOffset + rightOffset)) / scale
        let additionalHeight = requiredHeight - imageSize.height - (topOffset + bottomOffset) / scale
@@ -237,18 +253,6 @@ public final class CropperViewController: UIViewController {
                                              y: topOffset),
                                        animated: false)
        }
-   }
-
-   func alignImageByCenter() {
-       let offsetX = max((scrollView.bounds.width - scrollView.contentSize.width) * 0.5, 0.0)
-       let offsetY = max((scrollView.bounds.height - scrollView.contentSize.height) * 0.5, 0.0)
-       let imageSize = pointImageSize
-       imageWrapperView.bounds = .init(x: 0, y: 0,
-                                       width: imageSize.width,
-                                       height: imageSize.height)
-       imageView.frame = .init(origin: .init(x: 0, y: 0), size: imageSize)
-       imageWrapperView.center = .init(x: scrollView.contentSize.width * 0.5 + offsetX,
-                                       y: scrollView.contentSize.height * 0.5 + offsetY)
    }
 
     private func restoreScrolling() {

@@ -18,12 +18,12 @@ public final class Cripper {
         }
     }
 
-    public func crop(image: UIImage, with crop: CropPattern, in bounds: CGRect) -> UIImage? {
-        let path = UIBezierPath(cgPath: crop.path)
-        path.apply(.init(scaleX: crop.rect.width, y: crop.rect.height))
-        path.apply(.init(translationX: crop.translation.x,
-                         y: crop.translation.y))
-        path.apply(.init(scaleX: crop.scale, y: crop.scale))
+    public func crop(image: UIImage, with pattern: CropPattern, in bounds: CGRect) -> UIImage? {
+        let path = UIBezierPath(cgPath: pattern.path)
+        path.apply(.init(scaleX: pattern.rect.width, y: pattern.rect.height))
+        path.apply(.init(translationX: pattern.translation.x,
+                         y: pattern.translation.y))
+        path.apply(.init(scaleX: pattern.scale, y: pattern.scale))
         return self.crop(image: image, with: path.cgPath)
     }
 
@@ -36,6 +36,6 @@ public final class Cripper {
     func scale(for size: CGSize, in bounds: CGRect) -> CGFloat {
         let widthScale = bounds.width / size.width
         let heightScale = bounds.height / size.height
-        return min(widthScale, heightScale)
+        return max(widthScale, heightScale)
     }
 }
