@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0112475225AC6EE1002D91FA /* CropViewOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112475125AC6EE1002D91FA /* CropViewOption.swift */; };
 		01430C9925999CCF0083921F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430C9125999CCF0083921F /* AppDelegate.swift */; };
 		01430C9A25999CCF0083921F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430C9325999CCF0083921F /* ViewController.swift */; };
 		01430C9E2599A0DF0083921F /* Routes+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430C9D2599A0DF0083921F /* Routes+Alert.swift */; };
@@ -15,9 +16,10 @@
 		01430CA62599A8F20083921F /* CropperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430CA52599A8F20083921F /* CropperViewController.swift */; };
 		01430CA82599B0A30083921F /* Cripper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49870814BD599C5EFAF0F741 /* Cripper.framework */; };
 		01430CA92599B0A30083921F /* Cripper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49870814BD599C5EFAF0F741 /* Cripper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		01430CAF2599BA390083921F /* Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430CAE2599BA390083921F /* Crop.swift */; };
+		01430CAF2599BA390083921F /* CropPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430CAE2599BA390083921F /* CropPattern.swift */; };
 		01430CB12599C38B0083921F /* CropOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430CB02599C38B0083921F /* CropOverlayView.swift */; };
 		01B70C72259C3A3E0057E601 /* Cripper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B70C71259C3A3E0057E601 /* Cripper.swift */; };
+		01B70FE025AC64DB0057E601 /* CropCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B70FDF25AC64DB0057E601 /* CropCell.swift */; };
 		97CA28C78840EEE26B487627 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF429C5B3AD3753A5DFA2097 /* XCTestManifests.swift */; };
 		FB22C7BFB9D904175D8ADFF2 /* CripperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389C1271E79E84015E58041F /* CripperTests.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0112475125AC6EE1002D91FA /* CropViewOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropViewOption.swift; sourceTree = "<group>"; };
 		01430C9125999CCF0083921F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01430C9325999CCF0083921F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		01430C9525999CCF0083921F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,9 +59,10 @@
 		01430C9F2599A1120083921F /* BaseRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoute.swift; sourceTree = "<group>"; };
 		01430CA12599A1A60083921F /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		01430CA52599A8F20083921F /* CropperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropperViewController.swift; sourceTree = "<group>"; };
-		01430CAE2599BA390083921F /* Crop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crop.swift; sourceTree = "<group>"; };
+		01430CAE2599BA390083921F /* CropPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropPattern.swift; sourceTree = "<group>"; };
 		01430CB02599C38B0083921F /* CropOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropOverlayView.swift; sourceTree = "<group>"; };
 		01B70C71259C3A3E0057E601 /* Cripper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cripper.swift; sourceTree = "<group>"; };
+		01B70FDF25AC64DB0057E601 /* CropCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropCell.swift; sourceTree = "<group>"; };
 		389C1271E79E84015E58041F /* CripperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CripperTests.swift; sourceTree = "<group>"; };
 		49870814BD599C5EFAF0F741 /* Cripper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cripper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F1730667C99E4E705AEBAA /* CripperTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CripperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +82,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0112475325AC7141002D91FA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				01430CA52599A8F20083921F /* CropperViewController.swift */,
+				01430CAE2599BA390083921F /* CropPattern.swift */,
+				01430CB02599C38B0083921F /* CropOverlayView.swift */,
+				01B70C71259C3A3E0057E601 /* Cripper.swift */,
+				01B70FDF25AC64DB0057E601 /* CropCell.swift */,
+				0112475125AC6EE1002D91FA /* CropViewOption.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		0112475425AC7157002D91FA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		01430C8E25999CCF0083921F /* Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,10 +198,8 @@
 		FCF137B70F42FD5E25E9EAB2 /* Cripper */ = {
 			isa = PBXGroup;
 			children = (
-				01430CA52599A8F20083921F /* CropperViewController.swift */,
-				01430CAE2599BA390083921F /* Crop.swift */,
-				01430CB02599C38B0083921F /* CropOverlayView.swift */,
-				01B70C71259C3A3E0057E601 /* Cripper.swift */,
+				0112475425AC7157002D91FA /* Resources */,
+				0112475325AC7141002D91FA /* Classes */,
 			);
 			name = Cripper;
 			path = Sources/Cripper;
@@ -279,9 +301,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01B70FE025AC64DB0057E601 /* CropCell.swift in Sources */,
 				01430CA62599A8F20083921F /* CropperViewController.swift in Sources */,
 				01B70C72259C3A3E0057E601 /* Cripper.swift in Sources */,
-				01430CAF2599BA390083921F /* Crop.swift in Sources */,
+				0112475225AC6EE1002D91FA /* CropViewOption.swift in Sources */,
+				01430CAF2599BA390083921F /* CropPattern.swift in Sources */,
 				01430CB12599C38B0083921F /* CropOverlayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

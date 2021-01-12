@@ -12,7 +12,7 @@ public final class CropOverlayView: UIView {
         }
     }
 
-    var clipBorderInset: CGFloat = 4 {
+    var clipBorderInset: CGFloat = 1 {
         didSet {
             setNeedsDisplay()
         }
@@ -24,13 +24,13 @@ public final class CropOverlayView: UIView {
         }
     }
 
-    var clipBorderColor: UIColor = .yellow {
+    var clipBorderColor: UIColor = UIColor.white.withAlphaComponent(0.5) {
         didSet {
             setNeedsDisplay()
         }
     }
 
-    var cropBuilder: CropBuilder? {
+    var cropBuilder: CropPatternBuilder? {
         didSet {
             setNeedsDisplay()
         }
@@ -49,7 +49,7 @@ public final class CropOverlayView: UIView {
     }
 
     public override func draw(_ rect: CGRect) {
-        if let crop = cropBuilder?.makeCrop(in: rect),
+        if let crop = cropBuilder?.makeCropPattern(in: rect),
             let context = UIGraphicsGetCurrentContext() {
             context.saveGState()
 
