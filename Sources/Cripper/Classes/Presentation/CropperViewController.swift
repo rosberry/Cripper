@@ -176,7 +176,7 @@ public final class CropperViewController: UIViewController {
         pattern.translation = .init(x: scrollView.contentOffset.x,
                                  y: scrollView.contentOffset.y)
         pattern.scale = UIScreen.main.scale / scrollView.zoomScale
-        completionHandler?(cripper.crop(image: image, with: pattern, in: view.bounds))
+        completionHandler?(cripper.crop(image: image, with: pattern))
     }
 
     @objc private func declineButtonPressed() {

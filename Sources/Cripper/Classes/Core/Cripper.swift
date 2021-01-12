@@ -18,7 +18,7 @@ public final class Cripper {
         }
     }
 
-    public func crop(image: UIImage, with pattern: CropPattern, in bounds: CGRect) -> UIImage? {
+    public func crop(image: UIImage, with pattern: CropPattern) -> UIImage? {
         let path = UIBezierPath(cgPath: pattern.path)
         path.apply(.init(scaleX: pattern.rect.width, y: pattern.rect.height))
         path.apply(.init(translationX: pattern.translation.x,
