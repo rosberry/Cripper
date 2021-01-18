@@ -36,6 +36,13 @@
 			remoteGlobalIDString = C4D1802C896FB32E670F86AC;
 			remoteInfo = Cripper;
 		};
+		01F3032E25B546B500B929E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C295CF4BBFBEECCC1CFF178E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4D1802C896FB32E670F86AC;
+			remoteInfo = Cripper;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -280,6 +287,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				01F3032F25B546B500B929E6 /* PBXTargetDependency */,
 			);
 			name = CripperTests;
 			productName = CripperTests;
@@ -415,6 +423,11 @@
 			isa = PBXTargetDependency;
 			target = C4D1802C896FB32E670F86AC /* Cripper */;
 			targetProxy = 01430CAA2599B0A30083921F /* PBXContainerItemProxy */;
+		};
+		01F3032F25B546B500B929E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C4D1802C896FB32E670F86AC /* Cripper */;
+			targetProxy = 01F3032E25B546B500B929E6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
