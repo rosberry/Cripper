@@ -14,6 +14,7 @@ public final class CropperViewController: UIViewController {
 
     public var maximumScale: CGFloat = 5
     public var completionHandler: ((UIImage?) -> Void)?
+    public var mode: CropPattern.Mode = .rect
 
     public var image: UIImage? {
         didSet {
@@ -180,11 +181,7 @@ public final class CropperViewController: UIViewController {
             completionHandler?(nil)
             return
         }
-        var pattern = makeCropPattern()
-        pattern.translation = .init(x: scrollView.contentOffset.x,
-                                 y: scrollView.contentOffset.y)
-        pattern.scale = UIScreen.main.scale / scrollView.zoomScale
-        completionHandler?(cripper.crop(image: image, with: pattern))
+        completionHandler?(cripper.crop(image: image, with: makeCropPattern()))
     }
 
     @objc private func declineButtonPressed() {
@@ -196,7 +193,12 @@ public final class CropperViewController: UIViewController {
     private func makeCropPattern() -> CropPattern {
         var rect = view.bounds
         rect.origin.x -= view.safeAreaInsets.top
-        return cropPatternBuilder.makeCropPattern(in: rect)
+        var pattern = cropPatternBuilder.makeCropPattern(in: rect)
+        pattern.translation = .init(x: scrollView.contentOffset.x,
+                                 y: scrollView.contentOffset.y)
+        pattern.scale = UIScreen.main.scale / scrollView.zoomScale
+        pattern.mode = mode
+        return pattern
     }
 
     private func updateCropOverlay() {

@@ -79,6 +79,7 @@ extension ViewController: UIImagePickerControllerDelegate {
         }
         let viewController = CropperViewController()
         viewController.image = image
+        viewController.mode = .path
         viewController.cropOptions = [
             .square(title: "☐"),
             .rect(title: "☐ 3:4", width: 3, height: 4),
