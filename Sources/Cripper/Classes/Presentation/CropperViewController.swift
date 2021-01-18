@@ -55,6 +55,8 @@ public final class CropperViewController: UIViewController {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.insetsLayoutMarginsFromSafeArea = false
         scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.decelerationRate = .fast
+        scrollView.delegate = self
         return scrollView
     }()
 
@@ -67,11 +69,20 @@ public final class CropperViewController: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         collectionView.backgroundColor = .clear
+        collectionView.register(cellType, forCellWithReuseIdentifier: reuseId)
+        collectionView.delegate = self
+        collectionView.dataSource = self
         return collectionView
     }()
 
-    public private(set) lazy var imageView: UIImageView = .init()
+    public private(set) lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
     public private(set) lazy var imageWrapperView: UIView = .init()
+
     public private(set) lazy var overlayView: CropOverlayView = {
         let view = CropOverlayView()
         view.backgroundColor = .clear
@@ -115,18 +126,13 @@ public final class CropperViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(imageWrapperView)
         imageWrapperView.addSubview(imageView)
-        scrollView.delegate = self
         view.addSubview(overlayView)
         view.addSubview(acceptBarView)
         view.addSubview(shapeBarView)
         shapeBarView.addSubview(collectionView)
         acceptBarView.addSubview(acceptButton)
         acceptBarView.addSubview(declineButton)
-        imageView.contentMode = .scaleAspectFit
         view.backgroundColor = .black
-        collectionView.register(cellType, forCellWithReuseIdentifier: reuseId)
-        collectionView.delegate = self
-        collectionView.dataSource = self
         updateCropOverlay()
     }
 
@@ -153,8 +159,10 @@ public final class CropperViewController: UIViewController {
         acceptButton.frame = .init(x: view.bounds.width - acceptButtonWidth, y: view.safeAreaInsets.top, width: acceptButtonWidth, height: 56)
 
         let shapeBarViewHeight: CGFloat = 100
-        shapeBarView.frame = .init(x: 0, y: view.frame.height - shapeBarViewHeight - view.safeAreaInsets.bottom,
-                                   width: view.bounds.width, height: shapeBarViewHeight + view.safeAreaInsets.bottom)
+        shapeBarView.frame = .init(x: 0,
+                                   y: view.frame.height - shapeBarViewHeight - view.safeAreaInsets.bottom,
+                                   width: view.bounds.width,
+                                   height: shapeBarViewHeight + view.safeAreaInsets.bottom)
         collectionView.frame = .init(x: 0, y: 0,
                                      width: shapeBarView.bounds.width, height: shapeBarViewHeight)
 
@@ -221,38 +229,38 @@ public final class CropperViewController: UIViewController {
     }
 
     private func updateScrollViewContent(withContentOffset: Bool = false) {
-       let offsetX = max((scrollView.bounds.width - scrollView.contentSize.width) * 0.5, 0.0)
-       let offsetY = max((scrollView.bounds.height - scrollView.contentSize.height) * 0.5, 0.0)
+        let offsetX = max((scrollView.bounds.width - scrollView.contentSize.width) * 0.5, 0.0)
+        let offsetY = max((scrollView.bounds.height - scrollView.contentSize.height) * 0.5, 0.0)
         let scale = scrollView.zoomScale > scrollView.minimumZoomScale ? scrollView.zoomScale : scrollView.minimumZoomScale
-       let imageSize = pointImageSize
-       let pattern = makeCropPattern()
-       let imageWidth = imageSize.width * scale
-       let imageHeight = imageSize.height * scale
-       let imageX = (view.bounds.width - imageWidth) / 2
-       let imageY = (view.bounds.height - imageHeight) / 2
-       let topOffset = pattern.rect.minY - max(imageY, 0)
-       let bottomOffset = (imageY > 0 ? imageY + imageHeight : view.bounds.height) - pattern.rect.maxY
-       let leftOffset = pattern.rect.minX - max(imageX, 0)
-       let rightOffset = (imageX > 0 ? imageX + imageWidth : view.bounds.width) - pattern.rect.maxX
-       let requiredHeight = (max(imageHeight, view.bounds.height) + (topOffset + bottomOffset)) / scale
-       let requiredWidth = (max(imageWidth, view.bounds.width) + (leftOffset + rightOffset)) / scale
-       let additionalHeight = requiredHeight - imageSize.height - (topOffset + bottomOffset) / scale
-       let additionalWidth = requiredWidth - imageSize.width - (leftOffset + rightOffset) / scale
+        let imageSize = pointImageSize
+        let pattern = makeCropPattern()
+        let imageWidth = imageSize.width * scale
+        let imageHeight = imageSize.height * scale
+        let imageX = (view.bounds.width - imageWidth) / 2
+        let imageY = (view.bounds.height - imageHeight) / 2
+        let topOffset = pattern.rect.minY - max(imageY, 0)
+        let bottomOffset = (imageY > 0 ? imageY + imageHeight : view.bounds.height) - pattern.rect.maxY
+        let leftOffset = pattern.rect.minX - max(imageX, 0)
+        let rightOffset = (imageX > 0 ? imageX + imageWidth : view.bounds.width) - pattern.rect.maxX
+        let requiredHeight = (max(imageHeight, view.bounds.height) + (topOffset + bottomOffset)) / scale
+        let requiredWidth = (max(imageWidth, view.bounds.width) + (leftOffset + rightOffset)) / scale
+        let additionalHeight = requiredHeight - imageSize.height - (topOffset + bottomOffset) / scale
+        let additionalWidth = requiredWidth - imageSize.width - (leftOffset + rightOffset) / scale
 
-       imageWrapperView.bounds = .init(x: 0, y: 0,
+        imageWrapperView.bounds = .init(x: 0, y: 0,
                                        width: requiredWidth,
                                        height: requiredHeight)
-       imageView.frame = .init(origin: .init(x: leftOffset / scale + additionalWidth / 2,
+        imageView.frame = .init(origin: .init(x: leftOffset / scale + additionalWidth / 2,
                                              y: topOffset / scale + additionalHeight / 2),
                                size: imageSize)
-       imageWrapperView.center = .init(x: scrollView.contentSize.width * 0.5 + offsetX,
+        imageWrapperView.center = .init(x: scrollView.contentSize.width * 0.5 + offsetX,
                                        y: scrollView.contentSize.height * 0.5 + offsetY)
 
-       if withContentOffset {
+        if withContentOffset {
            scrollView.setContentOffset(.init(x: leftOffset,
                                              y: topOffset),
                                        animated: false)
-       }
+        }
    }
 
     private func restoreScrolling() {

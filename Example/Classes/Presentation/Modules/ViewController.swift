@@ -9,7 +9,7 @@ final class ViewController: UIViewController {
 
     // MARK: - Subviews
 
-    private lazy var teakePhotoButton: UIButton = {
+    private lazy var takePhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Take a photo", for: .normal)
         button.addTarget(self, action: #selector(takePhotoButtonPressed), for: .touchUpInside)
@@ -23,7 +23,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        view.addSubview(teakePhotoButton)
+        view.addSubview(takePhotoButton)
         view.addSubview(imageView)
         navigationItem.title = "Crop a photo"
         imageView.contentMode = .scaleAspectFit
@@ -32,9 +32,9 @@ final class ViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        teakePhotoButton.bounds = .init(origin: .zero, size: .init(width: 200, height: 56))
-        teakePhotoButton.center = .init(x: view.center.x, y: 100 + view.safeAreaInsets.top)
-        imageView.frame = .init(x: 16, y: teakePhotoButton.frame.maxY + 50,
+        takePhotoButton.bounds = .init(origin: .zero, size: .init(width: 200, height: 56))
+        takePhotoButton.center = .init(x: view.center.x, y: 100 + view.safeAreaInsets.top)
+        imageView.frame = .init(x: 16, y: takePhotoButton.frame.maxY + 50,
                                 width: view.bounds.width - 32, height: view.bounds.height - 300)
     }
 
@@ -85,8 +85,8 @@ extension ViewController: UIImagePickerControllerDelegate {
             .circle(title: "○"),
             .ellipse(title: "○ 16:9", width: 16, height: 9)
         ]
-        viewController.completionHandler = { image in
-            self.imageView.image = image
+        viewController.completionHandler = { [weak self] image in
+            self?.imageView.image = image
         }
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: false, completion: nil)

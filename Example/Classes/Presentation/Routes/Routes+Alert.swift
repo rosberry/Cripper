@@ -5,7 +5,6 @@
 import UIKit
 
 public protocol AlertRoute {
-
     func showAlert(title: String?, message: String?, preferredStyle: UIAlertController.Style, actions: [UIAlertAction])
 }
 
