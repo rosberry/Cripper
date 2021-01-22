@@ -9,7 +9,7 @@ public enum CropPatterBuilders {
     case rect(aspectRatio: CGFloat)
     case circle
     case ellipse(aspectRatio: CGFloat)
-    case custom(cropPatternBuilder: CropPatternBuilder)
+    case custom(CropPatternBuilder)
 
     var cropPatternBuilder: CropPatternBuilder {
         switch self {

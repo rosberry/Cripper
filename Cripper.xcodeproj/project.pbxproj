@@ -22,7 +22,7 @@
 		019BB0B025AD7012005B659F /* AspectRatioCropPatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0AF25AD7012005B659F /* AspectRatioCropPatternBuilder.swift */; };
 		019BB0B225AD7032005B659F /* EllipsePatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0B125AD7032005B659F /* EllipsePatternBuilder.swift */; };
 		019BB0B525AD7067005B659F /* CropPatterBuilders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0B425AD7067005B659F /* CropPatterBuilders.swift */; };
-		01B70C72259C3A3E0057E601 /* Cripper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B70C71259C3A3E0057E601 /* Cripper.swift */; };
+		01B70C72259C3A3E0057E601 /* Cropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B70C71259C3A3E0057E601 /* Cropper.swift */; };
 		01B70FE025AC64DB0057E601 /* CropCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B70FDF25AC64DB0057E601 /* CropCell.swift */; };
 		97CA28C78840EEE26B487627 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF429C5B3AD3753A5DFA2097 /* XCTestManifests.swift */; };
 		FB22C7BFB9D904175D8ADFF2 /* CripperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389C1271E79E84015E58041F /* CripperTests.swift */; };
@@ -76,7 +76,7 @@
 		019BB0AF25AD7012005B659F /* AspectRatioCropPatternBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioCropPatternBuilder.swift; sourceTree = "<group>"; };
 		019BB0B125AD7032005B659F /* EllipsePatternBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsePatternBuilder.swift; sourceTree = "<group>"; };
 		019BB0B425AD7067005B659F /* CropPatterBuilders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropPatterBuilders.swift; sourceTree = "<group>"; };
-		01B70C71259C3A3E0057E601 /* Cripper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cripper.swift; sourceTree = "<group>"; };
+		01B70C71259C3A3E0057E601 /* Cropper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cropper.swift; sourceTree = "<group>"; };
 		01B70FDF25AC64DB0057E601 /* CropCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropCell.swift; sourceTree = "<group>"; };
 		389C1271E79E84015E58041F /* CripperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CripperTests.swift; sourceTree = "<group>"; };
 		49870814BD599C5EFAF0F741 /* Cripper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cripper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,7 +190,7 @@
 		019BB0B325AD704C005B659F /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				01B70C71259C3A3E0057E601 /* Cripper.swift */,
+				01B70C71259C3A3E0057E601 /* Cropper.swift */,
 				019BB0AA25AD6FAD005B659F /* CropPattern */,
 			);
 			path = Core;
@@ -398,7 +398,7 @@
 				019BB0B025AD7012005B659F /* AspectRatioCropPatternBuilder.swift in Sources */,
 				01B70FE025AC64DB0057E601 /* CropCell.swift in Sources */,
 				01430CA62599A8F20083921F /* CropperViewController.swift in Sources */,
-				01B70C72259C3A3E0057E601 /* Cripper.swift in Sources */,
+				01B70C72259C3A3E0057E601 /* Cropper.swift in Sources */,
 				0112475225AC6EE1002D91FA /* CropViewOption.swift in Sources */,
 				019BB0AE25AD6FDD005B659F /* CropPatternBuilder.swift in Sources */,
 				019BB0B225AD7032005B659F /* EllipsePatternBuilder.swift in Sources */,

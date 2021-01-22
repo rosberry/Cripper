@@ -4,7 +4,7 @@
 
 import UIKit
 
-public final class Cripper {
+public final class Cropper {
 
     public func crop(image: UIImage, with path: CGPath) -> UIImage? {
         let box = path.boundingBox

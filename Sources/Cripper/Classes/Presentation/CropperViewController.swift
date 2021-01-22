@@ -31,7 +31,7 @@ public final class CropperViewController: UIViewController {
     private let cellType = Cell.self
     private let reuseId = String(describing: Cell.self)
 
-    private var cripper: Cripper = .init()
+    private var cripper: Cropper = .init()
     private var cropPatternBuilder: CropPatternBuilder = CropPatterBuilders.square.cropPatternBuilder {
         didSet {
             updateCropOverlay()
@@ -157,7 +157,10 @@ public final class CropperViewController: UIViewController {
         let acceptButtonWidth = acceptButtonFitSize.width + 32
         declineButton.frame = .init(x: 0, y: view.safeAreaInsets.top,
                                     width: declineButtonFitSize.width + 32, height: 56)
-        acceptButton.frame = .init(x: view.bounds.width - acceptButtonWidth, y: view.safeAreaInsets.top, width: acceptButtonWidth, height: 56)
+        acceptButton.frame = .init(x: view.bounds.width - acceptButtonWidth,
+                                   y: view.safeAreaInsets.top,
+                                   width: acceptButtonWidth,
+                                   height: 56)
 
         let shapeBarViewHeight: CGFloat = 100
         shapeBarView.frame = .init(x: 0,

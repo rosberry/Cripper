@@ -35,16 +35,16 @@ final class ViewController: UIViewController {
         takePhotoButton.bounds = .init(origin: .zero, size: .init(width: 200, height: 56))
         takePhotoButton.center = .init(x: view.center.x, y: 100 + view.safeAreaInsets.top)
         imageView.frame = .init(x: 16, y: takePhotoButton.frame.maxY + 50,
-                                width: view.bounds.width - 32, height: view.bounds.height - 300)
+                        width: view.bounds.width - 32, height: view.bounds.height - 300)
     }
 
     // MARK: - Actions
 
     @objc private func takePhotoButtonPressed() {
-        let vc = UIImagePickerController()
-        vc.sourceType = .camera
-        vc.delegate = self
-        present(vc, animated: true)
+        let viewController = UIImagePickerController()
+        viewController.sourceType = .camera
+        viewController.delegate = self
+        present(viewController, animated: true)
     }
 
     @objc private func panGestureRecognized() {
@@ -69,14 +69,14 @@ extension ViewController: UIImagePickerControllerDelegate {
 
         guard let image = info[.originalImage] as? UIImage else {
             print("No image found")
-           return AppRouter(viewController: self).showAlert(title: "No image found",
-                                                            message: nil,
-                                                            preferredStyle: .alert,
-                                                            actions: [.init(title: "OK",
-                                                                            style: .cancel,
-                                                                            handler: nil)])
-
+            return AppRouter(viewController: self).showAlert(title: "No image found",
+                                                             message: nil,
+                                                             preferredStyle: .alert,
+                                                             actions: [.init(title: "OK",
+                                                                             style: .cancel,
+                                                                             handler: nil)])
         }
+
         let viewController = CropperViewController()
         viewController.image = image
         viewController.mode = .path
