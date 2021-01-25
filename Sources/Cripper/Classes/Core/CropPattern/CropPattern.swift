@@ -11,7 +11,7 @@ public struct CropPattern {
         case path
     }
 
-    var rect: CGRect
+    var previewRect: CGRect
     var path: CGPath
     var translation: CGPoint = .zero
     var scale: CGFloat = 1

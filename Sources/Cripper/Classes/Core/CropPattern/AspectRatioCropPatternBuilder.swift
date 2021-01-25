@@ -12,11 +12,12 @@ public class AspectRatioCropPatternBuilder: CropPatternBuilder {
     }
 
     public func makeCropPattern(in bounds: CGRect) -> CropPattern {
-        return .init(rect: makeRect(with: aspectRatio, in: bounds),
-                     path: makePath())
+        let previewRect = makeRect(with: aspectRatio, in: bounds)
+        return .init(previewRect: previewRect,
+                     path: makePath(with: previewRect.size))
     }
 
-    func makePath() -> CGPath {
-        CGPath(rect: makeIdentityRect(), transform: nil)
+    func makePath(with size: CGSize) -> CGPath {
+        CGPath(rect: .init(origin: .zero, size: size), transform: nil)
     }
 }

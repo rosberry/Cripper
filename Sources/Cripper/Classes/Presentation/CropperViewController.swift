@@ -142,7 +142,7 @@ public final class CropperViewController: UIViewController {
         overlayView.frame = view.bounds
         scrollView.frame = view.bounds
         let pattern = makeCropPattern()
-        let scale = cripper.scale(for: pointImageSize, in: pattern.rect)
+        let scale = cripper.scale(for: pointImageSize, in: pattern.previewRect)
         scrollView.maximumZoomScale = maximumScale
         scrollView.minimumZoomScale = scale
         scrollView.contentInset = .zero
@@ -195,7 +195,7 @@ public final class CropperViewController: UIViewController {
 
     private func makeCropPattern() -> CropPattern {
         var rect = view.bounds
-        rect.origin.x -= view.safeAreaInsets.top
+        rect.origin.y -= view.safeAreaInsets.top
         var pattern = cropPatternBuilder.makeCropPattern(in: rect)
         pattern.translation = .init(x: scrollView.contentOffset.x,
                                  y: scrollView.contentOffset.y)
@@ -218,7 +218,7 @@ public final class CropperViewController: UIViewController {
 
     private func updateScaling() {
         let pattern = makeCropPattern()
-        let scale = cripper.scale(for: pointImageSize, in: pattern.rect)
+        let scale = cripper.scale(for: pointImageSize, in: pattern.previewRect)
         scrollView.maximumZoomScale = maximumScale
         scrollView.minimumZoomScale = scale
         if scrollView.zoomScale < scrollView.minimumZoomScale {
@@ -243,10 +243,10 @@ public final class CropperViewController: UIViewController {
         let imageHeight = imageSize.height * scale
         let imageX = (view.bounds.width - imageWidth) / 2
         let imageY = (view.bounds.height - imageHeight) / 2
-        let topOffset = pattern.rect.minY - max(imageY, 0)
-        let bottomOffset = (imageY > 0 ? imageY + imageHeight : view.bounds.height) - pattern.rect.maxY
-        let leftOffset = pattern.rect.minX - max(imageX, 0)
-        let rightOffset = (imageX > 0 ? imageX + imageWidth : view.bounds.width) - pattern.rect.maxX
+        let topOffset = pattern.previewRect.minY - max(imageY, 0)
+        let bottomOffset = (imageY > 0 ? imageY + imageHeight : view.bounds.height) - pattern.previewRect.maxY
+        let leftOffset = pattern.previewRect.minX - max(imageX, 0)
+        let rightOffset = (imageX > 0 ? imageX + imageWidth : view.bounds.width) - pattern.previewRect.maxX
         let requiredHeight = (max(imageHeight, view.bounds.height) + (topOffset + bottomOffset)) / scale
         let requiredWidth = (max(imageWidth, view.bounds.width) + (leftOffset + rightOffset)) / scale
         let additionalHeight = requiredHeight - imageSize.height - (topOffset + bottomOffset) / scale
@@ -297,8 +297,7 @@ extension CropperViewController: UIScrollViewDelegate {
 extension CropperViewController: UICollectionViewDelegate {
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let option = cropOptions[indexPath.row]
-        cropPatternBuilder = option.cropPatternBuilder
+        cropPatternBuilder = cropOptions[indexPath.row].cropPatternBuilder
     }
 }
 

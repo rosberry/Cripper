@@ -5,7 +5,7 @@
 import UIKit
 
 public final class EllipsePatternBuilder: AspectRatioCropPatternBuilder {
-    override func makePath() -> CGPath {
-        CGPath(ellipseIn: makeIdentityRect(), transform: nil)
+    override func makePath(with size: CGSize) -> CGPath {
+        CGPath(ellipseIn: .init(origin: .zero, size: size), transform: nil)
     }
 }

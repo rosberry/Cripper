@@ -62,8 +62,7 @@ public final class CropOverlayView: UIView {
                                       height: rect.height / insetScaleY)
             let inverted = UIBezierPath(rect: externalRect)
             let shapePath = UIBezierPath(cgPath: pattern.path)
-            shapePath.apply(.init(scaleX: pattern.rect.width, y: pattern.rect.height))
-            shapePath.apply(.init(translationX: pattern.rect.minX, y: pattern.rect.minY))
+            shapePath.apply(.init(translationX: pattern.previewRect.minX, y: pattern.previewRect.minY))
             inverted.append(shapePath.reversing())
             let clipPath = inverted.cgPath
             context.scaleBy(x: insetScaleX, y: insetScaleY)
