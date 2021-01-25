@@ -194,8 +194,7 @@ public final class CropperViewController: UIViewController {
     // MARK: - Private
 
     private func makeCropPattern() -> CropPattern {
-        var rect = view.bounds
-        rect.origin.y -= view.safeAreaInsets.top
+        let rect = view.bounds
         var pattern = cropPatternBuilder.makeCropPattern(in: rect)
         pattern.translation = .init(x: scrollView.contentOffset.x,
                                  y: scrollView.contentOffset.y)
@@ -229,6 +228,10 @@ public final class CropperViewController: UIViewController {
         }
         else {
             // To fix invalid scroll position after min scale changing
+            let additionalSize = self.additionalSize()
+            guard abs(additionalSize.width) > 1e-9 || abs(additionalSize.height) > 1e-9 else {
+                return
+            }
             scrollView.setZoomScale(scrollView.zoomScale * 1.001, animated: true)
         }
     }
@@ -236,37 +239,80 @@ public final class CropperViewController: UIViewController {
     private func updateScrollViewContent(withContentOffset: Bool = false) {
         let offsetX = max((scrollView.bounds.width - scrollView.contentSize.width) * 0.5, 0.0)
         let offsetY = max((scrollView.bounds.height - scrollView.contentSize.height) * 0.5, 0.0)
-        let scale = scrollView.zoomScale > scrollView.minimumZoomScale ? scrollView.zoomScale : scrollView.minimumZoomScale
-        let imageSize = pointImageSize
+
         let pattern = makeCropPattern()
-        let imageWidth = imageSize.width * scale
-        let imageHeight = imageSize.height * scale
-        let imageX = (view.bounds.width - imageWidth) / 2
-        let imageY = (view.bounds.height - imageHeight) / 2
-        let topOffset = pattern.previewRect.minY - max(imageY, 0)
-        let bottomOffset = (imageY > 0 ? imageY + imageHeight : view.bounds.height) - pattern.previewRect.maxY
-        let leftOffset = pattern.previewRect.minX - max(imageX, 0)
-        let rightOffset = (imageX > 0 ? imageX + imageWidth : view.bounds.width) - pattern.previewRect.maxX
-        let requiredHeight = (max(imageHeight, view.bounds.height) + (topOffset + bottomOffset)) / scale
-        let requiredWidth = (max(imageWidth, view.bounds.width) + (leftOffset + rightOffset)) / scale
-        let additionalHeight = requiredHeight - imageSize.height - (topOffset + bottomOffset) / scale
-        let additionalWidth = requiredWidth - imageSize.width - (leftOffset + rightOffset) / scale
+        let imageSize = pointImageSize
+        let scale = acceptibleScale()
+        let scaledImageSize = self.scaledImageSize(imageSize: imageSize, scale: scale)
+        let scaledImageOffset = imageOffset(imageSize: scaledImageSize)
+        let insets = self.previewInsets(pattern: pattern, imageSize: scaledImageSize, offset: scaledImageOffset)
+        let requiredSize = self.requiredSize(insets: insets, imageSize: scaledImageSize, scale: scale)
+        let additionalSize = self.additionalSize(insets: insets, imageSize: imageSize, scale: scale, requiredSize: requiredSize)
 
         imageWrapperView.bounds = .init(x: 0, y: 0,
-                                       width: requiredWidth,
-                                       height: requiredHeight)
-        imageView.frame = .init(origin: .init(x: leftOffset / scale + additionalWidth / 2,
-                                             y: topOffset / scale + additionalHeight / 2),
+                                        width: requiredSize.width,
+                                        height: requiredSize.height)
+        imageView.frame = .init(origin: .init(x: insets.left / scale + additionalSize.width / 2,
+                                              y: insets.top / scale + additionalSize.height / 2),
                                size: imageSize)
         imageWrapperView.center = .init(x: scrollView.contentSize.width * 0.5 + offsetX,
                                        y: scrollView.contentSize.height * 0.5 + offsetY)
 
         if withContentOffset {
-           scrollView.setContentOffset(.init(x: leftOffset,
-                                             y: topOffset),
+           scrollView.setContentOffset(.init(x: insets.left,
+                                             y: insets.top),
                                        animated: false)
         }
-   }
+    }
+
+
+    private func acceptibleScale() -> CGFloat {
+        scrollView.zoomScale > scrollView.minimumZoomScale ? scrollView.zoomScale : scrollView.minimumZoomScale
+    }
+
+    private func scaledImageSize(imageSize: CGSize, scale: CGFloat) -> CGSize {
+        let imageWidth = imageSize.width * scale
+        let imageHeight = imageSize.height * scale
+        return .init(width: imageWidth, height: imageHeight)
+    }
+
+    private func imageOffset(imageSize: CGSize) -> CGPoint {
+        let imageX = (view.bounds.width - imageSize.width) / 2
+        let imageY = (view.bounds.height - imageSize.height) / 2
+        return .init(x: imageX, y: imageY)
+    }
+
+    private func previewInsets(pattern: CropPattern, imageSize: CGSize, offset: CGPoint) -> UIEdgeInsets {
+        let topOffset = pattern.previewRect.minY - max(offset.y, 0)
+        let bottomOffset = (offset.y > 0 ? offset.y + imageSize.height : view.bounds.height) - pattern.previewRect.maxY
+        let leftOffset = pattern.previewRect.minX - max(offset.x, 0)
+        let rightOffset = (offset.x > 0 ? offset.x + imageSize.width : view.bounds.width) - pattern.previewRect.maxX
+        return .init(top: topOffset, left: leftOffset, bottom: bottomOffset, right: rightOffset)
+    }
+
+    private func requiredSize(insets: UIEdgeInsets, imageSize: CGSize, scale: CGFloat) -> CGSize {
+        let requiredHeight = (max(imageSize.height, view.bounds.height) + (insets.top + insets.bottom)) / scale
+        let requiredWidth = (max(imageSize.width, view.bounds.width) + (insets.left + insets.right)) / scale
+        return .init(width: requiredWidth, height: requiredHeight)
+    }
+
+    private func additionalSize(insets: UIEdgeInsets, imageSize: CGSize, scale: CGFloat, requiredSize: CGSize) -> CGSize {
+        let additionalHeight = requiredSize.height - imageSize.height - (insets.top + insets.bottom) / scale
+        let additionalWidth = requiredSize.width - imageSize.width - (insets.left + insets.right) / scale
+        return .init(width: additionalWidth, height: additionalHeight)
+    }
+
+    private func additionalSize() -> CGSize {
+        let pattern = makeCropPattern()
+        let imageSize = pointImageSize
+        let scale = acceptibleScale()
+        let scaledImageSize = self.scaledImageSize(imageSize: imageSize, scale: scale)
+        let scaledImageOffset = imageOffset(imageSize: scaledImageSize)
+        let insets = self.previewInsets(pattern: pattern, imageSize: scaledImageSize, offset: scaledImageOffset)
+        let requiredSize = self.requiredSize(insets: insets, imageSize: scaledImageSize, scale: scale)
+        let additionalSize = self.additionalSize(insets: insets, imageSize: imageSize, scale: scale, requiredSize: requiredSize)
+        return additionalSize
+    }
 
     private func restoreScrolling() {
         guard abs(scrollView.zoomScale - scrollView.minimumZoomScale) < 1e-2 else {
