@@ -24,6 +24,9 @@
 		019BB0B525AD7067005B659F /* CropPatterBuilders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0B425AD7067005B659F /* CropPatterBuilders.swift */; };
 		01B70C72259C3A3E0057E601 /* Cropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B70C71259C3A3E0057E601 /* Cropper.swift */; };
 		01B70FE025AC64DB0057E601 /* CropCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B70FDF25AC64DB0057E601 /* CropCell.swift */; };
+		01D134A025DA61380035B3D6 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1349F25DA61380035B3D6 /* ImageProvider.swift */; };
+		01D134A425DA616F0035B3D6 /* ImageScaleConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D134A325DA616F0035B3D6 /* ImageScaleConstraint.swift */; };
+		01D134A825DA625C0035B3D6 /* DefaultImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D134A725DA625C0035B3D6 /* DefaultImageProvider.swift */; };
 		97CA28C78840EEE26B487627 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF429C5B3AD3753A5DFA2097 /* XCTestManifests.swift */; };
 		FB22C7BFB9D904175D8ADFF2 /* CripperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389C1271E79E84015E58041F /* CripperTests.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +81,9 @@
 		019BB0B425AD7067005B659F /* CropPatterBuilders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropPatterBuilders.swift; sourceTree = "<group>"; };
 		01B70C71259C3A3E0057E601 /* Cropper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cropper.swift; sourceTree = "<group>"; };
 		01B70FDF25AC64DB0057E601 /* CropCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropCell.swift; sourceTree = "<group>"; };
+		01D1349F25DA61380035B3D6 /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
+		01D134A325DA616F0035B3D6 /* ImageScaleConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScaleConstraint.swift; sourceTree = "<group>"; };
+		01D134A725DA625C0035B3D6 /* DefaultImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageProvider.swift; sourceTree = "<group>"; };
 		389C1271E79E84015E58041F /* CripperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CripperTests.swift; sourceTree = "<group>"; };
 		49870814BD599C5EFAF0F741 /* Cripper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cripper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F1730667C99E4E705AEBAA /* CripperTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CripperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +196,9 @@
 		019BB0B325AD704C005B659F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				01D134A725DA625C0035B3D6 /* DefaultImageProvider.swift */,
+				01D134A325DA616F0035B3D6 /* ImageScaleConstraint.swift */,
+				01D1349F25DA61380035B3D6 /* ImageProvider.swift */,
 				01B70C71259C3A3E0057E601 /* Cropper.swift */,
 				019BB0AA25AD6FAD005B659F /* CropPattern */,
 			);
@@ -395,15 +404,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				019BB0B525AD7067005B659F /* CropPatterBuilders.swift in Sources */,
+				01D134A025DA61380035B3D6 /* ImageProvider.swift in Sources */,
 				019BB0B025AD7012005B659F /* AspectRatioCropPatternBuilder.swift in Sources */,
 				01B70FE025AC64DB0057E601 /* CropCell.swift in Sources */,
 				01430CA62599A8F20083921F /* CropperViewController.swift in Sources */,
+				01D134A425DA616F0035B3D6 /* ImageScaleConstraint.swift in Sources */,
 				01B70C72259C3A3E0057E601 /* Cropper.swift in Sources */,
 				0112475225AC6EE1002D91FA /* CropViewOption.swift in Sources */,
 				019BB0AE25AD6FDD005B659F /* CropPatternBuilder.swift in Sources */,
 				019BB0B225AD7032005B659F /* EllipsePatternBuilder.swift in Sources */,
 				01430CB12599C38B0083921F /* CropOverlayView.swift in Sources */,
 				019BB0AC25AD6FBF005B659F /* CropPattern.swift in Sources */,
+				01D134A825DA625C0035B3D6 /* DefaultImageProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

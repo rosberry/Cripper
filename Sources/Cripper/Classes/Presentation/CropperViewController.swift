@@ -16,12 +16,6 @@ public final class CropperViewController: UIViewController {
     public var completionHandler: ((UIImage?) -> Void)?
     public var mode: CropPattern.Mode = .rect
 
-    public var image: UIImage? {
-        didSet {
-            imageView.image = image
-        }
-    }
-
     public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
     }
@@ -46,6 +40,28 @@ public final class CropperViewController: UIViewController {
         return cripper.pointSize(of: image)
     }
 
+    public var setupHandler: ((CropperViewController) -> Void)? = nil
+    public var layoutHandler: ((CropperViewController) -> Void)? = nil
+    public var imageProvider: ImageProvider
+
+    convenience init(image: UIImage) {
+        self.init(imageProvider: DefaultImageProvider(image: image))
+    }
+
+    convenience init(images: [ImageScaleConstraint: UIImage]) {
+        self.init(imageProvider: DefaultImageProvider(images: images))
+    }
+
+    init(imageProvider: ImageProvider) {
+        self.imageProvider = imageProvider
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+
     // MARK: - Subviews
 
     private lazy var scrollView: UIScrollView = {
@@ -59,21 +75,6 @@ public final class CropperViewController: UIViewController {
         scrollView.decelerationRate = .fast
         scrollView.delegate = self
         return scrollView
-    }()
-
-    private lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.alwaysBounceHorizontal = true
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
-        collectionView.backgroundColor = .clear
-        collectionView.register(cellType, forCellWithReuseIdentifier: reuseId)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        return collectionView
     }()
 
     public private(set) lazy var imageView: UIImageView = {
@@ -90,36 +91,6 @@ public final class CropperViewController: UIViewController {
         return view
     }()
 
-    public private(set) lazy var acceptBarView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        return view
-    }()
-
-    public private(set) lazy var shapeBarView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        return view
-    }()
-
-    public private(set) lazy var acceptButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("✓", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 24)
-        button.addTarget(self, action: #selector(acceptButtonPressed), for: .touchUpInside)
-        return button
-    }()
-
-    public private(set) lazy var declineButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("✗", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 24)
-        button.addTarget(self, action: #selector(declineButtonPressed), for: .touchUpInside)
-        return button
-    }()
-
     // MARK: - Lifecycle
 
     public override func viewDidLoad() {
@@ -128,11 +99,7 @@ public final class CropperViewController: UIViewController {
         scrollView.addSubview(imageWrapperView)
         imageWrapperView.addSubview(imageView)
         view.addSubview(overlayView)
-        view.addSubview(acceptBarView)
-        view.addSubview(shapeBarView)
-        shapeBarView.addSubview(collectionView)
-        acceptBarView.addSubview(acceptButton)
-        acceptBarView.addSubview(declineButton)
+        setupHandler?(self)
         view.backgroundColor = .black
         updateCropOverlay()
     }
@@ -145,31 +112,12 @@ public final class CropperViewController: UIViewController {
         let scale = cripper.scale(for: pointImageSize, in: pattern.previewRect)
         scrollView.maximumZoomScale = maximumScale
         scrollView.minimumZoomScale = scale
+        updateImage(withScale: scale)
         scrollView.contentInset = .zero
         scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
         updateScrollViewContent(withContentOffset: false)
         updateCropOverlay()
-        acceptBarView.frame = .init(x: 0, y: 0,
-                                    width: view.bounds.width,
-                                    height: 56 + view.safeAreaInsets.top)
-        let acceptButtonFitSize = acceptButton.sizeThatFits(acceptBarView.bounds.size)
-        let declineButtonFitSize = declineButton.sizeThatFits(declineButton.bounds.size)
-        let acceptButtonWidth = acceptButtonFitSize.width + 32
-        declineButton.frame = .init(x: 0, y: view.safeAreaInsets.top,
-                                    width: declineButtonFitSize.width + 32, height: 56)
-        acceptButton.frame = .init(x: view.bounds.width - acceptButtonWidth,
-                                   y: view.safeAreaInsets.top,
-                                   width: acceptButtonWidth,
-                                   height: 56)
-
-        let shapeBarViewHeight: CGFloat = 100
-        shapeBarView.frame = .init(x: 0,
-                                   y: view.frame.height - shapeBarViewHeight - view.safeAreaInsets.bottom,
-                                   width: view.bounds.width,
-                                   height: shapeBarViewHeight + view.safeAreaInsets.bottom)
-        collectionView.frame = .init(x: 0, y: 0,
-                                     width: shapeBarView.bounds.width, height: shapeBarViewHeight)
-
+        layoutHandler?(self)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.scrollView.setZoomScale(self.scrollView.minimumZoomScale, animated: true)
             self.updateScrollViewContent(withContentOffset: true)
@@ -205,13 +153,6 @@ public final class CropperViewController: UIViewController {
 
     private func updateCropOverlay() {
         overlayView.cropPatternBuilder = cropPatternBuilder
-        if cropOptions.count > 1 {
-            shapeBarView.isHidden = false
-            collectionView.reloadData()
-        }
-        else {
-            shapeBarView.isHidden = true
-        }
         view.setNeedsDisplay()
     }
 
@@ -258,6 +199,8 @@ public final class CropperViewController: UIViewController {
         imageWrapperView.center = .init(x: scrollView.contentSize.width * 0.5 + offsetX,
                                        y: scrollView.contentSize.height * 0.5 + offsetY)
 
+        updateImage(withScale: scale)
+
         if withContentOffset {
            scrollView.setContentOffset(.init(x: insets.left,
                                              y: insets.top),
@@ -265,6 +208,11 @@ public final class CropperViewController: UIViewController {
         }
     }
 
+    private func updateImage(withScale scale: CGFloat) {
+        imageProvider.fetchImage(withScale: scale) { [weak self] image in
+            self?.imageView.image = image
+        }
+    }
 
     private func acceptibleScale() -> CGFloat {
         scrollView.zoomScale > scrollView.minimumZoomScale ? scrollView.zoomScale : scrollView.minimumZoomScale
