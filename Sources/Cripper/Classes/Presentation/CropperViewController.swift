@@ -40,19 +40,17 @@ public final class CropperViewController: UIViewController {
         return cripper.pointSize(of: image)
     }
 
-    public var setupHandler: ((CropperViewController) -> Void)? = nil
-    public var layoutHandler: ((CropperViewController) -> Void)? = nil
     public var imageProvider: ImageProvider
 
-    convenience init(image: UIImage) {
+    public convenience init(image: UIImage) {
         self.init(imageProvider: DefaultImageProvider(image: image))
     }
 
-    convenience init(images: [ImageScaleConstraint: UIImage]) {
+    public convenience init(images: [ImageScaleConstraint: UIImage]) {
         self.init(imageProvider: DefaultImageProvider(images: images))
     }
 
-    init(imageProvider: ImageProvider) {
+    public init(imageProvider: ImageProvider) {
         self.imageProvider = imageProvider
         super.init(nibName: nil, bundle: nil)
     }
@@ -99,15 +97,22 @@ public final class CropperViewController: UIViewController {
         scrollView.addSubview(imageWrapperView)
         imageWrapperView.addSubview(imageView)
         view.addSubview(overlayView)
-        setupHandler?(self)
         view.backgroundColor = .black
         updateCropOverlay()
+        imageProvider.fetchImage(withScale: 1) { [weak self] image in
+            self?.imageView.image = image
+            self?.view.setNeedsLayout()
+            self?.view.layoutIfNeeded()
+        }
     }
 
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         overlayView.frame = view.bounds
         scrollView.frame = view.bounds
+        guard imageView.image != nil else {
+            return
+        }
         let pattern = makeCropPattern()
         let scale = cripper.scale(for: pointImageSize, in: pattern.previewRect)
         scrollView.maximumZoomScale = maximumScale
@@ -117,26 +122,17 @@ public final class CropperViewController: UIViewController {
         scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
         updateScrollViewContent(withContentOffset: false)
         updateCropOverlay()
-        layoutHandler?(self)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.scrollView.setZoomScale(self.scrollView.minimumZoomScale, animated: true)
             self.updateScrollViewContent(withContentOffset: true)
         }
     }
 
-    // MARK: - Actions
-
-    @objc private func acceptButtonPressed() {
-        dismiss(animated: false, completion: nil)
+    public func makeCroppedImage() -> UIImage? {
         guard let image = imageView.image else {
-            completionHandler?(nil)
-            return
+            return nil
         }
-        completionHandler?(cripper.crop(image: image, with: makeCropPattern()))
-    }
-
-    @objc private func declineButtonPressed() {
-        dismiss(animated: false, completion: nil)
+        return cripper.crop(image: image, with: makeCropPattern())
     }
 
     // MARK: - Private

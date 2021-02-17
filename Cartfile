@@ -1,0 +1,4 @@
+github "rosberry/Bin-iOS" "feature/hsl-picker"
+github "rosberry/Routes-iOS" "master"
+github "rosberry/layout"
+github "rosberry/CollectionViewTools" "feature/ISD-581-Fabrics-Upgrade"

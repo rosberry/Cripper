@@ -1,8 +1,9 @@
 //
-//  Copyright © 2018 Rosberry. All rights reserved.
+//  Copyright © 2021 Rosberry. All rights reserved.
 //
 
 import UIKit
+import Routes
 
 final class AppRouter: BaseRouter<UIViewController>, AlertRoute {
 

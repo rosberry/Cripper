@@ -6,25 +6,25 @@ import UIKit
 
 public final class CropOverlayView: UIView {
 
-    var overlayColor: UIColor = UIColor.black.withAlphaComponent(0.5) {
+    public var overlayColor: UIColor = UIColor.black.withAlphaComponent(0.5) {
         didSet {
             setNeedsDisplay()
         }
     }
 
-    var clipBorderInset: CGFloat = 1 {
+    public var clipBorderInset: CGFloat = 1 {
         didSet {
             setNeedsDisplay()
         }
     }
 
-    var clipBorderWidth: CGFloat = 1 {
+    public var clipBorderWidth: CGFloat = 1 {
         didSet {
             setNeedsDisplay()
         }
     }
 
-    var clipBorderColor: UIColor = UIColor.white.withAlphaComponent(0.5) {
+    public var clipBorderColor: UIColor = UIColor.white.withAlphaComponent(0.5) {
         didSet {
             setNeedsDisplay()
         }
