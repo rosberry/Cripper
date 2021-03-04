@@ -32,16 +32,4 @@ public final class Cropper {
         path.apply(.init(scaleX: pattern.scale, y: pattern.scale))
         return self.crop(image: image, with: path.cgPath)
     }
-
-    func pointSize(of image: UIImage) -> CGSize {
-        let size = image.size
-        let scale = UIScreen.main.scale
-        return .init(width: size.width / scale, height: size.height / scale)
-    }
-
-    func scale(for size: CGSize, in bounds: CGRect) -> CGFloat {
-        let widthScale = bounds.width / size.width
-        let heightScale = bounds.height / size.height
-        return max(widthScale, heightScale)
-    }
 }

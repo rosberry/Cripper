@@ -38,7 +38,10 @@ public final class CropperViewController: UIViewController {
         guard let image = imageView.image else {
             return .zero
         }
-        return cripper.pointSize(of: image)
+        let aspectRatio = image.size.width / image.size.height
+        let width = view.bounds.width
+        let heiight = width / aspectRatio
+        return .init(width: width, height: heiight)
     }
 
     public var imageProvider: ImageProvider
@@ -115,7 +118,7 @@ public final class CropperViewController: UIViewController {
             return
         }
         let pattern = makeCropPattern()
-        let scale = cripper.scale(for: pointImageSize, in: pattern.previewRect)
+        let scale = imageScale(in: pattern.previewRect)
         scrollView.maximumZoomScale = maximumScale
         scrollView.minimumZoomScale = scale
         updateImage(withScale: scale)
@@ -155,7 +158,7 @@ public final class CropperViewController: UIViewController {
 
     private func updateScaling() {
         let pattern = makeCropPattern()
-        let scale = cripper.scale(for: pointImageSize, in: pattern.previewRect)
+        let scale = self.imageScale(in: pattern.previewRect)
         scrollView.maximumZoomScale = maximumScale
         scrollView.minimumZoomScale = scale
         if scrollView.zoomScale < scrollView.minimumZoomScale {
@@ -190,9 +193,9 @@ public final class CropperViewController: UIViewController {
         imageWrapperView.bounds = .init(x: 0, y: 0,
                                         width: requiredSize.width,
                                         height: requiredSize.height)
-        imageView.frame = .init(origin: .init(x: insets.left / scale + additionalSize.width / 2,
-                                              y: insets.top / scale + additionalSize.height / 2),
-                               size: imageSize)
+        imageView.frame =  .init(origin: .init(x: insets.left / scale + additionalSize.width / 2,
+                                               y: insets.top / scale + additionalSize.height / 2),
+                                 size: imageSize) 
         imageWrapperView.center = .init(x: scrollView.contentSize.width * 0.5 + offsetX,
                                        y: scrollView.contentSize.height * 0.5 + offsetY)
 
@@ -265,6 +268,13 @@ public final class CropperViewController: UIViewController {
         }
         scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
         updateScrollViewContent(withContentOffset: true)
+    }
+
+    private func imageScale(in bounds: CGRect) -> CGFloat {
+        let size = pointImageSize
+        let widthScale = bounds.width / size.width
+        let heightScale = bounds.height / size.height
+        return max(widthScale, heightScale)
     }
 }
 
