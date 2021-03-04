@@ -228,10 +228,10 @@ public final class CropperViewController: UIViewController {
     }
 
     private func previewInsets(pattern: CropPattern, imageSize: CGSize, offset: CGPoint) -> UIEdgeInsets {
-        let topOffset = pattern.previewRect.minY - max(offset.y, 0)
-        let bottomOffset = (offset.y > 0 ? offset.y + imageSize.height : view.bounds.height) - pattern.previewRect.maxY
-        let leftOffset = pattern.previewRect.minX - max(offset.x, 0)
-        let rightOffset = (offset.x > 0 ? offset.x + imageSize.width : view.bounds.width) - pattern.previewRect.maxX
+        let topOffset = pattern.previewRect.minY - max(offset.y, 0) + overlayView.clipBorderInset
+        let bottomOffset = (offset.y > 0 ? offset.y + imageSize.height : view.bounds.height) - pattern.previewRect.maxY + overlayView.clipBorderInset
+        let leftOffset = pattern.previewRect.minX - max(offset.x, 0) + overlayView.clipBorderInset
+        let rightOffset = (offset.x > 0 ? offset.x + imageSize.width : view.bounds.width) - pattern.previewRect.maxX + overlayView.clipBorderInset
         return .init(top: topOffset, left: leftOffset, bottom: bottomOffset, right: rightOffset)
     }
 
@@ -292,28 +292,5 @@ extension CropperViewController: UIScrollViewDelegate {
 
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         overlayView.showsGridLines = false
-    }
-}
-
-extension CropperViewController: UICollectionViewDelegate {
-
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        cropPatternBuilder = cropOptions[indexPath.row].cropPatternBuilder
-    }
-}
-
-extension CropperViewController: UICollectionViewDataSource {
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        cropOptions.count
-    }
-
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as? Cell else {
-            return UICollectionViewCell()
-        }
-        let option = cropOptions[indexPath.row]
-        cell.imageView.image = option.image
-        cell.titleLabel.text = option.title
-        return cell
     }
 }
