@@ -15,6 +15,7 @@ public final class CropperViewController: UIViewController {
     public var maximumScale: CGFloat = 5
     public var completionHandler: ((UIImage?) -> Void)?
     public var mode: CropPattern.Mode = .rect
+    public var backColor: UIColor = .black
 
     public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
@@ -97,7 +98,7 @@ public final class CropperViewController: UIViewController {
         scrollView.addSubview(imageWrapperView)
         imageWrapperView.addSubview(imageView)
         view.addSubview(overlayView)
-        view.backgroundColor = .black
+        view.backgroundColor = backColor
         updateCropOverlay()
         imageProvider.fetchImage(withScale: 1) { [weak self] image in
             self?.imageView.image = image
@@ -274,13 +275,23 @@ extension CropperViewController: UIScrollViewDelegate {
     }
 
     public func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        overlayView.showsGridLines = true
         updateScrollViewContent(withContentOffset: false)
     }
 
     public func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+        overlayView.showsGridLines = false
         UIView.animate(withDuration: 0.1, animations: {
             self.restoreScrolling()
         })
+    }
+
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        overlayView.showsGridLines = true
+    }
+
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        overlayView.showsGridLines = false
     }
 }
 

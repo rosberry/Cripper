@@ -23,7 +23,12 @@ final class ViewController: UIViewController {
                                                              value: 1, min: 1, max: 5)
     var overlayClipBorderInsetState: SliderViewState = .init(name: "Overlay Clip Border Inset:",
                                                              value: 1, min: 1, max: 30)
-    var shapesState: SegmentedControlViewState = .init(name: "Shapes", index: 0, cases: ["square", "circle", "rect"])
+    var overlayBlurAlphaState: SliderViewState = .init(name: "Overlay Blur Alpha:",
+                                                       value: 0.5, min: 0, max: 1)
+    var overlayBlurRadiusState: SliderViewState = .init(name: "Overlay Blur Radius:",
+                                                        value: 5, min: 0, max: 10)
+    var shapesState: SegmentedControlViewState = .init(name: "Shapes:", index: 0, cases: ["Square", "Circle", "Rect"])
+    var modeState: SegmentedControlViewState = .init(name: "Mode:", index: 0, cases: ["Preview", "Crop"])
     lazy var cropperButtonsState: ButtonsViewState = .init(name: "Cropper Buttons",
                                                            configurations: [.init(title: "Modal",
                                                                                   buttonClickHandler: presentCropperButtonPressed),
@@ -97,11 +102,13 @@ final class ViewController: UIViewController {
 
     private func makeCropperViewController() -> CropperViewController {
         let cropViewController = CropperViewController(images: images())
-        cropViewController.view.backgroundColor = backgroundColorState.color
+        cropViewController.backColor = backgroundColorState.color ?? .black
         cropViewController.overlayView.overlayColor = overlayColorState.color ?? UIColor.black.withAlphaComponent(0.5)
         cropViewController.overlayView.clipBorderColor = overlayClipBorderColorState.color ?? UIColor.white.withAlphaComponent(0.5)
         cropViewController.overlayView.clipBorderInset = CGFloat(overlayClipBorderInsetState.value)
         cropViewController.overlayView.clipBorderWidth = CGFloat(overlayClipBorderWidthState.value)
+        cropViewController.overlayView.blurAlpha = CGFloat(overlayBlurAlphaState.value)
+        cropViewController.overlayView.blurRadius = CGFloat(overlayBlurRadiusState.value)
         switch shapesState.index {
         case 0:
             cropViewController.cropOptions = [.square()]
@@ -109,6 +116,14 @@ final class ViewController: UIViewController {
             cropViewController.cropOptions = [.circle()]
         case 2:
             cropViewController.cropOptions = [.rect(width: 4, height: 3)]
+        default:
+            break
+        }
+        switch modeState.index {
+        case 0:
+            cropViewController.mode = .rect
+        case 1:
+            cropViewController.mode = .path
         default:
             break
         }
@@ -157,11 +172,18 @@ final class ViewController: UIViewController {
         collectionViewManager.sectionItems = factory.makeSectionItems(viewStates: [
             imageQualitiesViewState,
             backgroundColorState,
+            SpaceViewState(name: "OverlayColorTopSpace", height: 10),
             overlayColorState,
+            SpaceViewState(name: "OverlayClipBorderColorTopSpace", height: 10),
             overlayClipBorderColorState,
+            SpaceViewState(name: "OverlayClipBorderWidthSpace", height: 10),
             overlayClipBorderWidthState,
             overlayClipBorderInsetState,
+            overlayBlurAlphaState,
+            overlayBlurRadiusState,
             shapesState,
+            SpaceViewState(name: "ModeTopSpace", height: 10),
+            modeState,
             SpaceViewState(name: "CropperButtonTopSpace", height: 10),
             cropperButtonsState
         ])

@@ -51,6 +51,7 @@ final class ViewFactory {
             }
         }
         factory.viewConfigurationHandler = { view, cellItem in
+            view.backgroundColor = UIColor.black.withAlphaComponent(0.05)
             view.titleLabel.text = cellItem.object.name
             view.hslView.color = cellItem.object.color
 
@@ -94,10 +95,17 @@ final class ViewFactory {
     private(set) lazy var imageViewFactory: ImageViewFaftory = {
         let factory = ImageViewFaftory()
         factory.sizeTypesConfigurationHandler = { cellItem in
-            .init(width: .fill, height: .fixed(200))
+            guard let width = cellItem.collectionView?.bounds.width,
+                  let image = cellItem.object.image else {
+                return .init(width: .fill, height: .fixed(0))
+            }
+            let aspectRatio = image.size.width / image.size.height
+            let height = width / aspectRatio
+            return .init(width: .fill, height: .fixed(aspectRatio))
         }
         factory.viewConfigurationHandler = { view, cellItem in
             view.image = cellItem.object.image
+            view.contentMode = .scaleAspectFit
         }
         return factory
     }()

@@ -24,6 +24,8 @@
 		0150F31B25DCCF63007909CB /* Decorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0150F31A25DCCF63007909CB /* Decorator.swift */; };
 		0150F32225DCCFE4007909CB /* ModalAcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0150F32125DCCFE4007909CB /* ModalAcceptViewController.swift */; };
 		0166470625DCEBF4004E046E /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0166470525DCEBF4004E046E /* SegmentedControlView.swift */; };
+		01796F0725DD340700592816 /* UIBezierPath+Reversing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01796F0625DD340700592816 /* UIBezierPath+Reversing.swift */; };
+		01796F4B25DE136D00592816 /* Framezilla.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01AD882025DA76A70012C127 /* Framezilla.framework */; };
 		0198906525DCECFA005D7DA6 /* SegentedControlViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198906425DCECFA005D7DA6 /* SegentedControlViewState.swift */; };
 		019BB0AC25AD6FBF005B659F /* CropPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0AB25AD6FBF005B659F /* CropPattern.swift */; };
 		019BB0AE25AD6FDD005B659F /* CropPatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0AD25AD6FDD005B659F /* CropPatternBuilder.swift */; };
@@ -33,7 +35,6 @@
 		01ABA57125DCD36F00E870CE /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ABA57025DCD36F00E870CE /* AcceptViewController.swift */; };
 		01ABA59425DCDDC900E870CE /* ImageResultViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ABA59325DCDDC900E870CE /* ImageResultViewState.swift */; };
 		01AD881D25DA75E90012C127 /* VisualEffectView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D134B225DA75360035B3D6 /* VisualEffectView.framework */; };
-		01AD882125DA76A70012C127 /* Framezilla.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01AD882025DA76A70012C127 /* Framezilla.framework */; };
 		01AD882525DA77400012C127 /* Base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01AD882425DA77400012C127 /* Base.framework */; };
 		01AD882F25DA915D0012C127 /* Routes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01AD882E25DA915D0012C127 /* Routes.framework */; };
 		01AD883425DA92190012C127 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AD883325DA92190012C127 /* AppRouter.swift */; };
@@ -272,6 +273,7 @@
 		0150F31A25DCCF63007909CB /* Decorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decorator.swift; sourceTree = "<group>"; };
 		0150F32125DCCFE4007909CB /* ModalAcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalAcceptViewController.swift; sourceTree = "<group>"; };
 		0166470525DCEBF4004E046E /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
+		01796F0625DD340700592816 /* UIBezierPath+Reversing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Reversing.swift"; sourceTree = "<group>"; };
 		0198906425DCECFA005D7DA6 /* SegentedControlViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegentedControlViewState.swift; sourceTree = "<group>"; };
 		019BB0AB25AD6FBF005B659F /* CropPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropPattern.swift; sourceTree = "<group>"; };
 		019BB0AD25AD6FDD005B659F /* CropPatternBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropPatternBuilder.swift; sourceTree = "<group>"; };
@@ -1069,7 +1071,6 @@
 				01B68D7B25DBC5100047BBEB /* Bin.framework in Frameworks */,
 				01AD881D25DA75E90012C127 /* VisualEffectView.framework in Frameworks */,
 				01AD882525DA77400012C127 /* Base.framework in Frameworks */,
-				01AD882125DA76A70012C127 /* Framezilla.framework in Frameworks */,
 				01B68D7C25DBC5100047BBEB /* Deboogger.framework in Frameworks */,
 				01AD882F25DA915D0012C127 /* Routes.framework in Frameworks */,
 				01430CA82599B0A30083921F /* Cripper.framework in Frameworks */,
@@ -1081,6 +1082,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01D134B325DA75360035B3D6 /* VisualEffectView.framework in Frameworks */,
+				01796F4B25DE136D00592816 /* Framezilla.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1215,6 +1217,7 @@
 				01D1349F25DA61380035B3D6 /* ImageProvider.swift */,
 				01B70C71259C3A3E0057E601 /* Cropper.swift */,
 				019BB0AA25AD6FAD005B659F /* CropPattern */,
+				01796F0625DD340700592816 /* UIBezierPath+Reversing.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -4510,6 +4513,7 @@
 				01B70C72259C3A3E0057E601 /* Cropper.swift in Sources */,
 				0112475225AC6EE1002D91FA /* CropViewOption.swift in Sources */,
 				019BB0AE25AD6FDD005B659F /* CropPatternBuilder.swift in Sources */,
+				01796F0725DD340700592816 /* UIBezierPath+Reversing.swift in Sources */,
 				019BB0B225AD7032005B659F /* EllipsePatternBuilder.swift in Sources */,
 				01430CB12599C38B0083921F /* CropOverlayView.swift in Sources */,
 				019BB0AC25AD6FBF005B659F /* CropPattern.swift in Sources */,
