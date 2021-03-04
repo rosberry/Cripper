@@ -21,12 +21,18 @@ public final class CropperViewController: UIViewController {
         .portrait
     }
 
+    public override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        .portrait
+    }
+
     typealias Cell = CropCell
 
     private let cellType = Cell.self
     private let reuseId = String(describing: Cell.self)
 
     private var cripper: Cropper = .init()
+    private var feedbackGenerator: UIImpactFeedbackGenerator?
+
     private var cropPatternBuilder: CropPatternBuilder = CropPatterBuilders.square.cropPatternBuilder {
         didSet {
             updateCropOverlay()
@@ -110,6 +116,11 @@ public final class CropperViewController: UIViewController {
         }
     }
 
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        feedbackGenerator = .init(style: .light)
+    }
+
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         overlayView.frame = view.bounds
@@ -153,6 +164,7 @@ public final class CropperViewController: UIViewController {
 
     private func updateCropOverlay() {
         overlayView.cropPatternBuilder = cropPatternBuilder
+        overlayView.showsGridLines = false
         view.setNeedsDisplay()
     }
 
@@ -195,7 +207,7 @@ public final class CropperViewController: UIViewController {
                                         height: requiredSize.height)
         imageView.frame =  .init(origin: .init(x: insets.left / scale + additionalSize.width / 2,
                                                y: insets.top / scale + additionalSize.height / 2),
-                                 size: imageSize) 
+                                 size: imageSize)
         imageWrapperView.center = .init(x: scrollView.contentSize.width * 0.5 + offsetX,
                                        y: scrollView.contentSize.height * 0.5 + offsetY)
 
@@ -276,6 +288,10 @@ public final class CropperViewController: UIViewController {
         let heightScale = bounds.height / size.height
         return max(widthScale, heightScale)
     }
+
+    private func generateHapticFeedback() {
+        feedbackGenerator?.impactOccurred()
+    }
 }
 
 extension CropperViewController: UIScrollViewDelegate {
@@ -291,6 +307,7 @@ extension CropperViewController: UIScrollViewDelegate {
 
     public func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
         overlayView.showsGridLines = false
+        generateHapticFeedback()
         UIView.animate(withDuration: 0.1, animations: {
             self.restoreScrolling()
         })
@@ -298,9 +315,11 @@ extension CropperViewController: UIScrollViewDelegate {
 
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         overlayView.showsGridLines = true
+        generateHapticFeedback()
     }
 
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         overlayView.showsGridLines = false
+        generateHapticFeedback()
     }
 }
