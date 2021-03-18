@@ -242,7 +242,7 @@ public final class CropperViewController: UIViewController {
     }
 
     private func acceptibleScale() -> CGFloat {
-        scrollView.zoomScale > scrollView.minimumZoomScale ? scrollView.zoomScale : scrollView.minimumZoomScale
+        min(max(scrollView.zoomScale, scrollView.minimumZoomScale), scrollView.maximumZoomScale)
     }
 
     private func scaledImageSize(imageSize: CGSize, scale: CGFloat) -> CGSize {
