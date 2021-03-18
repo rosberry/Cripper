@@ -25,11 +25,6 @@ public final class CropperViewController: UIViewController {
         .portrait
     }
 
-    typealias Cell = CropCell
-
-    private let cellType = Cell.self
-    private let reuseId = String(describing: Cell.self)
-
     private var cripper: Cropper = .init()
     private var feedbackGenerator: UIImpactFeedbackGenerator?
 
@@ -48,6 +43,10 @@ public final class CropperViewController: UIViewController {
         let width = view.bounds.width
         let heiight = width / aspectRatio
         return .init(width: width, height: heiight)
+    }
+
+    private var isModifying: Bool {
+        overlayView.showsGridLines
     }
 
     public var imageProvider: ImageProvider
@@ -143,21 +142,37 @@ public final class CropperViewController: UIViewController {
         }
     }
 
-    public func makeCroppedImage() -> UIImage? {
-        guard let image = imageView.image else {
-            return nil
+    public func makeCroppResult() -> CropResult  {
+        guard let image = imageView.image,
+              let resultImage = cripper.crop(image: image, with: makeCropPattern(image: image)) else {
+            return .undefined
         }
-        return cripper.crop(image: image, with: makeCropPattern())
+
+        if isModifying {
+            return .forced(resultImage)
+        }
+        return .normal(resultImage)
     }
 
     // MARK: - Private
 
-    private func makeCropPattern() -> CropPattern {
+    private func makeCropPattern(image: UIImage? = nil) -> CropPattern {
         let rect = view.bounds
         var pattern = cropPatternBuilder.makeCropPattern(in: rect)
-        pattern.translation = .init(x: scrollView.contentOffset.x,
-                                 y: scrollView.contentOffset.y)
-        pattern.scale = UIScreen.main.scale / scrollView.zoomScale
+        if let image = image {
+            let inset = overlayView.clipBorderInset
+            let bounds = pattern.path.boundingBox
+            let pointImageSize = self.pointImageSize
+            let imageSide = min(image.size.width, image.size.height)
+            let pointImageSide = min(pointImageSize.width, pointImageSize.height)
+            let pathSide = max(bounds.width, bounds.height)
+            let imageScale = imageSide / pointImageSide * (pathSide - 2 * inset) / pathSide
+            pattern.translation = .init(x: scrollView.contentOffset.x + inset,
+                                     y: scrollView.contentOffset.y + inset)
+            let path = UIBezierPath(cgPath: pattern.path)
+            pattern.path = path.cgPath
+            pattern.scale = imageScale / scrollView.zoomScale
+        }
         pattern.mode = mode
         return pattern
     }

@@ -97,7 +97,7 @@ final class ViewFactory {
         factory.sizeTypesConfigurationHandler = { cellItem in
             guard let width = cellItem.collectionView?.bounds.width,
                   let image = cellItem.object.image else {
-                return .init(width: .fill, height: .fixed(0))
+                return .init(width: .fill, height: .fixed(312))
             }
             let aspectRatio = image.size.width / image.size.height
             let height = width / aspectRatio

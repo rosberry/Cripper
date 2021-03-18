@@ -26,7 +26,6 @@ public final class Cropper {
         case .rect:
             path = UIBezierPath(rect: .init(origin: .zero, size: pattern.previewRect.size))
         }
-
         path.apply(.init(translationX: pattern.translation.x,
                          y: pattern.translation.y))
         path.apply(.init(scaleX: pattern.scale, y: pattern.scale))

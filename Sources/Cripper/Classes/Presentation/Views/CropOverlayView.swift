@@ -73,8 +73,8 @@ public final class CropOverlayView: UIView {
                 context.addLine(to: horizontalLineEnd)
                 context.move(to: verticalLineStart)
                 context.addLine(to: verticalLineEnd)
-                context.setLineWidth(clipBorderWidth)
-                context.setStrokeColor(clipBorderColor.cgColor)
+                context.setStrokeColor(UIColor.white.cgColor)
+                context.setLineWidth(0.5)
                 context.strokePath()
             }
             context.restoreGState()
