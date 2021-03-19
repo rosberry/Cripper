@@ -40,9 +40,9 @@ public final class CropperViewController: UIViewController {
             return .zero
         }
         let aspectRatio = image.size.width / image.size.height
-        let width = view.bounds.width
-        let heiight = width / aspectRatio
-        return .init(width: width, height: heiight)
+        let width = view.bounds.width - 2 * overlayView.clipBorderInset
+        let height = width / aspectRatio
+        return .init(width: width, height: height)
     }
 
     private var isModifying: Bool {
@@ -166,9 +166,9 @@ public final class CropperViewController: UIViewController {
             let imageSide = min(image.size.width, image.size.height)
             let pointImageSide = min(pointImageSize.width, pointImageSize.height)
             let pathSide = max(bounds.width, bounds.height)
-            let imageScale = imageSide / pointImageSide * (pathSide - 2 * inset) / pathSide
-            pattern.translation = .init(x: scrollView.contentOffset.x + inset,
-                                     y: scrollView.contentOffset.y + inset)
+            let imageScale = imageSide / pointImageSide
+            pattern.translation = .init(x: scrollView.contentOffset.x * (pathSide - inset) / pathSide,
+                                        y: scrollView.contentOffset.y * (pathSide - inset) / pathSide)
             let path = UIBezierPath(cgPath: pattern.path)
             pattern.path = path.cgPath
             pattern.scale = imageScale / scrollView.zoomScale
@@ -299,6 +299,8 @@ public final class CropperViewController: UIViewController {
 
     private func imageScale(in bounds: CGRect) -> CGFloat {
         let size = pointImageSize
+        let inset = overlayView.clipBorderInset
+        let bounds = bounds.insetBy(dx: inset, dy: inset)
         let widthScale = bounds.width / size.width
         let heightScale = bounds.height / size.height
         return max(widthScale, heightScale)
