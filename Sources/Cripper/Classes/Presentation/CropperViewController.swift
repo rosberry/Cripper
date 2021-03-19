@@ -17,6 +17,60 @@ public final class CropperViewController: UIViewController {
     public var mode: CropPattern.Mode = .rect
     public var backColor: UIColor = .black
 
+    public var overlayColor: UIColor {
+        get {
+            overlayView.overlayColor
+        }
+        set {
+            overlayView.overlayColor = newValue
+        }
+    }
+
+    public var clipBorderColor: UIColor {
+        get {
+            overlayView.clipBorderColor
+        }
+        set {
+            overlayView.clipBorderColor = newValue
+        }
+    }
+
+    public var clipBorderInset: CGFloat {
+        get {
+            overlayView.clipBorderInset
+        }
+        set {
+            overlayView.clipBorderInset = newValue
+        }
+    }
+
+    public var clipBorderWidth: CGFloat {
+        get {
+            overlayView.clipBorderWidth
+        }
+        set {
+            overlayView.clipBorderWidth = newValue
+        }
+    }
+
+    public var blurAlpha: CGFloat {
+        get {
+            overlayView.blurAlpha
+        }
+        set {
+            overlayView.blurAlpha = newValue
+        }
+    }
+
+    public var blurRadius: CGFloat {
+        get {
+            overlayView.blurRadius
+        }
+        set {
+            overlayView.blurRadius = newValue
+        }
+    }
+
     public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
     }
@@ -84,15 +138,15 @@ public final class CropperViewController: UIViewController {
         return scrollView
     }()
 
-    public private(set) lazy var imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
-    public private(set) lazy var imageWrapperView: UIView = .init()
+    private lazy var imageWrapperView: UIView = .init()
 
-    public private(set) lazy var overlayView: CropOverlayView = {
+    private lazy var overlayView: CropOverlayView = {
         let view = CropOverlayView()
         view.backgroundColor = .clear
         return view

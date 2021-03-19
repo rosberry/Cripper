@@ -5,7 +5,7 @@
 import UIKit
 import Bin
 
-public final class CropOverlayView: UIView {
+final class CropOverlayView: UIView {
 
     private class GridView: UIView {
         var cropPatternBuilder: CropPatternBuilder? {

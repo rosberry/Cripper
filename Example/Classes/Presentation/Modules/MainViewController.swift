@@ -118,12 +118,12 @@ class MainViewController: ViewController {
     private func makeCropperViewController() -> CropperViewController {
         let cropViewController = CropperViewController(images: images())
         cropViewController.backColor = backgroundColorState.color ?? .black
-        cropViewController.overlayView.overlayColor = overlayColorState.color ?? UIColor.black.withAlphaComponent(0.5)
-        cropViewController.overlayView.clipBorderColor = overlayClipBorderColorState.color ?? UIColor.white.withAlphaComponent(0.5)
-        cropViewController.overlayView.clipBorderInset = CGFloat(overlayClipBorderInsetState.value)
-        cropViewController.overlayView.clipBorderWidth = CGFloat(overlayClipBorderWidthState.value)
-        cropViewController.overlayView.blurAlpha = CGFloat(overlayBlurAlphaState.value)
-        cropViewController.overlayView.blurRadius = CGFloat(overlayBlurRadiusState.value)
+        cropViewController.overlayColor = overlayColorState.color ?? UIColor.black.withAlphaComponent(0.5)
+        cropViewController.clipBorderColor = overlayClipBorderColorState.color ?? UIColor.white.withAlphaComponent(0.5)
+        cropViewController.clipBorderInset = CGFloat(overlayClipBorderInsetState.value)
+        cropViewController.clipBorderWidth = CGFloat(overlayClipBorderWidthState.value)
+        cropViewController.blurAlpha = CGFloat(overlayBlurAlphaState.value)
+        cropViewController.blurRadius = CGFloat(overlayBlurRadiusState.value)
         switch shapesState.index {
         case 0:
             cropViewController.cropOptions = [.square()]
