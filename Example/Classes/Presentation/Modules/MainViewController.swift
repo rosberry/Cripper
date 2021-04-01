@@ -48,6 +48,7 @@ class MainViewController: ViewController {
                                                                                              overlayClipBorderInsetState,
                                                                                              overlayBlurAlphaState,
                                                                                              overlayBlurRadiusState])
+    private var customizationStates: [Any] = []
 
     var decorator: Decorator = .init()
 
@@ -84,11 +85,13 @@ class MainViewController: ViewController {
         let cameraState = ButtonsViewState(name: "Camera", configurations: [.init(title: "Camera", buttonClickHandler: showCameraImagePicker)])
         let libraryState = ButtonsViewState(name: "Library", configurations: [.init(title: "Library", buttonClickHandler: showLibraryImagePicker)])
         let resultImageState = ImageViewState(name: "Result", image: image)
+        let backState = ButtonsViewState(name: "Back", configurations: [.init(title: "Back", buttonClickHandler: back)])
         collectionViewManager.update(with: factory.makeSectionItems(viewStates: [
             resultImageState,
             SpaceViewState(name: "RetakeButtonTopSpace", height: 10),
             cameraState,
-            libraryState
+            libraryState,
+            backState
         ]), animated: true)
     }
 
@@ -106,6 +109,12 @@ class MainViewController: ViewController {
 
     private func showLibraryImagePicker() {
         showImagePicker(sourceType: .photoLibrary)
+    }
+
+    private func back() {
+        shapesState.index = 0
+        modeState.index = 0
+        collectionViewManager.sectionItems = factory.makeSectionItems(viewStates: customizationStates)
     }
 
     private func showImagePicker(sourceType: UIImagePickerController.SourceType) {
@@ -184,7 +193,7 @@ class MainViewController: ViewController {
                                                               normal: normalQualityImage,
                                                               high: highQualityImage)
 
-        collectionViewManager.sectionItems = factory.makeSectionItems(viewStates: [
+        customizationStates = [
             imageQualitiesViewState,
             backgroundState,
             overlayState,
@@ -193,7 +202,8 @@ class MainViewController: ViewController {
             modeState,
             SpaceViewState(name: "CropperButtonTopSpace", height: 10),
             cropperButtonsState
-        ])
+        ]
+        collectionViewManager.sectionItems = factory.makeSectionItems(viewStates: customizationStates)
         self.imageQualitiesViewState = imageQualitiesViewState
     }
 }

@@ -22,9 +22,11 @@ public final class Cropper {
         let path: UIBezierPath
         switch pattern.mode {
         case .path:
+            let origin = pattern.path.boundingBox.origin
             path = UIBezierPath(cgPath: pattern.path)
+            path.apply(.init(translationX: -origin.x, y: -origin.y))
         case .rect:
-            path = UIBezierPath(rect: .init(origin: .zero, size: pattern.previewRect.size))
+            path = UIBezierPath(rect: .init(origin: .zero, size: pattern.path.boundingBox.size))
         }
         path.apply(.init(translationX: pattern.translation.x,
                          y: pattern.translation.y))

@@ -215,15 +215,13 @@ public final class CropperViewController: UIViewController {
         var pattern = cropPatternBuilder.makeCropPattern(in: rect)
         if let image = image {
             let inset = overlayView.clipBorderInset
-            let bounds = pattern.path.boundingBox
             let pointImageSize = self.pointImageSize
             let imageSide = min(image.size.width, image.size.height)
             let pointImageSide = min(pointImageSize.width, pointImageSize.height)
-            let pathSide = max(bounds.width, bounds.height)
             let imageScale = imageSide / pointImageSide
-            pattern.translation = .init(x: scrollView.contentOffset.x * (pathSide - inset) / pathSide,
-                                        y: scrollView.contentOffset.y * (pathSide - inset) / pathSide)
+            pattern.translation = scrollView.contentOffset
             let path = UIBezierPath(cgPath: pattern.path)
+            path.apply(inset: inset)
             pattern.path = path.cgPath
             pattern.scale = imageScale / scrollView.zoomScale
         }

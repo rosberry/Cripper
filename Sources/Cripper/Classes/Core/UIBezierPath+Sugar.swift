@@ -6,10 +6,12 @@ import UIKit
 
 extension UIBezierPath {
 
-    func apply(inset: CGFloat) {
+    func apply(inset: CGFloat, withTranslate: Bool = true) {
         let insetScaleX = (bounds.width - 2 * inset) / bounds.width
         let insetScaleY = (bounds.height - 2 * inset) / bounds.height
-        apply(.init(translationX: inset, y: inset))
+        if withTranslate {
+            apply(.init(translationX: inset, y: inset))
+        }
         apply(.init(scaleX: insetScaleX, y: insetScaleY))
     }
 
