@@ -1,5 +1,8 @@
 # Cripper
-Customizable reusable component to get cropped image from provided one.
+<p>Customizable reusable component to get cropped image from provided one.</p>
+<p align="center">
+    <img width="250px" src="https://user-images.githubusercontent.com/15152385/113264837-3f34cd80-92f5-11eb-8b05-7153abf257e4.jpeg"></img>
+</p>
 <p align="center">
     <img src="https://img.shields.io/badge/Swift-5.2-orange.svg" />
 </p>
@@ -10,7 +13,7 @@ Customizable reusable component to get cropped image from provided one.
 - Specify crop shape to preview
 - Apply crop using bounding box or specified shape
 
-## Using
+## Usage
 
 1. Create and customize view controller as you want: 
 
