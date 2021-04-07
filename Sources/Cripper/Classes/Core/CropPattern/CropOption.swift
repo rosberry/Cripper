@@ -4,13 +4,20 @@
 
 import UIKit
 
-public enum CropPatterBuilders {
+/// Presets of the most used crop paths
+public enum CropOption {
+    /// Rectangular crop pattern builder with unit aspect ratio
     case square
+    /// Rectangular crop pattern builder with specified aspect ratio
     case rect(aspectRatio: CGFloat)
+    /// Ellipsoidal crop pattern builder with unit aspect ratio
     case circle
+    /// Ellipsoidal crop pattern builder with specified aspect ratio
     case ellipse(aspectRatio: CGFloat)
+    /// Custom crop pattern builder
     case custom(CropPatternBuilder)
 
+    /// Returns `CropPatternBuilder` for preset
     var cropPatternBuilder: CropPatternBuilder {
         switch self {
         case .square:

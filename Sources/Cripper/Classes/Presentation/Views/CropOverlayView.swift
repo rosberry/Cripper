@@ -5,39 +5,49 @@
 import UIKit
 import Bin
 
+/// `CropOverlayView` presents preview of crop aplying
 final class CropOverlayView: UIView {
 
+    /// `GridView` is view that displays over crop area.
+    /// Displays bounds and grid lines for image alignment
     private class GridView: UIView {
+
+        /// `CropPatternBuilder` to display specified crop path
         var cropPatternBuilder: CropPatternBuilder? {
             didSet {
                 setNeedsDisplay()
             }
         }
 
+        /// Color of crop area borders
         var clipBorderColor: UIColor = UIColor.white.withAlphaComponent(0.5){
             didSet {
                 setNeedsDisplay()
             }
         }
 
+        /// Width of crop area borders
         var clipBorderWidth: CGFloat = 1{
             didSet {
                 setNeedsDisplay()
             }
         }
 
+        /// Number of grid lines that allows to align image properly
         var gridLinesNumber: Int = 2{
             didSet {
                 setNeedsDisplay()
             }
         }
 
+        /// Specify grid lines visibility: true on image alignment or scaling
         var showsGridLines: Bool = false {
             didSet {
                 setNeedsDisplay()
             }
         }
 
+        /// Closure that sends modifyed shape path
         var shapePathWillUpdated: ((UIBezierPath) -> Void)?
 
         override func draw(_ rect: CGRect) {
@@ -81,18 +91,21 @@ final class CropOverlayView: UIView {
         }
     }
 
+    /// Color that will display outside crop area
     public var overlayColor: UIColor = UIColor.black.withAlphaComponent(0.5) {
         didSet {
             updateDrawing()
         }
     }
 
+    /// Inset of crop area from screen bounds
     public var clipBorderInset: CGFloat = 1 {
         didSet {
             setNeedsDisplay()
         }
     }
 
+    /// Width of crop area borders
     public var clipBorderWidth: CGFloat {
         get {
             gridView.clipBorderWidth
@@ -102,6 +115,7 @@ final class CropOverlayView: UIView {
         }
     }
 
+    /// Color of crop area borders
     public var clipBorderColor: UIColor {
         get {
             gridView.clipBorderColor
@@ -111,18 +125,21 @@ final class CropOverlayView: UIView {
         }
     }
 
+    /// Opacity of blur effect othside crop area
     public var blurAlpha: CGFloat = 0.5 {
         didSet {
             updateDrawing()
         }
     }
 
+    /// Radius of blur effect othside crop area
     public var blurRadius: CGFloat = 1 {
         didSet {
             updateDrawing()
         }
     }
 
+    /// Number of grid lines that allows to align image properly
     public var gridLinesNumber: Int {
         get {
             gridView.gridLinesNumber
@@ -132,6 +149,7 @@ final class CropOverlayView: UIView {
         }
     }
 
+    /// `CropPatternBuilder` to display specified crop path
     var cropPatternBuilder: CropPatternBuilder? {
         didSet {
             gridView.cropPatternBuilder = cropPatternBuilder
@@ -142,6 +160,7 @@ final class CropOverlayView: UIView {
         }
     }
 
+    /// Specify grid lines visibility: true on image alignment or scaling
     var showsGridLines: Bool {
         get {
             gridView.showsGridLines

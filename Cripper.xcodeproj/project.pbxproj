@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0112475225AC6EE1002D91FA /* CropViewOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112475125AC6EE1002D91FA /* CropViewOption.swift */; };
 		011B52F025DBC8A20015045F /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011B52EF25DBC8A20015045F /* ViewFactory.swift */; };
 		011B52F725DBCEDC0015045F /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011B52F625DBCEDC0015045F /* ButtonsView.swift */; };
 		011B52FE25DBD42C0015045F /* ImageQualitiesViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011B52FD25DBD42C0015045F /* ImageQualitiesViewState.swift */; };
@@ -34,7 +33,7 @@
 		019BB0AE25AD6FDD005B659F /* CropPatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0AD25AD6FDD005B659F /* CropPatternBuilder.swift */; };
 		019BB0B025AD7012005B659F /* AspectRatioCropPatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0AF25AD7012005B659F /* AspectRatioCropPatternBuilder.swift */; };
 		019BB0B225AD7032005B659F /* EllipsePatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0B125AD7032005B659F /* EllipsePatternBuilder.swift */; };
-		019BB0B525AD7067005B659F /* CropPatterBuilders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0B425AD7067005B659F /* CropPatterBuilders.swift */; };
+		019BB0B525AD7067005B659F /* CropOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0B425AD7067005B659F /* CropOption.swift */; };
 		01ABA57125DCD36F00E870CE /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ABA57025DCD36F00E870CE /* AcceptViewController.swift */; };
 		01ABA59425DCDDC900E870CE /* ImageResultViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ABA59325DCDDC900E870CE /* ImageResultViewState.swift */; };
 		01AD881D25DA75E90012C127 /* VisualEffectView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D134B225DA75360035B3D6 /* VisualEffectView.framework */; };
@@ -257,7 +256,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0112475125AC6EE1002D91FA /* CropViewOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropViewOption.swift; sourceTree = "<group>"; };
 		011B52EF25DBC8A20015045F /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
 		011B52F625DBCEDC0015045F /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
 		011B52FD25DBD42C0015045F /* ImageQualitiesViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageQualitiesViewState.swift; sourceTree = "<group>"; };
@@ -284,7 +282,7 @@
 		019BB0AD25AD6FDD005B659F /* CropPatternBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropPatternBuilder.swift; sourceTree = "<group>"; };
 		019BB0AF25AD7012005B659F /* AspectRatioCropPatternBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioCropPatternBuilder.swift; sourceTree = "<group>"; };
 		019BB0B125AD7032005B659F /* EllipsePatternBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsePatternBuilder.swift; sourceTree = "<group>"; };
-		019BB0B425AD7067005B659F /* CropPatterBuilders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropPatterBuilders.swift; sourceTree = "<group>"; };
+		019BB0B425AD7067005B659F /* CropOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropOption.swift; sourceTree = "<group>"; };
 		01ABA57025DCD36F00E870CE /* AcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptViewController.swift; sourceTree = "<group>"; };
 		01ABA59325DCDDC900E870CE /* ImageResultViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResultViewState.swift; sourceTree = "<group>"; };
 		01AD882025DA76A70012C127 /* Framezilla.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Framezilla.framework; path = Carthage/Build/iOS/Framezilla.framework; sourceTree = "<group>"; };
@@ -1210,7 +1208,7 @@
 				019BB0AD25AD6FDD005B659F /* CropPatternBuilder.swift */,
 				019BB0AF25AD7012005B659F /* AspectRatioCropPatternBuilder.swift */,
 				019BB0B125AD7032005B659F /* EllipsePatternBuilder.swift */,
-				019BB0B425AD7067005B659F /* CropPatterBuilders.swift */,
+				019BB0B425AD7067005B659F /* CropOption.swift */,
 			);
 			path = CropPattern;
 			sourceTree = "<group>";
@@ -1218,11 +1216,9 @@
 		019BB0B325AD704C005B659F /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				01D134A725DA625C0035B3D6 /* DefaultImageProvider.swift */,
-				01D134A325DA616F0035B3D6 /* ImageScaleConstraint.swift */,
-				01D1349F25DA61380035B3D6 /* ImageProvider.swift */,
-				01B70C71259C3A3E0057E601 /* Cropper.swift */,
+				01EF99E5261DBEC900EDC8F1 /* ImageProvider */,
 				019BB0AA25AD6FAD005B659F /* CropPattern */,
+				01B70C71259C3A3E0057E601 /* Cropper.swift */,
 				01796F0625DD340700592816 /* UIBezierPath+Sugar.swift */,
 				013BAE8625F1CF7300280C07 /* CropResult.swift */,
 			);
@@ -1233,7 +1229,6 @@
 			isa = PBXGroup;
 			children = (
 				019BB0B725AD70A2005B659F /* Views */,
-				0112475125AC6EE1002D91FA /* CropViewOption.swift */,
 				01430CA52599A8F20083921F /* CropperViewController.swift */,
 			);
 			path = Presentation;
@@ -4058,6 +4053,16 @@
 			path = iOS;
 			sourceTree = "<group>";
 		};
+		01EF99E5261DBEC900EDC8F1 /* ImageProvider */ = {
+			isa = PBXGroup;
+			children = (
+				01D1349F25DA61380035B3D6 /* ImageProvider.swift */,
+				01D134A725DA625C0035B3D6 /* DefaultImageProvider.swift */,
+				01D134A325DA616F0035B3D6 /* ImageScaleConstraint.swift */,
+			);
+			path = ImageProvider;
+			sourceTree = "<group>";
+		};
 		5F698A2C95AC078B0C67BDF8 = {
 			isa = PBXGroup;
 			children = (
@@ -4512,13 +4517,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				019BB0B525AD7067005B659F /* CropPatterBuilders.swift in Sources */,
+				019BB0B525AD7067005B659F /* CropOption.swift in Sources */,
 				01D134A025DA61380035B3D6 /* ImageProvider.swift in Sources */,
 				019BB0B025AD7012005B659F /* AspectRatioCropPatternBuilder.swift in Sources */,
 				01430CA62599A8F20083921F /* CropperViewController.swift in Sources */,
 				01D134A425DA616F0035B3D6 /* ImageScaleConstraint.swift in Sources */,
 				01B70C72259C3A3E0057E601 /* Cropper.swift in Sources */,
-				0112475225AC6EE1002D91FA /* CropViewOption.swift in Sources */,
 				019BB0AE25AD6FDD005B659F /* CropPatternBuilder.swift in Sources */,
 				01796F0725DD340700592816 /* UIBezierPath+Sugar.swift in Sources */,
 				019BB0B225AD7032005B659F /* EllipsePatternBuilder.swift in Sources */,

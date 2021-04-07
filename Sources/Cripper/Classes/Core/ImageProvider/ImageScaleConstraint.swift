@@ -4,11 +4,17 @@
 
 import CoreGraphics
 
+/// `ImageScaleConstraint` allows to specify a rule to use image for a given scale.
+/// If a set of constraints satisfy for a given scale then it is using constraint with nearest threshold value
 public enum ImageScaleConstraint {
+    /// Triggered when scale is less then a given threshold value
     case less(CGFloat)
+    /// Triggered when scale is less then a given threshold value
     case great(CGFloat)
+    /// Thriggered when there are no other satisfying constraints
     case `default`
 
+    /// Calculates a numberic mesure of satisfyng for a given scale
     func distance(to scale: CGFloat) -> CGFloat {
         switch self {
         case let .great(value):
@@ -26,6 +32,8 @@ extension ImageScaleConstraint: Hashable {
 }
 
 extension Array where Element == ImageScaleConstraint {
+
+    /// Retrives a constraint with the most less threshold value
     var mostLess: ImageScaleConstraint {
         reduce(.default) { result, constraint -> ImageScaleConstraint in
             switch (result, constraint) {
@@ -39,7 +47,8 @@ extension Array where Element == ImageScaleConstraint {
         }
     }
 
-    var mostGreate:  ImageScaleConstraint {
+    /// Retrives a constraint with the most great threshold value
+    var mostGreat:  ImageScaleConstraint {
         reduce(.default) { result, constraint -> ImageScaleConstraint in
             switch (result, constraint) {
             case let (.great(resultValue), .great(constraintValue)):

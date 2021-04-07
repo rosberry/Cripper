@@ -135,11 +135,11 @@ class MainViewController: ViewController {
         cropViewController.blurRadius = CGFloat(overlayBlurRadiusState.value)
         switch shapesState.index {
         case 0:
-            cropViewController.cropOptions = [.square()]
+            cropViewController.cropOption = .square
         case 1:
-            cropViewController.cropOptions = [.circle()]
+            cropViewController.cropOption = .circle
         case 2:
-            cropViewController.cropOptions = [.rect(width: 4, height: 3)]
+            cropViewController.cropOption = .rect(aspectRatio: 4 / 3)
         default:
             break
         }
