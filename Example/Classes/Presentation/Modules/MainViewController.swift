@@ -112,8 +112,6 @@ class MainViewController: ViewController {
     }
 
     private func back() {
-        shapesState.index = 0
-        modeState.index = 0
         collectionViewManager.sectionItems = factory.makeSectionItems(viewStates: customizationStates)
     }
 

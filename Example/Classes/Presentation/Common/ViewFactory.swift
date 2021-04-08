@@ -145,6 +145,7 @@ final class ViewFactory {
             for i in 0..<cellItem.object.cases.count {
                 view.segmentedControl.insertSegment(withTitle: cellItem.object.cases[i], at: i, animated: false)
             }
+            view.segmentedControl.selectedSegmentIndex = cellItem.object.index
         }
         return factory
     }()
