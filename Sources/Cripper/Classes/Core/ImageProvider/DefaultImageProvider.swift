@@ -12,7 +12,7 @@ class DefaultImageProvider: ImageProvider {
 
     /// Returns an array of all specified scale constraints
     var constraints: [ImageScaleConstraint] {
-        return Array(images.keys)
+        Array(images.keys)
     }
 
     /// Initializes image provider with the known in advance dictionary of images associated with scale constraints
@@ -30,7 +30,6 @@ class DefaultImageProvider: ImageProvider {
     }
 
     /// Implementetion of `ImageProvider` method that fetch the most satisfying image for a given scale constaint
-    /// - Parameters:
     /// - Parameters:
     ///   - scaleConstraint: The scale constraint that should be used to fetch an image
     ///   - resultHandler: A closure that accepts an image for provided scale constraint or nil if no image satisfying this scale constraint   

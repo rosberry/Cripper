@@ -9,13 +9,13 @@ public struct CropPattern {
 
     /// Mode to use crop pattern
     public enum Mode {
-        /// Use bounding box of pattern shape
+        /// Use bounding rect of pattern shape
         case rect
         /// Use pattern shape
         case path
     }
 
-    /// Returns a box where pattern shape should be drawn
+    /// Returns a rect where pattern shape should be drawn
     var previewRect: CGRect
 
     /// Returns a path that is defining pattern shape

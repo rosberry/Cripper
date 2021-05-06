@@ -20,21 +20,21 @@ final class CropOverlayView: UIView {
         }
 
         /// Color of crop area borders
-        var clipBorderColor: UIColor = UIColor.white.withAlphaComponent(0.5){
+        var clipBorderColor: UIColor = UIColor.white.withAlphaComponent(0.5) {
             didSet {
                 setNeedsDisplay()
             }
         }
 
         /// Width of crop area borders
-        var clipBorderWidth: CGFloat = 1{
+        var clipBorderWidth: CGFloat = 1 {
             didSet {
                 setNeedsDisplay()
             }
         }
 
         /// Number of grid lines that allows to align image properly
-        var gridLinesNumber: Int = 2{
+        var gridLinesNumber: Int = 2 {
             didSet {
                 setNeedsDisplay()
             }

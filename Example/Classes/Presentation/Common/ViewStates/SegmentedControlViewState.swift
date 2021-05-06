@@ -20,6 +20,8 @@ class SegmentedControlViewState: DiffCompatible {
     }
 
     static func ==(lhs: SegmentedControlViewState, rhs: SegmentedControlViewState) -> Bool {
-        lhs.name == rhs.name && lhs.index == rhs.index && lhs.cases == rhs.cases
+        lhs.name == rhs.name &&
+        lhs.index == rhs.index &&
+        lhs.cases == rhs.cases
     }
 }

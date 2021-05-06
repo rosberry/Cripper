@@ -24,7 +24,7 @@
 		01F76C6F2643E5AC009BD1ED /* ColorViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C572643E5AC009BD1ED /* ColorViewState.swift */; };
 		01F76C702643E5AC009BD1ED /* SliderViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C582643E5AC009BD1ED /* SliderViewState.swift */; };
 		01F76C712643E5AC009BD1ED /* ImageResultViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C592643E5AC009BD1ED /* ImageResultViewState.swift */; };
-		01F76C722643E5AC009BD1ED /* SegentedControlViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C5A2643E5AC009BD1ED /* SegentedControlViewState.swift */; };
+		01F76C722643E5AC009BD1ED /* SegmentedControlViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C5A2643E5AC009BD1ED /* SegmentedControlViewState.swift */; };
 		01F76C732643E5AC009BD1ED /* ButtonsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C5B2643E5AC009BD1ED /* ButtonsViewState.swift */; };
 		01F76C742643E5AC009BD1ED /* ImageQualitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C5D2643E5AC009BD1ED /* ImageQualitiesView.swift */; };
 		01F76C752643E5AC009BD1ED /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C5E2643E5AC009BD1ED /* ColorView.swift */; };
@@ -93,7 +93,7 @@
 		01F76C572643E5AC009BD1ED /* ColorViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorViewState.swift; sourceTree = "<group>"; };
 		01F76C582643E5AC009BD1ED /* SliderViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderViewState.swift; sourceTree = "<group>"; };
 		01F76C592643E5AC009BD1ED /* ImageResultViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResultViewState.swift; sourceTree = "<group>"; };
-		01F76C5A2643E5AC009BD1ED /* SegentedControlViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegentedControlViewState.swift; sourceTree = "<group>"; };
+		01F76C5A2643E5AC009BD1ED /* SegmentedControlViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlViewState.swift; sourceTree = "<group>"; };
 		01F76C5B2643E5AC009BD1ED /* ButtonsViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsViewState.swift; sourceTree = "<group>"; };
 		01F76C5D2643E5AC009BD1ED /* ImageQualitiesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageQualitiesView.swift; sourceTree = "<group>"; };
 		01F76C5E2643E5AC009BD1ED /* ColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 				01F76C572643E5AC009BD1ED /* ColorViewState.swift */,
 				01F76C582643E5AC009BD1ED /* SliderViewState.swift */,
 				01F76C592643E5AC009BD1ED /* ImageResultViewState.swift */,
-				01F76C5A2643E5AC009BD1ED /* SegentedControlViewState.swift */,
+				01F76C5A2643E5AC009BD1ED /* SegmentedControlViewState.swift */,
 				01F76C5B2643E5AC009BD1ED /* ButtonsViewState.swift */,
 			);
 			path = ViewStates;
@@ -397,7 +397,7 @@
 				01F76C7B2643E5AC009BD1ED /* MainViewController.swift in Sources */,
 				01F76C6E2643E5AC009BD1ED /* SpaceViewState.swift in Sources */,
 				01F76C782643E5AC009BD1ED /* ButtonsView.swift in Sources */,
-				01F76C722643E5AC009BD1ED /* SegentedControlViewState.swift in Sources */,
+				01F76C722643E5AC009BD1ED /* SegmentedControlViewState.swift in Sources */,
 				01F76C762643E5AC009BD1ED /* SegmentedControlView.swift in Sources */,
 				01F76C7D2643E5AC009BD1ED /* AppRouter.swift in Sources */,
 				01F76C742643E5AC009BD1ED /* ImageQualitiesView.swift in Sources */,
