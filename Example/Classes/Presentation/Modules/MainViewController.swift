@@ -206,7 +206,6 @@ class MainViewController: ViewController {
     }
 }
 
-
 // MARK: - UIImagePickerControllerDelegate
 
 extension MainViewController: UIImagePickerControllerDelegate {

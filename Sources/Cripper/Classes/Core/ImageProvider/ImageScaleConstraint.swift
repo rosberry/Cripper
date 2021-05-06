@@ -48,7 +48,7 @@ extension Array where Element == ImageScaleConstraint {
     }
 
     /// Retrives a constraint with the most great threshold value
-    var mostGreat:  ImageScaleConstraint {
+    var mostGreat: ImageScaleConstraint {
         reduce(.default) { result, constraint -> ImageScaleConstraint in
             switch (result, constraint) {
             case let (.great(resultValue), .great(constraintValue)):

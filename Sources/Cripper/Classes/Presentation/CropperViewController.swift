@@ -148,7 +148,6 @@ public final class CropperViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-
     // MARK: - Subviews
 
     private lazy var scrollView: UIScrollView = {
@@ -223,7 +222,7 @@ public final class CropperViewController: UIViewController {
     }
 
     /// Apply current crop pattern
-    public func makeCroppResult() -> CropResult  {
+    public func makeCroppResult() -> CropResult {
         guard let image = imageView.image,
               let resultImage = cripper.crop(image: image, with: makeCropPattern(image: image)) else {
             return .undefined
