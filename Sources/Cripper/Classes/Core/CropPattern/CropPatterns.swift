@@ -4,8 +4,8 @@
 
 import UIKit
 
-/// Presets of the most used crop paths
-public enum CropOption {
+/// Presets of the most used crop patterns
+public enum CropPatterns {
     /// Rectangular crop pattern builder with unit aspect ratio
     case square
     /// Rectangular crop pattern builder with specified aspect ratio

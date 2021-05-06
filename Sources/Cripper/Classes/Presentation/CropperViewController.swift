@@ -8,7 +8,7 @@ import UIKit
 public final class CropperViewController: UIViewController {
 
     /// Crop option that specifies `CropPattern`
-    public var cropOption: CropOption = .square {
+    public var cropOption: CropPatterns = .square {
         didSet {
             cropPatternBuilder = cropOption.cropPatternBuilder
         }
@@ -98,7 +98,7 @@ public final class CropperViewController: UIViewController {
     private var cripper: Cropper = .init()
     private var feedbackGenerator: UIImpactFeedbackGenerator?
 
-    private var cropPatternBuilder: CropPatternBuilder = CropOption.square.cropPatternBuilder {
+    private var cropPatternBuilder: CropPatternBuilder = CropPatterns.square.cropPatternBuilder {
         didSet {
             updateCropOverlay()
             updateScaling()
