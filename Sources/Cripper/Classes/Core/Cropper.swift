@@ -4,8 +4,13 @@
 
 import UIKit
 
+/// `Cropper` allows to crop some image with `CropPattern` or `CGPath`
 public final class Cropper {
 
+    /// Creates new cropped image from given one using `CGPath`
+    /// - Parameters:
+    ///  - image: Original image that should be cropped
+    ///  - path: `CGPath` that should be used to crop original image
     public func crop(image: UIImage, with path: CGPath) -> UIImage? {
         let box = path.boundingBox
         let renderer = UIGraphicsImageRenderer(size: box.size)
@@ -18,6 +23,10 @@ public final class Cropper {
         }
     }
 
+    /// Creates new cropped image from given one using `CropPattern`
+    /// - Parameters:
+    ///  - image: Original image that should be cropped
+    ///  - path: `CropPattern` that should be used to crop original image
     public func crop(image: UIImage, with pattern: CropPattern) -> UIImage? {
         let path: UIBezierPath
         switch pattern.mode {

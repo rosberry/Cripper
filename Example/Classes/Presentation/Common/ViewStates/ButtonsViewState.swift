@@ -12,7 +12,7 @@ struct ButtonsViewState: DiffCompatible {
         name
     }
 
-    static func ==(lhs: ButtonsViewState, rhs: ButtonsViewState) -> Bool {
+    static func == (lhs: ButtonsViewState, rhs: ButtonsViewState) -> Bool {
         lhs.name == rhs.name
     }
 }

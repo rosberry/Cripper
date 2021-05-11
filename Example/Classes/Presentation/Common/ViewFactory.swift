@@ -142,9 +142,10 @@ final class ViewFactory {
         factory.viewConfigurationHandler = { view, cellItem in
             view.label.text = cellItem.object.name
             view.segmentedControl.removeAllSegments()
-            for i in 0..<cellItem.object.cases.count {
-                view.segmentedControl.insertSegment(withTitle: cellItem.object.cases[i], at: i, animated: false)
+            for index in 0..<cellItem.object.cases.count {
+                view.segmentedControl.insertSegment(withTitle: cellItem.object.cases[index], at: index, animated: false)
             }
+            view.segmentedControl.selectedSegmentIndex = cellItem.object.index
         }
         return factory
     }()

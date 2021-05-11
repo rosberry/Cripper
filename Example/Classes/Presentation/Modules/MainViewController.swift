@@ -112,8 +112,6 @@ class MainViewController: ViewController {
     }
 
     private func back() {
-        shapesState.index = 0
-        modeState.index = 0
         collectionViewManager.sectionItems = factory.makeSectionItems(viewStates: customizationStates)
     }
 
@@ -135,11 +133,11 @@ class MainViewController: ViewController {
         cropViewController.blurRadius = CGFloat(overlayBlurRadiusState.value)
         switch shapesState.index {
         case 0:
-            cropViewController.cropOptions = [.square()]
+            cropViewController.cropOption = .square
         case 1:
-            cropViewController.cropOptions = [.circle()]
+            cropViewController.cropOption = .circle
         case 2:
-            cropViewController.cropOptions = [.rect(width: 4, height: 3)]
+            cropViewController.cropOption = .rect(aspectRatio: 4 / 3)
         default:
             break
         }
@@ -207,7 +205,6 @@ class MainViewController: ViewController {
         self.imageQualitiesViewState = imageQualitiesViewState
     }
 }
-
 
 // MARK: - UIImagePickerControllerDelegate
 

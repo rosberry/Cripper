@@ -4,19 +4,30 @@
 
 import UIKit
 
+/// `CropperViewController` is reusable UI/UX component that allows to apply crop using provided image
 public final class CropperViewController: UIViewController {
 
-    public var cropOptions: [CropViewOption] = [] {
+    /// Crop option that specifies `CropPattern`
+    public var cropOption: CropPatterns = .square {
         didSet {
-            cropPatternBuilder = cropOptions.first?.cropPatternBuilder ?? CropPatterBuilders.square.cropPatternBuilder
+            cropPatternBuilder = cropOption.cropPatternBuilder
         }
     }
 
+    /// Maximum allowed scale that should be applied
     public var maximumScale: CGFloat = 5
-    public var completionHandler: ((UIImage?) -> Void)?
-    public var mode: CropPattern.Mode = .rect
-    public var backColor: UIColor = .black
 
+    /// Crop pattern mode
+    public var mode: CropPattern.Mode = .rect
+
+    /// Image backdrop color
+    public var backColor: UIColor = .black {
+        didSet {
+            view.backgroundColor = backColor
+        }
+    }
+
+    /// Image overlay color
     public var overlayColor: UIColor {
         get {
             overlayView.overlayColor
@@ -26,6 +37,7 @@ public final class CropperViewController: UIViewController {
         }
     }
 
+    /// Color of crop area borders
     public var clipBorderColor: UIColor {
         get {
             overlayView.clipBorderColor
@@ -35,6 +47,7 @@ public final class CropperViewController: UIViewController {
         }
     }
 
+    /// Inset of crop area from screen bounds
     public var clipBorderInset: CGFloat {
         get {
             overlayView.clipBorderInset
@@ -44,6 +57,7 @@ public final class CropperViewController: UIViewController {
         }
     }
 
+    /// Width of crop area borders
     public var clipBorderWidth: CGFloat {
         get {
             overlayView.clipBorderWidth
@@ -53,6 +67,7 @@ public final class CropperViewController: UIViewController {
         }
     }
 
+    /// Opacity of blur effect othside crop area
     public var blurAlpha: CGFloat {
         get {
             overlayView.blurAlpha
@@ -62,6 +77,7 @@ public final class CropperViewController: UIViewController {
         }
     }
 
+    /// Radius of blur effect othside crop area
     public var blurRadius: CGFloat {
         get {
             overlayView.blurRadius
@@ -82,7 +98,7 @@ public final class CropperViewController: UIViewController {
     private var cripper: Cropper = .init()
     private var feedbackGenerator: UIImpactFeedbackGenerator?
 
-    private var cropPatternBuilder: CropPatternBuilder = CropPatterBuilders.square.cropPatternBuilder {
+    private var cropPatternBuilder: CropPatternBuilder = CropPatterns.square.cropPatternBuilder {
         didSet {
             updateCropOverlay()
             updateScaling()
@@ -103,16 +119,26 @@ public final class CropperViewController: UIViewController {
         overlayView.showsGridLines
     }
 
+    /// `ImageProvider` allows to define a way how an image for a given scale can be fetched
     public var imageProvider: ImageProvider
 
+    /// Initializes `CropperViewController` with the same image for all possible scales
+    /// - Parameters:
+    ///   - image: The image the will be used for all possible scales
     public convenience init(image: UIImage) {
         self.init(imageProvider: DefaultImageProvider(image: image))
     }
 
+    /// Initializes `CropperViewController` with contcrete images assosiated with scale constraints
+    /// - Parameters:
+    ///   - images: Dictionary that associates scale constraints with contcrete images 
     public convenience init(images: [ImageScaleConstraint: UIImage]) {
         self.init(imageProvider: DefaultImageProvider(images: images))
     }
 
+    /// Initializes `CropperViewController` with `ImageProvider`
+    /// - Parameters:
+    ///   - imageProvider: The imageProvider the will be used to fetch an image for a given scale
     public init(imageProvider: ImageProvider) {
         self.imageProvider = imageProvider
         super.init(nibName: nil, bundle: nil)
@@ -121,7 +147,6 @@ public final class CropperViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 
     // MARK: - Subviews
 
@@ -196,7 +221,8 @@ public final class CropperViewController: UIViewController {
         }
     }
 
-    public func makeCroppResult() -> CropResult  {
+    /// Apply current crop pattern
+    public func makeCroppResult() -> CropResult {
         guard let image = imageView.image,
               let resultImage = cripper.crop(image: image, with: makeCropPattern(image: image)) else {
             return .undefined

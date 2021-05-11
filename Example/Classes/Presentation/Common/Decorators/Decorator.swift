@@ -28,7 +28,7 @@ final class Decorator {
             return .init(title: title, style: .plain, target: instantViewController, action: action)
         }
         instantViewController.navigationItem.leftBarButtonItem = makeBarButtonItem(title: "Decline",
-                                                                                   action:     #selector(instantViewController.declineButtonPressed))
+                                                                                   action: #selector(instantViewController.declineButtonPressed))
         instantViewController.navigationItem.rightBarButtonItem = makeBarButtonItem(title: "Accept",
                                                                                     action: #selector(instantViewController.acceptButtonPressed))
         instantViewController.acceptHandler = {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1160"
+   LastUpgradeVersion = "1240"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AA5740ECDEE519E6638B5AA8"
+               BlueprintIdentifier = "014E2E422643E40700286EBD"
                BuildableName = "Example.app"
                BlueprintName = "Example"
-               ReferencedContainer = "container:Cripper.xcodeproj">
+               ReferencedContainer = "container:Example.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,10 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <AdditionalOptions>
-      </AdditionalOptions>
-      <CodeCoverageTargets>
-      </CodeCoverageTargets>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -48,14 +44,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AA5740ECDEE519E6638B5AA8"
+            BlueprintIdentifier = "014E2E422643E40700286EBD"
             BuildableName = "Example.app"
             BlueprintName = "Example"
-            ReferencedContainer = "container:Cripper.xcodeproj">
+            ReferencedContainer = "container:Example.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -67,10 +61,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AA5740ECDEE519E6638B5AA8"
+            BlueprintIdentifier = "014E2E422643E40700286EBD"
             BuildableName = "Example.app"
             BlueprintName = "Example"
-            ReferencedContainer = "container:Cripper.xcodeproj">
+            ReferencedContainer = "container:Example.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
