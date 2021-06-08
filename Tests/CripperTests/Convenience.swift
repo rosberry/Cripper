@@ -1,3 +1,7 @@
+//
+//  Copyright © 2021 Rosberry. All rights reserved.
+//
+
 import XCTest
 @testable import Cripper
 
@@ -73,9 +77,9 @@ func compare(_ lhs: UIImage, _ rhs: UIImage, accuracy: Double) -> Bool {
         for y in 0..<height {
             let offset = ((width  * y) + x ) * 4
             var pixelDifference: Double = 0
-            for i in 0..<4 {
-                let lhs = Double(lhs[offset + i])
-                let rhs = Double(rhs[offset + i])
+            for index in 0..<4 {
+                let lhs = Double(lhs[offset + index])
+                let rhs = Double(rhs[offset + index])
                 pixelDifference += pow((lhs - rhs) / 255, 2)
             }
             pixelDifference = sqrt(pixelDifference)

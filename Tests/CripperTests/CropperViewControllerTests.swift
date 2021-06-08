@@ -1,3 +1,7 @@
+//
+//  Copyright © 2021 Rosberry. All rights reserved.
+//
+
 import XCTest
 @testable import Cripper
 

@@ -7,7 +7,7 @@ import UIKit
 final class SliderView: UIView {
 
     public var valueDidChangeHandler: ((Float) -> Void)?
-    
+
     // MARK: - Subviews
 
     private(set) lazy var label: UILabel = .init()

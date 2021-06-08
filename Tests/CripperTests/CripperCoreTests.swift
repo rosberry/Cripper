@@ -1,3 +1,7 @@
+//
+//  Copyright © 2021 Rosberry. All rights reserved.
+//
+
 import XCTest
 @testable import Cripper
 
@@ -38,7 +42,6 @@ final class CripperTests: XCTestCase {
                                     rect: .init(origin: .zero, size: rect.size))
         XCTAssertTrue(compare(croppedImage, missingImage, accuracy: 500))
     }
-    
 
     func testPositivePatternEllipsePreviewCrop() {
         let image = bundledImage(named: "image.png")

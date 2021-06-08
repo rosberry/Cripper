@@ -12,7 +12,7 @@ import CollectionViewTools
 final class StatesViewController: ViewController {
 
     var states: [Any]
-    
+
     // MARK: - Lifecycle
 
     init(states: [Any]) {

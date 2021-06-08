@@ -17,7 +17,7 @@ final class ColorViewState: DiffCompatible {
         name
     }
 
-    static func ==(lhs: ColorViewState, rhs: ColorViewState) -> Bool {
+    static func == (lhs: ColorViewState, rhs: ColorViewState) -> Bool {
         lhs.name == rhs.name
     }
 }
