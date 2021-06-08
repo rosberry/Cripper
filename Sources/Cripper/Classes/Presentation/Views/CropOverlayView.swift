@@ -10,7 +10,7 @@ final class CropOverlayView: UIView {
 
     /// `GridView` is view that displays over crop area.
     /// Displays bounds and grid lines for image alignment
-    private class GridView: UIView {
+    final class GridView: UIView {
 
         /// `CropPatternBuilder` to display specified crop path
         var cropPatternBuilder: CropPatternBuilder? {
@@ -170,8 +170,8 @@ final class CropOverlayView: UIView {
         }
     }
 
-    private var blurView: CustomBlurEffectView?
-    private lazy var gridView: GridView = {
+    private(set) var blurView: CustomBlurEffectView?
+    private(set) lazy var gridView: GridView = {
         let view = GridView()
         view.shapePathWillUpdated = { [weak self] path in
             guard let self = self else {
