@@ -15,6 +15,7 @@ final class ModalAcceptViewController: AcceptViewController {
         button.titleLabel?.font = .systemFont(ofSize: 24)
         button.titleLabel?.tintColor = .white
         button.addTarget(self, action: #selector(acceptButtonPressed), for: .touchUpInside)
+        button.accessibilityIdentifier = "Choose"
         return button
     }()
 
@@ -24,6 +25,7 @@ final class ModalAcceptViewController: AcceptViewController {
         button.titleLabel?.font = .systemFont(ofSize: 24)
         button.titleLabel?.tintColor = .white
         button.addTarget(self, action: #selector(declineButtonPressed), for: .touchUpInside)
+        button.accessibilityIdentifier = "Cancel"
         return button
     }()
 

@@ -166,6 +166,7 @@ public final class CropperViewController: UIViewController {
     private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.accessibilityIdentifier = "chosen image"
         return imageView
     }()
 
@@ -174,6 +175,8 @@ public final class CropperViewController: UIViewController {
     private(set) lazy var overlayView: CropOverlayView = {
         let view = CropOverlayView()
         view.backgroundColor = .clear
+        view.accessibilityIdentifier = "overlay"
+        view.gridView.accessibilityIdentifier = "cropping area"
         return view
     }()
 

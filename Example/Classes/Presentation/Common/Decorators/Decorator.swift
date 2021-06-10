@@ -31,6 +31,8 @@ final class Decorator {
                                                                                    action: #selector(instantViewController.declineButtonPressed))
         instantViewController.navigationItem.rightBarButtonItem = makeBarButtonItem(title: "Accept",
                                                                                     action: #selector(instantViewController.acceptButtonPressed))
+        instantViewController.navigationItem.leftBarButtonItem?.accessibilityIdentifier = "Cancel"
+        instantViewController.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "Choose"
         instantViewController.acceptHandler = {
             instantViewController.navigationController?.popViewController(animated: true)
             acceptHandler(viewController)

@@ -27,7 +27,7 @@ class MainViewController: ViewController {
                                                             value: 0.5, min: 0, max: 1)
     lazy var overlayBlurRadiusState: SliderViewState = .init(name: "Overlay Blur Radius:",
                                                              value: 5, min: 0, max: 10)
-    lazy var shapesState: SegmentedControlViewState = .init(name: "Shapes:", index: 0, cases: ["Square", "Circle", "Rect"])
+    lazy var shapesState: SegmentedControlViewState = .init(name: "Shapes:", index: 0, cases: ["Square", "Circle", "Rect", "V-Rect"])
     lazy var modeState: SegmentedControlViewState = .init(name: "Mode:", index: 0, cases: ["Preview", "Crop"])
     lazy var cropperButtonsState: ButtonsViewState = .init(name: "Cropper Buttons",
                                                            configurations: [.init(title: "Modal",
@@ -84,7 +84,7 @@ class MainViewController: ViewController {
         }
         let cameraState = ButtonsViewState(name: "Camera", configurations: [.init(title: "Camera", buttonClickHandler: showCameraImagePicker)])
         let libraryState = ButtonsViewState(name: "Library", configurations: [.init(title: "Library", buttonClickHandler: showLibraryImagePicker)])
-        let resultImageState = ImageViewState(name: "Result", image: image)
+        let resultImageState = ImageViewState(name: "Cropped image", image: image)
         let backState = ButtonsViewState(name: "Back", configurations: [.init(title: "Back", buttonClickHandler: back)])
         collectionViewManager.update(with: factory.makeSectionItems(viewStates: [
             resultImageState,
@@ -138,6 +138,8 @@ class MainViewController: ViewController {
             cropViewController.shape = .circle
         case 2:
             cropViewController.shape = .rect(aspectRatio: 4 / 3)
+        case 3:
+            cropViewController.shape = .rect(aspectRatio: 3 / 4)
         default:
             break
         }
