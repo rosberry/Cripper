@@ -16,6 +16,7 @@ jobs:
       - name: Build and Test
         run: |
           cd Cripper
+	  Carthage.sh bootstrap --platform iOS
           xcodebuild clean build test -project Cripper.xcodeproj -scheme Cripper -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
         env: 
          destination: ${{ matrix.destination }}

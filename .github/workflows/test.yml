@@ -11,7 +11,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
       - name: Build and test
-        run: |
+        run: 
+	  Carthage.sh bootstrap --platform iOS
           xcodebuild clean test -project Cripper.xcodeproj -scheme Cripper -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
         env:
          destination: ${{ matrix.destination }}
