@@ -12,7 +12,7 @@ final class ViewControllerCropper {
     var test: XCTestCase
 
     init(name: String, test: XCTestCase) {
-        sourceImage = bundledImage(named: name)
+        sourceImage = UIImage.bundledImage(named: name)
         viewController = .init(image: sourceImage)
         self.test = test
         let window = UIWindow()

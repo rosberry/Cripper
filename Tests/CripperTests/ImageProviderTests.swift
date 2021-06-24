@@ -14,9 +14,9 @@ final class ImageProviderTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        let largeImage = bundledImage(named: "image.png")
-        let smallImage = bundledImage(named: "image_-100_-100_287_269.png")
-        let normalImage = bundledImage(named: "image_257_167_287_269.png")
+        let largeImage = UIImage.bundledImage(named: "image.png")
+        let smallImage = UIImage.bundledImage(named: "image_-100_-100_287_269.png")
+        let normalImage = UIImage.bundledImage(named: "image_257_167_287_269.png")
         viewController = .init(images: [.less(2): smallImage, .great(3): largeImage, .default: normalImage])
         self.largeImage = largeImage
         self.smallImage = smallImage

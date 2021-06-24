@@ -16,7 +16,7 @@ final class ButtonsView: UIView {
     var buttonConfigurations: [ButtonConfiguration] = [] {
         didSet {
             remove(subviews)
-            for index in 0..<buttonConfigurations.count {
+            for index in buttonConfigurations.indices {
                 let button = UIButton(type: .system)
                 button.setTitle(buttonConfigurations[index].title, for: .normal)
                 button.tag = index

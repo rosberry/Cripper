@@ -70,11 +70,11 @@ final class CropOverlayView: UIView {
             context.saveGState()
             context.addPath(path.cgPath)
             context.clip()
-            for index  in 0..<gridLinesNumber {
+            for lineNumber in 1...gridLinesNumber {
                 let horizontalOffset = bounds.width / CGFloat(gridLinesNumber + 1)
                 let verticalOffset = bounds.height / CGFloat(gridLinesNumber + 1)
-                let hrizontalLineY = CGFloat(index + 1) * verticalOffset
-                let verticalLineX = CGFloat(index + 1) * horizontalOffset
+                let hrizontalLineY = CGFloat(lineNumber) * verticalOffset
+                let verticalLineX = CGFloat(lineNumber) * horizontalOffset
                 let horizontalLineStart = CGPoint(x: 0, y: hrizontalLineY)
                 let horizontalLineEnd = CGPoint(x: bounds.width, y: hrizontalLineY)
                 let verticalLineStart = CGPoint(x: verticalLineX, y: 0)
