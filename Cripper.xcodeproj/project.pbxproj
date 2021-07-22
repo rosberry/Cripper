@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,7 +20,6 @@
 		017793B8266F867C00DE8ED0 /* ImageProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017793B7266F867C00DE8ED0 /* ImageProviderTests.swift */; };
 		017793BC266F8A2000DE8ED0 /* ShapeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017793BB266F8A2000DE8ED0 /* ShapeTests.swift */; };
 		01796F0725DD340700592816 /* UIBezierPath+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01796F0625DD340700592816 /* UIBezierPath+Sugar.swift */; };
-		019A241B266A12DE00238F71 /* Framezilla.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01AD882025DA76A70012C127 /* Framezilla.framework */; platformFilter = ios; };
 		019BB0AC25AD6FBF005B659F /* CropPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0AB25AD6FBF005B659F /* CropPattern.swift */; };
 		019BB0AE25AD6FDD005B659F /* CropPatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0AD25AD6FDD005B659F /* CropPatternBuilder.swift */; };
 		019BB0B025AD7012005B659F /* AspectRatioCropPatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0AF25AD7012005B659F /* AspectRatioCropPatternBuilder.swift */; };
@@ -30,9 +29,6 @@
 		01D134A025DA61380035B3D6 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1349F25DA61380035B3D6 /* ImageProvider.swift */; };
 		01D134A425DA616F0035B3D6 /* ImageScaleConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D134A325DA616F0035B3D6 /* ImageScaleConstraint.swift */; };
 		01D134A825DA625C0035B3D6 /* DefaultImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D134A725DA625C0035B3D6 /* DefaultImageProvider.swift */; };
-		01D6A4AD266A140C006FCB0F /* Base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01AD882425DA77400012C127 /* Base.framework */; platformFilter = ios; };
-		01D6A4B6266A14B8006FCB0F /* Bin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D134AE25DA751D0035B3D6 /* Bin.framework */; platformFilter = ios; };
-		01D6A4BB266A1525006FCB0F /* VisualEffectView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D134B225DA75360035B3D6 /* VisualEffectView.framework */; platformFilter = ios; };
 		FB22C7BFB9D904175D8ADFF2 /* CripperCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389C1271E79E84015E58041F /* CripperCoreTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,10 +82,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01D6A4BB266A1525006FCB0F /* VisualEffectView.framework in Frameworks */,
-				01D6A4B6266A14B8006FCB0F /* Bin.framework in Frameworks */,
-				01D6A4AD266A140C006FCB0F /* Base.framework in Frameworks */,
-				019A241B266A12DE00238F71 /* Framezilla.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
