@@ -18,6 +18,16 @@ extension UIImage {
         return image
     }
 
+    func rerendered() -> UIImage {
+        let box = CGRect(origin: .zero, size: size)
+        let renderer = UIGraphicsImageRenderer(size: size)
+        return renderer.image { rendererContext in
+            let context = rendererContext.cgContext
+            context.translateBy(x: -box.minX, y: -box.minY)
+            draw(in: .init(origin: .zero, size: size))
+        }
+    }
+
     func rectCrop(rect: CGRect) -> UIImage {
         let path = CGPath(rect: rect, transform: nil)
         return pathCrop(path: path)

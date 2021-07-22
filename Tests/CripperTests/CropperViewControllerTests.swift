@@ -17,7 +17,7 @@ final class CropperViewControllerTests: XCTestCase {
 
     func testPositiveRectCrop() {
         let rect = CGRect(x: 257, y: 167, width: 287, height: 269)
-        let missingImage = UIImage.bundledImage(named: "image_257_167_287_269.png").rectCrop(rect: .init(origin: .zero, size: rect.size))
+        let missingImage = UIImage.bundledImage(named: "image_257_167_287_269.png").rerendered()
         let result = cropper.crop(rect: rect, shape: .rect(aspectRatio: rect.width / rect.height))
         guard case let .normal(resultImage) = result else {
             return XCTAssert(false, "Could not fetch result image")
@@ -27,7 +27,7 @@ final class CropperViewControllerTests: XCTestCase {
 
     func testPositiveRectWithInsetCrop() {
         let rect = CGRect(x: 257, y: 167, width: 287, height: 269)
-        let missingImage = UIImage.bundledImage(named: "image_257_167_287_269.png").rectCrop(rect: .init(origin: .zero, size: rect.size))
+        let missingImage = UIImage.bundledImage(named: "image_257_167_287_269.png").rerendered()
         let inset: CGFloat = 10
         let result = cropper.crop(rect: rect,
                                   shape: .rect(aspectRatio: rect.width / rect.height),
@@ -42,7 +42,7 @@ final class CropperViewControllerTests: XCTestCase {
 
     func testEllipseRectCrop() {
         let rect = CGRect(x: 257, y: 167, width: 287, height: 269)
-        let missingImage = UIImage.bundledImage(named: "ellipse_257_167_287_269.png").rectCrop(rect: .init(origin: .zero, size: rect.size))
+        let missingImage = UIImage.bundledImage(named: "ellipse_257_167_287_269.png").rerendered()
 
         let result = cropper.crop(rect: rect, shape: .ellipse(aspectRatio: rect.width / rect.height), mode: .path)
         guard case let .normal(resultImage) = result else {
