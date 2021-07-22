@@ -13,7 +13,6 @@ jobs:
           destination: "${{ matrix.destination }}"
         name: "Build and Test"
         run: |
-            cd Cripper |
             sh ./carthage.sh bootstrap --platform iOS
             xcodebuild clean build test -project Cripper.xcodeproj -scheme Cripper -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
       -
