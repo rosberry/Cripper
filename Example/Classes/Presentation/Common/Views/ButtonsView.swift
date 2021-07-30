@@ -16,10 +16,10 @@ final class ButtonsView: UIView {
     var buttonConfigurations: [ButtonConfiguration] = [] {
         didSet {
             remove(subviews)
-            for i in 0..<buttonConfigurations.count {
+            for index in buttonConfigurations.indices {
                 let button = UIButton(type: .system)
-                button.setTitle(buttonConfigurations[i].title, for: .normal)
-                button.tag = i
+                button.setTitle(buttonConfigurations[index].title, for: .normal)
+                button.tag = index
                 button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
                 add(button)
             }

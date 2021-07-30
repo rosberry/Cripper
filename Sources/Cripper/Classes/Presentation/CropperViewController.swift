@@ -7,10 +7,10 @@ import UIKit
 /// `CropperViewController` is reusable UI/UX component that allows to apply crop using provided image
 public final class CropperViewController: UIViewController {
 
-    /// Crop option that specifies `CropPattern`
-    public var cropOption: CropPatterns = .square {
+    /// Shape that specifies `CropShape`
+    public var shape: CropShape = .square {
         didSet {
-            cropPatternBuilder = cropOption.cropPatternBuilder
+            cropPatternBuilder = shape.cropPatternBuilder
         }
     }
 
@@ -98,14 +98,14 @@ public final class CropperViewController: UIViewController {
     private var cripper: Cropper = .init()
     private var feedbackGenerator: UIImpactFeedbackGenerator?
 
-    private var cropPatternBuilder: CropPatternBuilder = CropPatterns.square.cropPatternBuilder {
+    private var cropPatternBuilder: CropPatternBuilder = CropShape.square.cropPatternBuilder {
         didSet {
             updateCropOverlay()
             updateScaling()
         }
     }
 
-    private var pointImageSize: CGSize {
+    var pointImageSize: CGSize {
         guard let image = imageView.image else {
             return .zero
         }
@@ -150,7 +150,7 @@ public final class CropperViewController: UIViewController {
 
     // MARK: - Subviews
 
-    private lazy var scrollView: UIScrollView = {
+    private(set) lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.alwaysBounceVertical = true
         scrollView.alwaysBounceHorizontal = true
@@ -163,17 +163,20 @@ public final class CropperViewController: UIViewController {
         return scrollView
     }()
 
-    private lazy var imageView: UIImageView = {
+    private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.accessibilityIdentifier = "chosen image"
         return imageView
     }()
 
     private lazy var imageWrapperView: UIView = .init()
 
-    private lazy var overlayView: CropOverlayView = {
+    private(set) lazy var overlayView: CropOverlayView = {
         let view = CropOverlayView()
         view.backgroundColor = .clear
+        view.accessibilityIdentifier = "overlay"
+        view.gridView.accessibilityIdentifier = "cropping area"
         return view
     }()
 
@@ -236,7 +239,7 @@ public final class CropperViewController: UIViewController {
 
     // MARK: - Private
 
-    private func makeCropPattern(image: UIImage? = nil) -> CropPattern {
+    func makeCropPattern(image: UIImage? = nil) -> CropPattern {
         let rect = view.bounds
         var pattern = cropPatternBuilder.makeCropPattern(in: rect)
         if let image = image {
@@ -282,7 +285,7 @@ public final class CropperViewController: UIViewController {
         }
     }
 
-    private func updateScrollViewContent(withContentOffset: Bool = false) {
+    func updateScrollViewContent(withContentOffset: Bool = false) {
         let offsetX = max((scrollView.bounds.width - scrollView.contentSize.width) * 0.5, 0.0)
         let offsetY = max((scrollView.bounds.height - scrollView.contentSize.height) * 0.5, 0.0)
 

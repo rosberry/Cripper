@@ -7,21 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01077F47266A2B52001554E6 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 01077F45266A2B52001554E6 /* image.png */; };
+		01077F48266A2B52001554E6 /* image_257_167_287_269.png in Resources */ = {isa = PBXBuildFile; fileRef = 01077F46266A2B52001554E6 /* image_257_167_287_269.png */; };
+		010D526D266E1E9200508A85 /* image_-100_-100_287_269.png in Resources */ = {isa = PBXBuildFile; fileRef = 010D526C266E1E9200508A85 /* image_-100_-100_287_269.png */; };
+		010D5271266E234900508A85 /* ellipse_257_167_287_269.png in Resources */ = {isa = PBXBuildFile; fileRef = 010D5270266E234900508A85 /* ellipse_257_167_287_269.png */; };
+		010D5275266E2AB700508A85 /* UIImage+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D5274266E2AB700508A85 /* UIImage+Convenience.swift */; };
+		010D527D266E2B8B00508A85 /* CropperViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D527C266E2B8B00508A85 /* CropperViewControllerTests.swift */; };
+		010D52A1266F50FA00508A85 /* ViewControllerCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D52A0266F50FA00508A85 /* ViewControllerCropper.swift */; };
 		013BAE8725F1CF7300280C07 /* CropResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013BAE8625F1CF7300280C07 /* CropResult.swift */; };
 		01430CA62599A8F20083921F /* CropperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430CA52599A8F20083921F /* CropperViewController.swift */; };
 		01430CB12599C38B0083921F /* CropOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01430CB02599C38B0083921F /* CropOverlayView.swift */; };
+		017793B8266F867C00DE8ED0 /* ImageProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017793B7266F867C00DE8ED0 /* ImageProviderTests.swift */; };
+		017793BC266F8A2000DE8ED0 /* ShapeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017793BB266F8A2000DE8ED0 /* ShapeTests.swift */; };
 		01796F0725DD340700592816 /* UIBezierPath+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01796F0625DD340700592816 /* UIBezierPath+Sugar.swift */; };
 		019BB0AC25AD6FBF005B659F /* CropPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0AB25AD6FBF005B659F /* CropPattern.swift */; };
 		019BB0AE25AD6FDD005B659F /* CropPatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0AD25AD6FDD005B659F /* CropPatternBuilder.swift */; };
 		019BB0B025AD7012005B659F /* AspectRatioCropPatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0AF25AD7012005B659F /* AspectRatioCropPatternBuilder.swift */; };
 		019BB0B225AD7032005B659F /* EllipsePatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0B125AD7032005B659F /* EllipsePatternBuilder.swift */; };
-		019BB0B525AD7067005B659F /* CropPatterns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0B425AD7067005B659F /* CropPatterns.swift */; };
+		019BB0B525AD7067005B659F /* CropShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019BB0B425AD7067005B659F /* CropShape.swift */; };
 		01B70C72259C3A3E0057E601 /* Cropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B70C71259C3A3E0057E601 /* Cropper.swift */; };
 		01D134A025DA61380035B3D6 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1349F25DA61380035B3D6 /* ImageProvider.swift */; };
 		01D134A425DA616F0035B3D6 /* ImageScaleConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D134A325DA616F0035B3D6 /* ImageScaleConstraint.swift */; };
 		01D134A825DA625C0035B3D6 /* DefaultImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D134A725DA625C0035B3D6 /* DefaultImageProvider.swift */; };
-		97CA28C78840EEE26B487627 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF429C5B3AD3753A5DFA2097 /* XCTestManifests.swift */; };
-		FB22C7BFB9D904175D8ADFF2 /* CripperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389C1271E79E84015E58041F /* CripperTests.swift */; };
+		FB22C7BFB9D904175D8ADFF2 /* CripperCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389C1271E79E84015E58041F /* CripperCoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,15 +43,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01077F45266A2B52001554E6 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
+		01077F46266A2B52001554E6 /* image_257_167_287_269.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_257_167_287_269.png; sourceTree = "<group>"; };
+		010D526C266E1E9200508A85 /* image_-100_-100_287_269.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_-100_-100_287_269.png"; sourceTree = "<group>"; };
+		010D5270266E234900508A85 /* ellipse_257_167_287_269.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ellipse_257_167_287_269.png; sourceTree = "<group>"; };
+		010D5274266E2AB700508A85 /* UIImage+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Convenience.swift"; sourceTree = "<group>"; };
+		010D527C266E2B8B00508A85 /* CropperViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropperViewControllerTests.swift; sourceTree = "<group>"; };
+		010D52A0266F50FA00508A85 /* ViewControllerCropper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerCropper.swift; sourceTree = "<group>"; };
 		013BAE8625F1CF7300280C07 /* CropResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropResult.swift; sourceTree = "<group>"; };
 		01430CA52599A8F20083921F /* CropperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropperViewController.swift; sourceTree = "<group>"; };
 		01430CB02599C38B0083921F /* CropOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropOverlayView.swift; sourceTree = "<group>"; };
+		017793B7266F867C00DE8ED0 /* ImageProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProviderTests.swift; sourceTree = "<group>"; };
+		017793BB266F8A2000DE8ED0 /* ShapeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeTests.swift; sourceTree = "<group>"; };
 		01796F0625DD340700592816 /* UIBezierPath+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Sugar.swift"; sourceTree = "<group>"; };
 		019BB0AB25AD6FBF005B659F /* CropPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropPattern.swift; sourceTree = "<group>"; };
 		019BB0AD25AD6FDD005B659F /* CropPatternBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropPatternBuilder.swift; sourceTree = "<group>"; };
 		019BB0AF25AD7012005B659F /* AspectRatioCropPatternBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioCropPatternBuilder.swift; sourceTree = "<group>"; };
 		019BB0B125AD7032005B659F /* EllipsePatternBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsePatternBuilder.swift; sourceTree = "<group>"; };
-		019BB0B425AD7067005B659F /* CropPatterns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropPatterns.swift; sourceTree = "<group>"; };
+		019BB0B425AD7067005B659F /* CropShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropShape.swift; sourceTree = "<group>"; };
 		01AD882025DA76A70012C127 /* Framezilla.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Framezilla.framework; path = Carthage/Build/iOS/Framezilla.framework; sourceTree = "<group>"; };
 		01AD882425DA77400012C127 /* Base.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Base.framework; path = Carthage/Build/iOS/Base.framework; sourceTree = "<group>"; };
 		01AD882E25DA915D0012C127 /* Routes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Routes.framework; path = Carthage/Build/iOS/Routes.framework; sourceTree = "<group>"; };
@@ -55,13 +72,19 @@
 		01D134A725DA625C0035B3D6 /* DefaultImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageProvider.swift; sourceTree = "<group>"; };
 		01D134AE25DA751D0035B3D6 /* Bin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bin.framework; path = Carthage/Build/iOS/Bin.framework; sourceTree = "<group>"; };
 		01D134B225DA75360035B3D6 /* VisualEffectView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualEffectView.framework; path = Carthage/Build/iOS/VisualEffectView.framework; sourceTree = "<group>"; };
-		389C1271E79E84015E58041F /* CripperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CripperTests.swift; sourceTree = "<group>"; };
+		389C1271E79E84015E58041F /* CripperCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CripperCoreTests.swift; sourceTree = "<group>"; };
 		49870814BD599C5EFAF0F741 /* Cripper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cripper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		49F1730667C99E4E705AEBAA /* CripperTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CripperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF429C5B3AD3753A5DFA2097 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
+		49F1730667C99E4E705AEBAA /* CripperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CripperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		019A241A266A12C100238F71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		01D134AD25DA75070035B3D6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -101,7 +124,7 @@
 				019BB0AD25AD6FDD005B659F /* CropPatternBuilder.swift */,
 				019BB0AF25AD7012005B659F /* AspectRatioCropPatternBuilder.swift */,
 				019BB0B125AD7032005B659F /* EllipsePatternBuilder.swift */,
-				019BB0B425AD7067005B659F /* CropPatterns.swift */,
+				019BB0B425AD7067005B659F /* CropShape.swift */,
 			);
 			path = CropPattern;
 			sourceTree = "<group>";
@@ -135,6 +158,17 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		01D6A4B0266A1457006FCB0F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				010D5270266E234900508A85 /* ellipse_257_167_287_269.png */,
+				010D526C266E1E9200508A85 /* image_-100_-100_287_269.png */,
+				01077F46266A2B52001554E6 /* image_257_167_287_269.png */,
+				01077F45266A2B52001554E6 /* image.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		01EF99E5261DBEC900EDC8F1 /* ImageProvider */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,8 +193,13 @@
 		87C17C954A55B1CFAD2F58E0 /* CripperTests */ = {
 			isa = PBXGroup;
 			children = (
-				389C1271E79E84015E58041F /* CripperTests.swift */,
-				CF429C5B3AD3753A5DFA2097 /* XCTestManifests.swift */,
+				01D6A4B0266A1457006FCB0F /* Resources */,
+				389C1271E79E84015E58041F /* CripperCoreTests.swift */,
+				010D5274266E2AB700508A85 /* UIImage+Convenience.swift */,
+				010D527C266E2B8B00508A85 /* CropperViewControllerTests.swift */,
+				010D52A0266F50FA00508A85 /* ViewControllerCropper.swift */,
+				017793B7266F867C00DE8ED0 /* ImageProviderTests.swift */,
+				017793BB266F8A2000DE8ED0 /* ShapeTests.swift */,
 			);
 			name = CripperTests;
 			path = Tests/CripperTests;
@@ -192,6 +231,9 @@
 			buildConfigurationList = DAEAF00F0EBB5CD806EBA252 /* Build configuration list for PBXNativeTarget "CripperTests" */;
 			buildPhases = (
 				A0BCAFB56A718C8D2511F1B1 /* Sources */,
+				019A241A266A12C100238F71 /* Frameworks */,
+				01D6A4B2266A1465006FCB0F /* Resources */,
+				019A2420266A130900238F71 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -247,7 +289,47 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		01D6A4B2266A1465006FCB0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010D526D266E1E9200508A85 /* image_-100_-100_287_269.png in Resources */,
+				01077F48266A2B52001554E6 /* image_257_167_287_269.png in Resources */,
+				010D5271266E234900508A85 /* ellipse_257_167_287_269.png in Resources */,
+				01077F47266A2B52001554E6 /* image.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXShellScriptBuildPhase section */
+		019A2420266A130900238F71 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Framezilla.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Base.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Bin.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/VisualEffectView.framework",
+			);
+			name = Carthage;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Framezilla.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Base.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Bin.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/VisualEffectView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
 		019BB0BC25AD757E005B659F /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -273,7 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				019BB0B525AD7067005B659F /* CropPatterns.swift in Sources */,
+				019BB0B525AD7067005B659F /* CropShape.swift in Sources */,
 				01D134A025DA61380035B3D6 /* ImageProvider.swift in Sources */,
 				019BB0B025AD7012005B659F /* AspectRatioCropPatternBuilder.swift in Sources */,
 				01430CA62599A8F20083921F /* CropperViewController.swift in Sources */,
@@ -293,8 +375,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB22C7BFB9D904175D8ADFF2 /* CripperTests.swift in Sources */,
-				97CA28C78840EEE26B487627 /* XCTestManifests.swift in Sources */,
+				FB22C7BFB9D904175D8ADFF2 /* CripperCoreTests.swift in Sources */,
+				010D527D266E2B8B00508A85 /* CropperViewControllerTests.swift in Sources */,
+				010D52A1266F50FA00508A85 /* ViewControllerCropper.swift in Sources */,
+				017793BC266F8A2000DE8ED0 /* ShapeTests.swift in Sources */,
+				017793B8266F867C00DE8ED0 /* ImageProviderTests.swift in Sources */,
+				010D5275266E2AB700508A85 /* UIImage+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +489,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Cripper.xcodeproj/CripperTests.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -420,6 +510,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Cripper.xcodeproj/CripperTests.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -437,6 +531,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Cripper.xcodeproj/CripperTests.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

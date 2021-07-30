@@ -106,6 +106,7 @@ final class ViewFactory {
         factory.viewConfigurationHandler = { view, cellItem in
             view.image = cellItem.object.image
             view.contentMode = .scaleAspectFit
+            view.accessibilityIdentifier = cellItem.object.name
         }
         return factory
     }()

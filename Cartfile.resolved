@@ -1,5 +1,5 @@
 github "Rosberry/Deboogger" "0.12"
 github "Rosberry/Framezilla" "5.1.0"
 github "efremidze/VisualEffectView" "4.1.3"
-github "rosberry/Base-iOS" "45ae0cba070008ee33de76c32a0345cc89d4a078"
-github "rosberry/Bin-iOS" "e3ba32959340381ebae26b52cd1f8899fe44b630"
+github "rosberry/Base-iOS" "f7a512279ed4b59d7010234ef43927d568a052d6"
+github "rosberry/Bin-iOS" "a81a5f7e2063e7bfb544f5aab1c5ed6df450c3cf"

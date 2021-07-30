@@ -21,7 +21,7 @@ class SliderViewState: DiffCompatible {
         self.max = max
     }
 
-    static func ==(lhs: SliderViewState, rhs: SliderViewState) -> Bool {
+    static func == (lhs: SliderViewState, rhs: SliderViewState) -> Bool {
         lhs.name == rhs.name
     }
 }

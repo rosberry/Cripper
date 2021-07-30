@@ -4,17 +4,17 @@
 
 import UIKit
 
-/// Presets of the most used crop patterns
-public enum CropPatterns {
-    /// Rectangular crop pattern builder with unit aspect ratio
+/// Presets of the most used crop shapes
+public enum CropShape {
+    /// Rectangular shape with unit aspect ratio
     case square
-    /// Rectangular crop pattern builder with specified aspect ratio
+    /// Rectangular shape with specified aspect ratio
     case rect(aspectRatio: CGFloat)
-    /// Ellipsoidal crop pattern builder with unit aspect ratio
+    /// Ellipsoidal shape with unit aspect ratio
     case circle
-    /// Ellipsoidal crop pattern builder with specified aspect ratio
+    /// Ellipsoidal shape with specified aspect ratio
     case ellipse(aspectRatio: CGFloat)
-    /// Custom crop pattern builder
+    /// Custom shape that provides by `CropPatternBuilder`
     case custom(CropPatternBuilder)
 
     /// Returns `CropPatternBuilder` for preset
