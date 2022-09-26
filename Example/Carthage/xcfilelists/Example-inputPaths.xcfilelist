@@ -1,8 +1,0 @@
-$(SRCROOT)/Carthage/Build/iOS/Base.framework
-$(SRCROOT)/Carthage/Build/iOS/Bin.framework
-$(SRCROOT)/Carthage/Build/iOS/CollectionViewTools.framework
-$(SRCROOT)/Carthage/Build/iOS/DeepDiff.framework
-$(SRCROOT)/Carthage/Build/iOS/Framezilla.framework
-$(SRCROOT)/Carthage/Build/iOS/Layout.framework
-$(SRCROOT)/Carthage/Build/iOS/Routes.framework
-$(SRCROOT)/Carthage/Build/iOS/VisualEffectView.framework

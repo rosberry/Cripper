@@ -9,7 +9,11 @@ struct ImageQualitiesViewState: DiffCompatible {
     var normal: UIImage?
     var high: UIImage?
 
-    var debugDescription: String {
+    var diffIdentifier: String {
         "image qualities"
+    }
+
+    func makeDiffComparator() -> Bool {
+        true
     }
 }

@@ -8,7 +8,11 @@ struct SpaceViewState: DiffCompatible {
     let name: String
     let height: CGFloat
 
-    var debugDescription: String {
+    var diffIdentifier: String {
         name
+    }
+
+    func makeDiffComparator() -> Bool {
+        true
     }
 }

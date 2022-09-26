@@ -17,7 +17,15 @@ final class ColorViewState: DiffCompatible {
         name
     }
 
+    var diffIdentifier: String {
+        name
+    }
+
     static func == (lhs: ColorViewState, rhs: ColorViewState) -> Bool {
         lhs.name == rhs.name
+    }
+
+    func makeDiffComparator() -> String {
+        "\(color?.hexRepresentation ?? "")"
     }
 }

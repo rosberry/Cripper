@@ -13,6 +13,10 @@ class SegmentedControlViewState: DiffCompatible {
         name
     }
 
+    var diffIdentifier: String {
+        name
+    }
+
     init(name: String, index: Int, cases: [String]) {
         self.name = name
         self.index = index
@@ -23,5 +27,9 @@ class SegmentedControlViewState: DiffCompatible {
         lhs.name == rhs.name &&
         lhs.index == rhs.index &&
         lhs.cases == rhs.cases
+    }
+
+    func makeDiffComparator() -> String {
+        "\(index):\(cases.joined(separator: ":"))"
     }
 }

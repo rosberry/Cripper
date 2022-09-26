@@ -8,7 +8,11 @@ struct ImageViewState: DiffCompatible {
     let name: String
     let image: UIImage?
 
-    var debugDescription: String {
+    var diffIdentifier: String {
         name
+    }
+
+    func makeDiffComparator() -> Bool {
+        true
     }
 }

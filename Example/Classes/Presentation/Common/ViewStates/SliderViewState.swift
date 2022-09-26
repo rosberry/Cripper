@@ -14,6 +14,10 @@ class SliderViewState: DiffCompatible {
         name
     }
 
+    var diffIdentifier: String {
+        name
+    }
+
     init(name: String, value: Float, min: Float, max: Float) {
         self.name = name
         self.value = value
@@ -23,5 +27,9 @@ class SliderViewState: DiffCompatible {
 
     static func == (lhs: SliderViewState, rhs: SliderViewState) -> Bool {
         lhs.name == rhs.name
+    }
+
+    func makeDiffComparator() -> String {
+        "\(value):\(min):\(max)"
     }
 }

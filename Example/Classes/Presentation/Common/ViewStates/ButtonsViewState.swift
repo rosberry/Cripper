@@ -12,7 +12,15 @@ struct ButtonsViewState: DiffCompatible {
         name
     }
 
+    var diffIdentifier: String {
+        name
+    }
+
     static func == (lhs: ButtonsViewState, rhs: ButtonsViewState) -> Bool {
         lhs.name == rhs.name
+    }
+
+    func makeDiffComparator() -> String {
+        configurations.map(\.title).joined(separator: ":")
     }
 }

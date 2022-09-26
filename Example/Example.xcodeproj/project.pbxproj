@@ -3,12 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		014E2E502643E40900286EBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 014E2E4F2643E40900286EBD /* Assets.xcassets */; };
 		014E2E532643E40900286EBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014E2E512643E40900286EBD /* LaunchScreen.storyboard */; };
+		01D1A87128E1842B00FBFD08 /* Routes.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86828E1842B00FBFD08 /* Routes.xcframework */; };
+		01D1A87228E1842B00FBFD08 /* Routes.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86828E1842B00FBFD08 /* Routes.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01D1A87328E1842B00FBFD08 /* Cripper.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86928E1842B00FBFD08 /* Cripper.xcframework */; };
+		01D1A87428E1842B00FBFD08 /* Cripper.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86928E1842B00FBFD08 /* Cripper.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01D1A87528E1842B00FBFD08 /* Deboogger.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86A28E1842B00FBFD08 /* Deboogger.xcframework */; };
+		01D1A87628E1842B00FBFD08 /* Deboogger.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86A28E1842B00FBFD08 /* Deboogger.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01D1A87728E1842B00FBFD08 /* CollectionViewTools.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86B28E1842B00FBFD08 /* CollectionViewTools.xcframework */; };
+		01D1A87828E1842B00FBFD08 /* CollectionViewTools.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86B28E1842B00FBFD08 /* CollectionViewTools.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01D1A87928E1842B00FBFD08 /* DeepDiff.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86C28E1842B00FBFD08 /* DeepDiff.xcframework */; };
+		01D1A87A28E1842B00FBFD08 /* DeepDiff.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86C28E1842B00FBFD08 /* DeepDiff.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01D1A87B28E1842B00FBFD08 /* Framezilla.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86D28E1842B00FBFD08 /* Framezilla.xcframework */; };
+		01D1A87C28E1842B00FBFD08 /* Framezilla.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86D28E1842B00FBFD08 /* Framezilla.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01D1A87D28E1842B00FBFD08 /* Bin.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86E28E1842B00FBFD08 /* Bin.xcframework */; };
+		01D1A87E28E1842B00FBFD08 /* Bin.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86E28E1842B00FBFD08 /* Bin.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01D1A87F28E1842B00FBFD08 /* VisualEffectView.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86F28E1842B00FBFD08 /* VisualEffectView.xcframework */; };
+		01D1A88028E1842B00FBFD08 /* VisualEffectView.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A86F28E1842B00FBFD08 /* VisualEffectView.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01D1A88128E1842B00FBFD08 /* Base.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A87028E1842B00FBFD08 /* Base.xcframework */; };
+		01D1A88228E1842B00FBFD08 /* Base.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1A87028E1842B00FBFD08 /* Base.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01D1A88528E1855A00FBFD08 /* HSLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1A88428E1855A00FBFD08 /* HSLView.swift */; };
+		01D1A88728E1859A00FBFD08 /* MaginfierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D1A88628E1859A00FBFD08 /* MaginfierView.swift */; };
 		01F76C692643E5AC009BD1ED /* ModalAcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C502643E5AC009BD1ED /* ModalAcceptViewController.swift */; };
 		01F76C6A2643E5AC009BD1ED /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C512643E5AC009BD1ED /* AcceptViewController.swift */; };
 		01F76C6B2643E5AC009BD1ED /* Decorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C522643E5AC009BD1ED /* Decorator.swift */; };
@@ -49,11 +69,44 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		01D1A88328E1842B00FBFD08 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				01D1A87A28E1842B00FBFD08 /* DeepDiff.xcframework in Embed Frameworks */,
+				01D1A87628E1842B00FBFD08 /* Deboogger.xcframework in Embed Frameworks */,
+				01D1A87228E1842B00FBFD08 /* Routes.xcframework in Embed Frameworks */,
+				01D1A88228E1842B00FBFD08 /* Base.xcframework in Embed Frameworks */,
+				01D1A87828E1842B00FBFD08 /* CollectionViewTools.xcframework in Embed Frameworks */,
+				01D1A87E28E1842B00FBFD08 /* Bin.xcframework in Embed Frameworks */,
+				01D1A87C28E1842B00FBFD08 /* Framezilla.xcframework in Embed Frameworks */,
+				01D1A87428E1842B00FBFD08 /* Cripper.xcframework in Embed Frameworks */,
+				01D1A88028E1842B00FBFD08 /* VisualEffectView.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		014E2E432643E40700286EBD /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		014E2E4F2643E40900286EBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		014E2E522643E40900286EBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		014E2E542643E40900286EBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01D1A86828E1842B00FBFD08 /* Routes.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Routes.xcframework; path = Carthage/Build/Routes.xcframework; sourceTree = "<group>"; };
+		01D1A86928E1842B00FBFD08 /* Cripper.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Cripper.xcframework; path = Carthage/Build/Cripper.xcframework; sourceTree = "<group>"; };
+		01D1A86A28E1842B00FBFD08 /* Deboogger.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Deboogger.xcframework; path = Carthage/Build/Deboogger.xcframework; sourceTree = "<group>"; };
+		01D1A86B28E1842B00FBFD08 /* CollectionViewTools.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CollectionViewTools.xcframework; path = Carthage/Build/CollectionViewTools.xcframework; sourceTree = "<group>"; };
+		01D1A86C28E1842B00FBFD08 /* DeepDiff.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DeepDiff.xcframework; path = Carthage/Build/DeepDiff.xcframework; sourceTree = "<group>"; };
+		01D1A86D28E1842B00FBFD08 /* Framezilla.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Framezilla.xcframework; path = Carthage/Build/Framezilla.xcframework; sourceTree = "<group>"; };
+		01D1A86E28E1842B00FBFD08 /* Bin.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Bin.xcframework; path = Carthage/Build/Bin.xcframework; sourceTree = "<group>"; };
+		01D1A86F28E1842B00FBFD08 /* VisualEffectView.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = VisualEffectView.xcframework; path = Carthage/Build/VisualEffectView.xcframework; sourceTree = "<group>"; };
+		01D1A87028E1842B00FBFD08 /* Base.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Base.xcframework; path = Carthage/Build/Base.xcframework; sourceTree = "<group>"; };
+		01D1A88428E1855A00FBFD08 /* HSLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLView.swift; sourceTree = "<group>"; };
+		01D1A88628E1859A00FBFD08 /* MaginfierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaginfierView.swift; sourceTree = "<group>"; };
 		01F76C362643E548009BD1ED /* Bin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bin.framework; path = Carthage/Build/iOS/Bin.framework; sourceTree = "<group>"; };
 		01F76C372643E548009BD1ED /* VisualEffectView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualEffectView.framework; path = Carthage/Build/iOS/VisualEffectView.framework; sourceTree = "<group>"; };
 		01F76C382643E548009BD1ED /* Routes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Routes.framework; path = Carthage/Build/iOS/Routes.framework; sourceTree = "<group>"; };
@@ -93,6 +146,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01D1A87928E1842B00FBFD08 /* DeepDiff.xcframework in Frameworks */,
+				01D1A87528E1842B00FBFD08 /* Deboogger.xcframework in Frameworks */,
+				01D1A87128E1842B00FBFD08 /* Routes.xcframework in Frameworks */,
+				01D1A88128E1842B00FBFD08 /* Base.xcframework in Frameworks */,
+				01D1A87728E1842B00FBFD08 /* CollectionViewTools.xcframework in Frameworks */,
+				01D1A87D28E1842B00FBFD08 /* Bin.xcframework in Frameworks */,
+				01D1A87B28E1842B00FBFD08 /* Framezilla.xcframework in Frameworks */,
+				01D1A87328E1842B00FBFD08 /* Cripper.xcframework in Frameworks */,
+				01D1A87F28E1842B00FBFD08 /* VisualEffectView.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +195,15 @@
 		01F76C352643E548009BD1ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01D1A87028E1842B00FBFD08 /* Base.xcframework */,
+				01D1A86E28E1842B00FBFD08 /* Bin.xcframework */,
+				01D1A86B28E1842B00FBFD08 /* CollectionViewTools.xcframework */,
+				01D1A86928E1842B00FBFD08 /* Cripper.xcframework */,
+				01D1A86A28E1842B00FBFD08 /* Deboogger.xcframework */,
+				01D1A86C28E1842B00FBFD08 /* DeepDiff.xcframework */,
+				01D1A86D28E1842B00FBFD08 /* Framezilla.xcframework */,
+				01D1A86828E1842B00FBFD08 /* Routes.xcframework */,
+				01D1A86F28E1842B00FBFD08 /* VisualEffectView.xcframework */,
 				01F776602643E659009BD1ED /* CollectionViewTools.framework */,
 				01F776612643E659009BD1ED /* DeepDiff.framework */,
 				01F76C3A2643E548009BD1ED /* Base.framework */,
@@ -207,6 +278,8 @@
 				01F76C5F2643E5AC009BD1ED /* SegmentedControlView.swift */,
 				01F76C602643E5AC009BD1ED /* SliderView.swift */,
 				01F76C612643E5AC009BD1ED /* ButtonsView.swift */,
+				01D1A88428E1855A00FBFD08 /* HSLView.swift */,
+				01D1A88628E1859A00FBFD08 /* MaginfierView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -248,8 +321,8 @@
 				014E2E3F2643E40700286EBD /* Sources */,
 				014E2E402643E40700286EBD /* Frameworks */,
 				014E2E412643E40700286EBD /* Resources */,
-				7073E567A8F55DF3AE114FE7 /* Carthage */,
 				01F7767E2643EC12009BD1ED /* Swiftlint */,
+				01D1A88328E1842B00FBFD08 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -346,26 +419,6 @@
 			shellPath = /bin/sh;
 			shellScript = "../Scripts/swiftlint_script.sh\n";
 		};
-		7073E567A8F55DF3AE114FE7 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"$(SRCROOT)/Carthage/xcfilelists/Example-inputPaths.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = Carthage;
-			outputFileListPaths = (
-				"$(SRCROOT)/Carthage/xcfilelists/Example-outputPaths.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -385,9 +438,11 @@
 				01F76C722643E5AC009BD1ED /* SegmentedControlViewState.swift in Sources */,
 				01F76C762643E5AC009BD1ED /* SegmentedControlView.swift in Sources */,
 				01F76C7D2643E5AC009BD1ED /* AppRouter.swift in Sources */,
+				01D1A88528E1855A00FBFD08 /* HSLView.swift in Sources */,
 				01F76C742643E5AC009BD1ED /* ImageQualitiesView.swift in Sources */,
 				01F76C772643E5AC009BD1ED /* SliderView.swift in Sources */,
 				01F76C732643E5AC009BD1ED /* ButtonsViewState.swift in Sources */,
+				01D1A88728E1859A00FBFD08 /* MaginfierView.swift in Sources */,
 				01F76C7A2643E5AC009BD1ED /* ViewController.swift in Sources */,
 				01F76C6F2643E5AC009BD1ED /* ColorViewState.swift in Sources */,
 				01F76C6B2643E5AC009BD1ED /* Decorator.swift in Sources */,
