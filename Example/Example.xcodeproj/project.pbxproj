@@ -9,12 +9,6 @@
 /* Begin PBXBuildFile section */
 		014E2E502643E40900286EBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 014E2E4F2643E40900286EBD /* Assets.xcassets */; };
 		014E2E532643E40900286EBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014E2E512643E40900286EBD /* LaunchScreen.storyboard */; };
-		01F76C3C2643E548009BD1ED /* Bin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F76C362643E548009BD1ED /* Bin.framework */; };
-		01F76C3E2643E548009BD1ED /* VisualEffectView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F76C372643E548009BD1ED /* VisualEffectView.framework */; };
-		01F76C402643E548009BD1ED /* Routes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F76C382643E548009BD1ED /* Routes.framework */; };
-		01F76C422643E548009BD1ED /* Framezilla.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F76C392643E548009BD1ED /* Framezilla.framework */; };
-		01F76C442643E548009BD1ED /* Base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F76C3A2643E548009BD1ED /* Base.framework */; };
-		01F76C462643E548009BD1ED /* Layout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F76C3B2643E548009BD1ED /* Layout.framework */; };
 		01F76C692643E5AC009BD1ED /* ModalAcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C502643E5AC009BD1ED /* ModalAcceptViewController.swift */; };
 		01F76C6A2643E5AC009BD1ED /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C512643E5AC009BD1ED /* AcceptViewController.swift */; };
 		01F76C6B2643E5AC009BD1ED /* Decorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C522643E5AC009BD1ED /* Decorator.swift */; };
@@ -36,10 +30,6 @@
 		01F76C7B2643E5AC009BD1ED /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C652643E5AC009BD1ED /* MainViewController.swift */; };
 		01F76C7C2643E5AC009BD1ED /* StatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C662643E5AC009BD1ED /* StatesViewController.swift */; };
 		01F76C7D2643E5AC009BD1ED /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F76C682643E5AC009BD1ED /* AppRouter.swift */; };
-		01F76CA92643E5CA009BD1ED /* Cripper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F76C972643E5BF009BD1ED /* Cripper.framework */; };
-		01F76CAA2643E5CA009BD1ED /* Cripper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01F76C972643E5BF009BD1ED /* Cripper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		01F776622643E659009BD1ED /* CollectionViewTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F776602643E659009BD1ED /* CollectionViewTools.framework */; };
-		01F776642643E659009BD1ED /* DeepDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F776612643E659009BD1ED /* DeepDiff.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,20 +48,6 @@
 			remoteInfo = CripperTests;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		01F76CAB2643E5CB009BD1ED /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				01F76CAA2643E5CA009BD1ED /* Cripper.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		014E2E432643E40700286EBD /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,15 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01F76C462643E548009BD1ED /* Layout.framework in Frameworks */,
-				01F776642643E659009BD1ED /* DeepDiff.framework in Frameworks */,
-				01F776622643E659009BD1ED /* CollectionViewTools.framework in Frameworks */,
-				01F76C3E2643E548009BD1ED /* VisualEffectView.framework in Frameworks */,
-				01F76C3C2643E548009BD1ED /* Bin.framework in Frameworks */,
-				01F76CA92643E5CA009BD1ED /* Cripper.framework in Frameworks */,
-				01F76C442643E548009BD1ED /* Base.framework in Frameworks */,
-				01F76C402643E548009BD1ED /* Routes.framework in Frameworks */,
-				01F76C422643E548009BD1ED /* Framezilla.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +249,6 @@
 				014E2E402643E40700286EBD /* Frameworks */,
 				014E2E412643E40700286EBD /* Resources */,
 				7073E567A8F55DF3AE114FE7 /* Carthage */,
-				01F76CAB2643E5CB009BD1ED /* Embed Frameworks */,
 				01F7767E2643EC12009BD1ED /* Swiftlint */,
 			);
 			buildRules = (

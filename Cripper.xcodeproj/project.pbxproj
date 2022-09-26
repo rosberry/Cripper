@@ -72,6 +72,11 @@
 		01D134A725DA625C0035B3D6 /* DefaultImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageProvider.swift; sourceTree = "<group>"; };
 		01D134AE25DA751D0035B3D6 /* Bin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bin.framework; path = Carthage/Build/iOS/Bin.framework; sourceTree = "<group>"; };
 		01D134B225DA75360035B3D6 /* VisualEffectView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualEffectView.framework; path = Carthage/Build/iOS/VisualEffectView.framework; sourceTree = "<group>"; };
+		01D1A84928E16C7300FBFD08 /* Base.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Base.xcframework; path = Carthage/Build/Base.xcframework; sourceTree = "<group>"; };
+		01D1A84A28E16C7300FBFD08 /* Framezilla.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Framezilla.xcframework; path = Carthage/Build/Framezilla.xcframework; sourceTree = "<group>"; };
+		01D1A84B28E16C7300FBFD08 /* Bin.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Bin.xcframework; path = Carthage/Build/Bin.xcframework; sourceTree = "<group>"; };
+		01D1A84C28E16C7300FBFD08 /* VisualEffectView.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = VisualEffectView.xcframework; path = Carthage/Build/VisualEffectView.xcframework; sourceTree = "<group>"; };
+		01D1A84D28E16C7300FBFD08 /* Deboogger.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Deboogger.xcframework; path = Carthage/Build/Deboogger.xcframework; sourceTree = "<group>"; };
 		389C1271E79E84015E58041F /* CripperCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CripperCoreTests.swift; sourceTree = "<group>"; };
 		49870814BD599C5EFAF0F741 /* Cripper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cripper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F1730667C99E4E705AEBAA /* CripperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CripperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +112,11 @@
 		01430CA72599B0A30083921F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01D1A84928E16C7300FBFD08 /* Base.xcframework */,
+				01D1A84B28E16C7300FBFD08 /* Bin.xcframework */,
+				01D1A84D28E16C7300FBFD08 /* Deboogger.xcframework */,
+				01D1A84A28E16C7300FBFD08 /* Framezilla.xcframework */,
+				01D1A84C28E16C7300FBFD08 /* VisualEffectView.xcframework */,
 				01B68D7525DBC2D00047BBEB /* Deboogger.framework */,
 				01AD882E25DA915D0012C127 /* Routes.framework */,
 				01AD882425DA77400012C127 /* Base.framework */,
@@ -233,7 +243,6 @@
 				A0BCAFB56A718C8D2511F1B1 /* Sources */,
 				019A241A266A12C100238F71 /* Frameworks */,
 				01D6A4B2266A1465006FCB0F /* Resources */,
-				019A2420266A130900238F71 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -304,32 +313,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		019A2420266A130900238F71 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Framezilla.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Base.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Bin.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/VisualEffectView.framework",
-			);
-			name = Carthage;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Framezilla.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Base.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Bin.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/VisualEffectView.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 		019BB0BC25AD757E005B659F /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -468,7 +451,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build",
 				);
 				INFOPLIST_FILE = Cripper.xcodeproj/Cripper.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -559,7 +542,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build",
 				);
 				INFOPLIST_FILE = Cripper.xcodeproj/Cripper.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -704,7 +687,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build",
 				);
 				INFOPLIST_FILE = Cripper.xcodeproj/Cripper.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
